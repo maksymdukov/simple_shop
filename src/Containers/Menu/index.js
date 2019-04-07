@@ -1,11 +1,14 @@
 import React from 'react';
-import BurgersList from "../../Components/BurgersList";
+import MenuCardList from "../../Components/MenuCardList";
+import {BURGERS} from "../../Components/MenuCardList/menuMock";
+
+
 
 const Menu = () => {
     return (
         <div>
             <h2>Burgers:</h2>
-            <BurgersList/>
+            <MenuCardList list={BURGERS}/>
             <h2>Beverages:</h2>
             <h2>Deserts:</h2>
         </div>

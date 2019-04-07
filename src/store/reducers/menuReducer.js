@@ -9,7 +9,7 @@ const initialState = {
     error: null
 };
 
-const reducer = (state = initialState, {type, payload, error}) => {
+const menuReducer = (state = initialState, {type, payload, error}) => {
     switch (type) {
         case FETCH_MENU_SUCCESS:
             return {
@@ -35,4 +35,4 @@ const reducer = (state = initialState, {type, payload, error}) => {
     }
 };
 
-export default reducer;
+export default menuReducer;
