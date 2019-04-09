@@ -1,56 +1,76 @@
 export const BURGERS = [
     {
-        name: "Burger1",
+        name: "Chilly Master Burger",
         ingredients: ["salad", "meat", "bacon", "cheese"],
         description: "lorem ipasda asd asd asd",
         image: "https://www.tasteofhome.com/wp-content/uploads/2017/10/exps28800_UG143377D12_18_1b_RMS-696x696.jpg",
-        price: 50
+        price: 50,
+        additives: {
+            'chilly sauce': 1
+        }
     },
     {
-        name: "Burger2",
-        ingredients: ["meat"],
+        name: "MeatBall Burger",
+        ingredients: ["meat", "meat", "cheese"],
         description: "lorem ipasda asd asd asd",
         image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/5/10/0/FNM_060117-Smashburger-Style-Burgers-Recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1494459418304.jpeg",
-        price: 60
+        price: 60,
+        additives: {
+            'bbq sauce': 1
+        }
     },
     {
-        name: "Burger3",
-        ingredients: ["salad", "meat", "bacon", "cheese"],
+        name: "Vegan Burger",
+        ingredients: ["salad", "cheese", "salad", "cheese"],
         description: "lorem ipasda asd asd asd",
         image: "https://www.tasteofhome.com/wp-content/uploads/2017/10/exps28800_UG143377D12_18_1b_RMS-696x696.jpg",
-        price: 70
+        price: 70,
+        additives: {
+            'cheese sauce': 1
+        }
     },
     {
-        name: "Burger4",
-        ingredients: ["meat"],
+        name: "Standard Burger",
+        ingredients: ["meat", "bacon"],
         description: "lorem ipasda asd asd asd",
         image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/5/10/0/FNM_060117-Smashburger-Style-Burgers-Recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1494459418304.jpeg",
-        price: 80
+        price: 80,
+        additives: {
+            'bbq sauce': 1
+        }
     },
     {
-        name: "Burger5",
-        ingredients: ["salad", "meat", "bacon", "cheese"],
+        name: "Meat King Burger",
+        ingredients: ["meat", "meat", "bacon"],
         description: "lorem ipasda asd asd asd",
         image: "https://www.tasteofhome.com/wp-content/uploads/2017/10/exps28800_UG143377D12_18_1b_RMS-696x696.jpg",
-        price: 90
+        price: 90,
+        additives: {
+            'bbq sauce': 2,
+            'cesar sauce': 1
+        }
     },
     {
-        name: "Burger6",
-        ingredients: ["meat"],
+        name: "Bacon worrier Burger",
+        ingredients: ["bacon", "cheese", "bacon", "salad"],
         description: "lorem ipasda asd asd asd",
         image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/5/10/0/FNM_060117-Smashburger-Style-Burgers-Recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1494459418304.jpeg",
-        price: 100
+        price: 100,
+        additives: {
+            'chilly sauce': 2,
+        }
+
     },
     {
-        name: "Burger7",
-        ingredients: ["meat"],
+        name: "CheeseBurger",
+        ingredients: ["cheese", "meat", "cheese"],
         description: "lorem ipasda asd asd asd",
         image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/5/10/0/FNM_060117-Smashburger-Style-Burgers-Recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1494459418304.jpeg",
         price: 95
     },
     {
-        name: "Burger8",
-        ingredients: ["meat"],
+        name: "BurgerSpring",
+        ingredients: ["salad", "meat", "salad", "cheese"],
         description: "lorem ipasda asd asd asd",
         image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/5/10/0/FNM_060117-Smashburger-Style-Burgers-Recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1494459418304.jpeg",
         price: 122

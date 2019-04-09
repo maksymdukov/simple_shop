@@ -1,6 +1,6 @@
 import React from 'react';
-import MenuCardList from "../../Components/MenuCardList";
-import {BURGERS} from "../../Components/MenuCardList/menuMock";
+import MenuCardList from "../../Components/BurgerCardList";
+import {BURGERS} from "../../Components/BurgerCardList/menuMock";
 
 
 

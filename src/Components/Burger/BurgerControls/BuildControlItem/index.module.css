@@ -1,0 +1,33 @@
+.BuildControlItem {
+    color: white;
+    padding: 7px;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.BuildControlItem {
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+    position: relative;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 40px;
+    /*border: 1px solid #eee;*/
+    box-shadow: 4px 4px 10px -3px rgba(0,0,0,0.75);
+}
+.Salad {
+    background: linear-gradient(#228c1d, #91ce50);
+}
+
+.Bacon {
+    background: linear-gradient(#bf3813, #c45e38);
+}
+
+.Meat {
+    background: linear-gradient(#7f3608, #702e05);
+}
+
+.Cheese {
+    background: linear-gradient(#f4d004, #d6bb22);
+}

@@ -5,6 +5,7 @@ import {CssBaseline} from "@material-ui/core";
 import Layout from "./Components/Layout";
 import {Route} from "react-router";
 import Menu from "./Containers/Menu";
+import BurgerBuilder from "./Containers/BurgerBuilder";
 
 class App extends Component {
 
@@ -17,6 +18,7 @@ class App extends Component {
         <CssBaseline/>
         <Layout>
             <Route path="/menu" component={Menu}/>
+            <Route path="/builder" component={BurgerBuilder}/>
         </Layout>
       </div>
     );

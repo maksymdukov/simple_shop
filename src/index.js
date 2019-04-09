@@ -8,12 +8,14 @@ import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
 import menuReducer from "./store/reducers/menuReducer";
 import basketReducer from "./store/reducers/basketReducer";
+import burgerEditorReducer from "./store/reducers/burgerEditorReducer";
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducer = combineReducers({
     menu: menuReducer,
-    basket: basketReducer
+    basket: basketReducer,
+    burgerEditor: burgerEditorReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));

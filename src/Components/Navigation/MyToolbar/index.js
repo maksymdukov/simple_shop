@@ -42,7 +42,7 @@ const styles = theme => ({
     }
 });
 
-const MyToolbar = ({classes, handleDrawerOpen, basket}) => {
+const MyToolbar = ({classes, handleDrawerOpen, basket, totalQuantity}) => {
     const [isMenuOpened, setMenuOpened] = useState(null);
     const handleOpenCart = (event) => setMenuOpened(event.currentTarget);
     const handleCloseCart = () => setMenuOpened(null);
@@ -67,7 +67,7 @@ const MyToolbar = ({classes, handleDrawerOpen, basket}) => {
                             onClick={handleOpenCart}
                             aria-owns={isMenuOpened ? 'simple-menu' : undefined}
                             aria-haspopup="true">
-                    <Badge badgeContent={basket.length} color="primary">
+                    <Badge badgeContent={totalQuantity} color="primary">
                         <ShoppingCart/> Корзина
                     </Badge>
                 </IconButton>
@@ -78,7 +78,8 @@ const MyToolbar = ({classes, handleDrawerOpen, basket}) => {
 };
 
 const mapStateToProps = (state) => ({
-    basket: state.basket.basket
+    basket: state.basket.basket,
+    totalQuantity: state.basket.totalQuantity
 });
 
 export default withStyles(styles)( connect(mapStateToProps)(MyToolbar) );

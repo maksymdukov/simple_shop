@@ -1,7 +1,9 @@
 import {ADD_TO_BASKET, MINUS_BASKET_ITEM, PLUS_BASKET_ITEM, REMOVE_FROM_BASKET} from "../actionTypes";
 
 const initialState = {
-    basket: []
+    basket: [],
+    totalPrice: 0,
+    totalQuantity: 0
 };
 
 const basketReducer = (state = initialState, {type, item, index}) => {
@@ -10,12 +12,16 @@ const basketReducer = (state = initialState, {type, item, index}) => {
             const basketItem = {...item, quantity: 1};
             return {
                 ...state,
-                basket: state.basket.concat(basketItem)
+                basket: state.basket.concat(basketItem),
+                totalQuantity: state.totalQuantity + 1,
+                totalPrice: state.totalPrice + item.price
             };
         case REMOVE_FROM_BASKET:
             return {
                 ...state,
-                basket: state.basket.filter( (_,idx) => idx !== index )
+                basket: state.basket.filter( (_,idx) => idx !== index ),
+                totalQuantity: state.totalQuantity - state.basket[index].quantity,
+                totalPrice: state.totalPrice - state.basket[index].price * state.basket[index].quantity
             };
         case PLUS_BASKET_ITEM:
             const updatedItem = {...state.basket[index], quantity: state.basket[index].quantity + 1};
@@ -23,7 +29,9 @@ const basketReducer = (state = initialState, {type, item, index}) => {
             updatedBasket[index] = updatedItem;
             return {
                 ...state,
-                basket: updatedBasket
+                basket: updatedBasket,
+                totalQuantity: state.totalQuantity + 1,
+                totalPrice: state.totalPrice + state.basket[index].price
             };
         case MINUS_BASKET_ITEM:
             const updItem = {...state.basket[index], quantity: state.basket[index].quantity - 1};
@@ -37,7 +45,9 @@ const basketReducer = (state = initialState, {type, item, index}) => {
             }
             return {
                 ...state,
-                basket: updBasket
+                basket: updBasket,
+                totalQuantity: state.totalQuantity - 1,
+                totalPrice: state.totalPrice - state.basket[index].price
             };
         default:
             return state;

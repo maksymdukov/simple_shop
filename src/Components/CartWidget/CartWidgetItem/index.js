@@ -3,18 +3,24 @@ import {minusQuantity, plusQuantity} from "../../../store/actions/basketActions"
 import {IconButton, List, ListItem, ListItemText, Typography, withStyles} from "@material-ui/core";
 import IconMinus from '@material-ui/icons/Remove'
 import IconPlus from '@material-ui/icons/Add';
-import IconRemove from '@material-ui/icons/RemoveCircle'
+import IconRemove from '@material-ui/icons/Clear'
 
 const styles = theme => ({
     root: {
         display: "flex"
+    },
+    itemName: {
+        flex: 1
+    },
+    itemPrice: {
+        color: "#d2a006"
     }
 });
 
-const CartWidgetItem = ({classes, name, quantity, idx, plusQuantity, minusQuantity, removeItem}) => {
+const CartWidgetItem = ({classes, name, quantity, idx, plusQuantity, minusQuantity, removeItem, price}) => {
     return (
         <ListItem className={classes.root} component="li">
-            <Typography variant="h6">
+            <Typography variant="h6" className={classes.itemName}>
                 {name}
             </Typography>
             <div>
@@ -26,8 +32,11 @@ const CartWidgetItem = ({classes, name, quantity, idx, plusQuantity, minusQuanti
                     <IconPlus/>
                 </IconButton>
             </div>
+            <Typography variant="subtitle2"  className={classes.itemPrice}>
+                {price} UAH
+            </Typography>
             <IconButton onClick={()=>removeItem(idx)}>
-                <IconRemove/>
+                <IconRemove color="error"/>
             </IconButton>
         </ListItem>
     );

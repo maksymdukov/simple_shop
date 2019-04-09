@@ -1,15 +1,16 @@
 import React from 'react';
-import {ClickAwayListener, List, Menu, Paper, Popper} from "@material-ui/core";
+import {ClickAwayListener, List, Menu, Paper, Popper, Typography} from "@material-ui/core";
 import {plusQuantity, minusQuantity, removeItemFromBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
 import CartWidgetItem from "./CartWidgetItem";
 
-const CartWidget = ({anchorEl, handleCloseCart, basket, plusQuantity, minusQuantity, removeItem}) => {
+const CartWidget = ({anchorEl, handleCloseCart, basket, plusQuantity, minusQuantity, removeItem, totalPrice}) => {
     let basketItems = basket.map((item,idx) => (
         <CartWidgetItem
             key={item.name}
             name={item.name}
             quantity={item.quantity}
+            price={item.price}
             {...{idx, plusQuantity, minusQuantity, removeItem}}/>
     ));
     if (!basket.length) {
@@ -29,6 +30,9 @@ const CartWidget = ({anchorEl, handleCloseCart, basket, plusQuantity, minusQuant
                         <List>
                             {basketItems}
                         </List>
+                        <Typography align="center" gutterBottom variant="h6">
+                            Общая стоимость: {totalPrice} ГРН
+                        </Typography>
                     </Paper>
                 </ClickAwayListener>
             )}
@@ -37,7 +41,8 @@ const CartWidget = ({anchorEl, handleCloseCart, basket, plusQuantity, minusQuant
 };
 
 const mapStateToProps = (state) => ({
-    basket: state.basket.basket
+    basket: state.basket.basket,
+    totalPrice: state.basket.totalPrice
 });
 
 const mapDispatchToProps = (dispatch) => ({
