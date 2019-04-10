@@ -4,7 +4,7 @@ import {
     Card,
     CardActionArea,
     CardActions, CardContent, CardHeader,
-    CardMedia,
+    CardMedia, Divider,
     IconButton, Tooltip,
     Typography,
     withStyles
@@ -48,20 +48,23 @@ const styles = {
         transition: "opacity .2s linear"
     },
     areaFront: {
-        opacity: 1,
-        transition: "opacity .2s linear"
+        transition: "opacity .2s linear",
+        position: "relative"
     },
     area: {
-        position: "relative",
         '&:hover $areaBack': {
             zIndex: 10,
             opacity: 0.9,
             backgroundColor: "#d692a0"
         },
         '&:hover $areaFront': {
-            opacity: 1,
-            zIndex: -10
         }
+    },
+    areaBottom: {
+        display: "flex",
+        justifyContent: "space-between",
+        margin: "10px 0",
+        padding: "0 10px"
     }
 };
 
@@ -77,7 +80,7 @@ const MenuCard = ({
                       plusQuantity,
                       minusQuantity,
                       onAreaClick,
-                      showMessage
+                      showNotification
 }) => {
 
     let actionSection;
@@ -101,7 +104,7 @@ const MenuCard = ({
     } else {
         actionSection = (
             <AddToBasket onClick={ () => {
-                showMessage(itemObj.name);
+                showNotification(itemObj.name);
                 addItemToBasket(itemObj);
             } }>
                 Добавить в корзину
@@ -118,28 +121,32 @@ const MenuCard = ({
                         image={itemObj.image}
                         title={itemObj.name}
                     />
+                    <div className={classes.areaBack}>
+                        {type === 'burger' &&
+                        <BurgerOnHoverContent
+                            onSettingsClick={()=>onAreaClick(itemObj)}
+                            {...{itemObj}}
+                        />}
+                        {type === 'normal' &&
+                        <OnHoverContent
+                            {...{itemObj}}
+                        />}
+                    </div>
+                    <Divider/>
                 </div>
-                <div className={classes.areaBack}>
-                    {type === 'burger' &&
-                    <BurgerOnHoverContent
-                        onSettingsClick={()=>onAreaClick(itemObj)}
-                        {...{itemObj}}
-                    />}
-                    {type === 'normal' &&
-                    <OnHoverContent
-                        {...{itemObj}}
-                    />}
+                <div className={classes.areaBottom}>
+                    <Typography gutterBottom variant="h6" component="h2" align="right">
+                        {itemObj.name}
+                    </Typography>
+                    <Typography gutterBottom variant="subtitle1" align="left" className={classes.price}>
+                        {itemObj.price} UAH
+                    </Typography>
                 </div>
+                <Divider/>
+                <CardActions className={classes.cardAction}>
+                    {actionSection}
+                </CardActions>
             </div>
-            <CardActions className={classes.cardAction}>
-                <Typography gutterBottom variant="h6" align="left" className={classes.price}>
-                    {itemObj.price} UAH
-                </Typography>
-                <Typography gutterBottom variant="h6" component="h2" align="right">
-                    {itemObj.name}
-                </Typography>
-                {actionSection}
-            </CardActions>
         </Card>
     );
 };

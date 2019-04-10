@@ -3,7 +3,7 @@ import MenuCard from "./MenuCard";
 import classes from './index.module.css';
 import {connect} from "react-redux";
 import {addItemToBasket, minusQuantity, plusQuantity, removeItemFromBasket} from "../../store/actions/basketActions";
-import {showMessage} from "../../store/actions/notificatorActions";
+import {showNotification} from "../../store/actions/notificatorActions";
 import BurgerCardModal from "./BurgerCardModal";
 import {initIngredients} from "../../store/actions/burgerEditorActions";
 
@@ -17,7 +17,7 @@ const BurgersList = ({
                          minusQuantity,
                          burgerEditorState,
                          initIngredients,
-                         showMessage
+                         showNotification
 }) => {
     const [modalState, setModalState] = useState({opened: false, item: {}});
     const openModal = (menuItem) => {
@@ -40,7 +40,7 @@ const BurgersList = ({
                     isInBasket={indexInBasket !== -1}
                     basketObj={basket[indexInBasket]}
                     onAreaClick={openModal}
-                    {...{type, indexInBasket, addItemToBasket, removeItemFromBasket, plusQuantity, minusQuantity, showMessage}}
+                    {...{type, indexInBasket, addItemToBasket, removeItemFromBasket, plusQuantity, minusQuantity, showNotification}}
                 />
             );
         } );
@@ -55,7 +55,7 @@ const BurgersList = ({
                 opened={modalState.opened}
                 handleClose={closeModal}
                 item={modalState.item}
-                {...{addItemToBasket, burgerEditorState, initIngredients}}
+                {...{addItemToBasket, burgerEditorState, initIngredients, showNotification}}
             />}
         </Fragment>
     );
@@ -72,7 +72,7 @@ const mapDispatchToProps = (dispatch) => ({
     plusQuantity: (index) => dispatch(plusQuantity(index)),
     minusQuantity: (index) => dispatch(minusQuantity(index)),
     initIngredients: (ingredients, additives, initCost) => dispatch(initIngredients(ingredients, additives, initCost)),
-    showMessage: (itemName) => dispatch(showMessage(itemName))
+    showNotification: (itemName) => dispatch(showNotification(itemName))
 
 });
 

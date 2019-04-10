@@ -14,8 +14,8 @@ const notificatorReducer = (state = {}, {type, itemName}) => {
             };
         case HIDE_MESSAGE:
             return {
-                isOpened: false,
-                itemName
+                ...state,
+                isOpened: false
             };
         default:
             return state;

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Snackbar} from "@material-ui/core";
-import {HIDE_MESSAGE, SHOW_MESSAGE} from "../../store/actionTypes";
 import {connect} from "react-redux";
+import {showNotification, hideNotification} from "../../store/actions/notificatorActions";
 
-const Notificator = ({isOpened, showMessage, hideMessage, itemName}) => {
+const Notificator = ({isOpened, showNotification, hideNotification, itemName}) => {
     return (
         <Snackbar
             anchorOrigin={{
@@ -12,7 +12,7 @@ const Notificator = ({isOpened, showMessage, hideMessage, itemName}) => {
             }}
             open={isOpened}
             autoHideDuration={3000}
-            onClose={hideMessage}
+            onClose={hideNotification}
             ContentProps={{
                 'aria-describedby': 'message-id',
             }}
@@ -27,8 +27,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    showMessage: () => dispatch({type: SHOW_MESSAGE}),
-    hideMessage: () => dispatch({type: HIDE_MESSAGE}),
+    showNotification: () => dispatch(showNotification()),
+    hideNotification: () => dispatch(hideNotification()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notificator);

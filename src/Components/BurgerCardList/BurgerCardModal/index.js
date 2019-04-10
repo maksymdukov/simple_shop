@@ -13,7 +13,7 @@ import BurgerEditor from "../../BurgerEditor";
 import AddToBasket from "../../UI/Buttons/AddToBasket";
 import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined'
 
-const BurgerCardModal = ({handleClose, item, basket, addToBasket, removeFromBasket, opened, addItemToBasket, burgerEditorState, initIngredients}) => {
+const BurgerCardModal = ({handleClose, item, basket, addToBasket, removeFromBasket, opened, addItemToBasket, burgerEditorState, initIngredients, showNotification}) => {
     const handleAddToBasket = () => {
         const item = {
             name: 'Custom Burger',
@@ -24,6 +24,7 @@ const BurgerCardModal = ({handleClose, item, basket, addToBasket, removeFromBask
         };
         addItemToBasket(item);
         handleClose();
+        showNotification(item.name);
     };
     return (
         <div>

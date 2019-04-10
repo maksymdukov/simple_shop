@@ -4,6 +4,7 @@ import {addIngredient, initIngredients, removeIngredient} from "../../store/acti
 import {addItemToBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
 import AddToBasket from "../../Components/UI/Buttons/AddToBasket";
+import {showNotification} from "../../store/actions/notificatorActions";
 
 const BurgerBuilder = ({
                            ingredients,
@@ -11,7 +12,8 @@ const BurgerBuilder = ({
                            burgerCost,
                            additives,
                            initialCost,
-                           initIngredients
+                           initIngredients,
+                           showNotification
 }) => {
     const item = {
         name: 'Custom Burger',
@@ -22,7 +24,8 @@ const BurgerBuilder = ({
     };
     const handleAddToBasket = () => {
         addToBasket(item);
-        initIngredients([],{}, initialCost)
+        initIngredients([],{}, initialCost);
+        showNotification(item.name);
     };
     return (
         <div style={{padding: "10px"}}>
@@ -43,7 +46,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     addToBasket: (item) => dispatch(addItemToBasket(item)),
-    initIngredients: (ingredients, additives, initCost) => dispatch(initIngredients(ingredients, additives, initCost))
+    initIngredients: (ingredients, additives, initCost) => dispatch(initIngredients(ingredients, additives, initCost)),
+    showNotification: (itemName) => dispatch(showNotification(itemName))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BurgerBuilder);
