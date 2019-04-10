@@ -5,13 +5,13 @@ import {addItemToBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
 import AddToBasket from "../../Components/UI/Buttons/AddToBasket";
 
-const mockIng = ["salad", "meat", "cheese", "cheese", "bacon"];
-
 const BurgerBuilder = ({
                            ingredients,
                            addToBasket,
                            burgerCost,
-                           additives
+                           additives,
+                           initialCost,
+                           initIngredients
 }) => {
     const item = {
         name: 'Custom Burger',
@@ -20,10 +20,16 @@ const BurgerBuilder = ({
         price: burgerCost,
         id: Date.now()
     };
+    const handleAddToBasket = () => {
+        addToBasket(item);
+        initIngredients([],{}, initialCost)
+    };
     return (
-        <div>
+        <div style={{padding: "10px"}}>
             <BurgerEditor />
-            <AddToBasket onClick={ ()=> addToBasket(item)}>Добавить в корзину</AddToBasket>
+            <div style={{textAlign: "center"}}>
+                <AddToBasket disabled={!ingredients.length} onClick={handleAddToBasket}>Добавить в корзину</AddToBasket>
+            </div>
         </div>
     );
 };
@@ -31,11 +37,13 @@ const BurgerBuilder = ({
 const mapStateToProps = (state) => ({
     ingredients: state.burgerEditor.ingredients,
     additives: state.burgerEditor.additives,
-    burgerCost: state.burgerEditor.burgerCost
+    burgerCost: state.burgerEditor.burgerCost,
+    initialCost: state.burgerEditor.menu.prices.initial
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    addToBasket: (item) => dispatch(addItemToBasket(item))
+    addToBasket: (item) => dispatch(addItemToBasket(item)),
+    initIngredients: (ingredients, additives, initCost) => dispatch(initIngredients(ingredients, additives, initCost))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BurgerBuilder);

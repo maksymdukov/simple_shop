@@ -9,6 +9,12 @@
     transition: opacity 0.25s ease-out, box-shadow 0.25s linear;
 }
 
+.Price {
+    font-weight: 300;
+    font-size: 0.6rem;
+    color: #b45d00;
+}
+
 .blurred {
     opacity: 0.5;
     box-shadow: none;

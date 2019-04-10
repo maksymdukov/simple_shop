@@ -7,7 +7,7 @@ import CartWidgetItem from "./CartWidgetItem";
 const CartWidget = ({anchorEl, handleCloseCart, basket, plusQuantity, minusQuantity, removeItem, totalPrice}) => {
     let basketItems = basket.map((item,idx) => (
         <CartWidgetItem
-            key={item.name}
+            key={item.id || item.name}
             name={item.name}
             quantity={item.quantity}
             price={item.price}

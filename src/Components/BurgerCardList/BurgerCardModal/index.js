@@ -8,16 +8,30 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-import {DialogActions, DialogContent, DialogTitle} from "@material-ui/core";
+import {AppBar, DialogActions, DialogContent, DialogTitle, Toolbar} from "@material-ui/core";
 import BurgerEditor from "../../BurgerEditor";
+import AddToBasket from "../../UI/Buttons/AddToBasket";
+import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined'
 
-const BurgerCardModal = ({handleClose, item, basket, addToBasket, removeFromBasket, opened}) => {
+const BurgerCardModal = ({handleClose, item, basket, addToBasket, removeFromBasket, opened, addItemToBasket, burgerEditorState, initIngredients}) => {
+    const handleAddToBasket = () => {
+        const item = {
+            name: 'Custom Burger',
+            ingredients: burgerEditorState.ingredients,
+            additives: burgerEditorState.additives,
+            price: burgerEditorState.burgerCost,
+            id: Date.now()
+        };
+        addItemToBasket(item);
+        handleClose();
+    };
     return (
         <div>
             <Dialog
                 onClose={handleClose}
                 aria-labelledby="customized-dialog-title"
                 open={opened}
+                onExited={ () => initIngredients([],{}, burgerEditorState.menu.prices.initial) }
             >
                 {/*<DialogTitle id="customized-dialog-title" onClose={handleClose}>*/}
                     {/*<IconButton aria-label="Close" onClick={handleClose}>*/}
@@ -43,7 +57,23 @@ const BurgerCardModal = ({handleClose, item, basket, addToBasket, removeFromBask
                 {/*<DialogActions>*/}
                     {/*<div>test</div>*/}
                 {/*</DialogActions>*/}
+                <AppBar position="sticky" color="default">
+                    <Toolbar>
+                        <Typography variant="h6" color="inherit">
+                            Current cost: {burgerEditorState.burgerCost} UAH
+                        </Typography>
+                        <IconButton disabled={!burgerEditorState.ingredients.length} onClick={handleAddToBasket}>
+                            <IconAddToBasket/>
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Typography align="center" variant="h4">
+                    Burger Constructor
+                </Typography>
                 <BurgerEditor newIngredients={item.ingredients} newAdditives={item.additives} newCost={item.price} />
+                <div style={{textAlign: "center"}}>
+                    <AddToBasket disabled={!burgerEditorState.ingredients.length} onClick={handleAddToBasket}>Добавить в корзину</AddToBasket>
+                </div>
             </Dialog>
         </div>
     );

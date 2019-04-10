@@ -5,6 +5,7 @@ import AdditiveControls from "../Burger/AdditiveControls";
 import {addIngredient, initIngredients, removeIngredient, addAdditive, removeAdditive} from "../../store/actions/burgerEditorActions";
 import {addItemToBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
+import {Typography} from "@material-ui/core";
 
 const BurgerEditor = ({
                           newIngredients,
@@ -18,7 +19,8 @@ const BurgerEditor = ({
                           addIngredient,
                           removeIngredient,
                           addAdditive,
-                          removeAdditive
+                          removeAdditive,
+                          ingPrices
 
 }) => {
     useEffect(() => {
@@ -27,8 +29,10 @@ const BurgerEditor = ({
     return (
         <div>
             <Burger {...{ingredients, removeIngredient}}/>
-            <BuildControls {...{addIngredient, ingredientsMenu}}/>
-            <AdditiveControls {...{additivesMenu,additives, addAdditive, removeAdditive}}/>
+            <Typography variant="h4" align="center">Main ingredients</Typography>
+            <BuildControls {...{addIngredient, ingredientsMenu, ingPrices}}/>
+            <Typography variant="h4" align="center">Additives</Typography>
+            <AdditiveControls {...{additivesMenu,additives, addAdditive, removeAdditive, ingPrices}}/>
         </div>
     );
 };
@@ -38,6 +42,7 @@ const mapStateToProps = (state) => ({
     additives: state.burgerEditor.additives,
     ingredientsMenu: state.burgerEditor.menu.mainIngredients,
     additivesMenu: state.burgerEditor.menu.additives,
+    ingPrices: state.burgerEditor.menu.prices
 });
 
 const mapDispatchToProps = (dispatch) => ({

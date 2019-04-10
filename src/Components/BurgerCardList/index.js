@@ -4,20 +4,23 @@ import classes from './index.module.css';
 import {connect} from "react-redux";
 import {addItemToBasket, minusQuantity, plusQuantity, removeItemFromBasket} from "../../store/actions/basketActions";
 import BurgerCardModal from "./BurgerCardModal";
+import {initIngredients} from "../../store/actions/burgerEditorActions";
 
 const BurgersList = ({
+                         type = 'normal',
                          list,
                          basket,
                          addItemToBasket,
                          removeItemFromBasket,
                          plusQuantity,
-                         minusQuantity
+                         minusQuantity,
+                         burgerEditorState,
+                         initIngredients
 }) => {
     const [modalState, setModalState] = useState({opened: false, item: {}});
     const openModal = (menuItem) => {
         setModalState({opened: true, item: menuItem});
     };
-
     const closeModal = () => {
         setModalState({...modalState, opened: false});
     };
@@ -35,7 +38,7 @@ const BurgersList = ({
                     isInBasket={indexInBasket !== -1}
                     basketObj={basket[indexInBasket]}
                     onAreaClick={openModal}
-                    {...{indexInBasket, addItemToBasket, removeItemFromBasket, plusQuantity, minusQuantity}}
+                    {...{type, indexInBasket, addItemToBasket, removeItemFromBasket, plusQuantity, minusQuantity}}
                 />
             );
         } );
@@ -46,24 +49,27 @@ const BurgersList = ({
             <div className={classes.BurgerList}>
                 {cards}
             </div>
-            <BurgerCardModal
+            {type === 'burger' && <BurgerCardModal
                 opened={modalState.opened}
                 handleClose={closeModal}
                 item={modalState.item}
-            />
+                {...{addItemToBasket, burgerEditorState, initIngredients}}
+            />}
         </Fragment>
     );
 };
 
 const mapStateToProps = (state) => ({
-    basket: state.basket.basket
+    basket: state.basket.basket,
+    burgerEditorState: state.burgerEditor
 });
 
 const mapDispatchToProps = (dispatch) => ({
     addItemToBasket: (item) => dispatch(addItemToBasket(item)),
     removeItemFromBasket: (index) => dispatch(removeItemFromBasket(index)),
     plusQuantity: (index) => dispatch(plusQuantity(index)),
-    minusQuantity: (index) => dispatch(minusQuantity(index))
+    minusQuantity: (index) => dispatch(minusQuantity(index)),
+    initIngredients: (ingredients, additives, initCost) => dispatch(initIngredients(ingredients, additives, initCost))
 
 });
 

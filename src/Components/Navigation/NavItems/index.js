@@ -15,13 +15,13 @@ const styles = theme => ({
     }
 });
 
-const NavItems = ({classes}) => {
+const NavItems = ({classes, position}) => {
     return (
         <ul className={classes.navItems} >
-            <NavItem to="/">Home</NavItem>
-            <NavItem to="/builder">Burger Builder</NavItem>
-            <NavItem to="/about">About</NavItem>
-            <NavItem to="/menu">Menu</NavItem>
+            <NavItem {...{position}} to="/">Home</NavItem>
+            <NavItem {...{position}} to="/builder">Burger Builder</NavItem>
+            <NavItem {...{position}} to="/about">About</NavItem>
+            <NavItem {...{position}} to="/menu">Menu</NavItem>
         </ul>
     );
 };

@@ -1,13 +1,14 @@
-.BuildControlItem {
-    color: white;
-    padding: 7px;
-    font-weight: 500;
-    font-size: 15px;
+.Price {
+    font-weight: 200;
+    font-size: 0.6rem;
+    color: lightyellow;
 }
 
 .BuildControlItem {
     width: 100px;
-    height: 100px;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
     padding: 20px;
     position: relative;
     margin-right: 10px;
@@ -30,4 +31,20 @@
 
 .Cheese {
     background: linear-gradient(#f4d004, #d6bb22);
+}
+
+.Chicken {
+    background: linear-gradient(#7f5910, #684210);
+}
+
+.Tomato {
+    background: linear-gradient(#b82f1d, #8c261b);
+}
+
+.Cucumber {
+    background: linear-gradient(#09ab0e, #09870e);
+}
+
+.Onion {
+    background: linear-gradient(#ac56c8, #8d58a8);
 }

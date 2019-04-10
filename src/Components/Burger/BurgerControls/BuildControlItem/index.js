@@ -3,7 +3,7 @@ import {IconButton} from "@material-ui/core";
 import IconPlus from "@material-ui/icons/Add"
 import classes from './index.module.css'
 
-const BuildControlItem = ({name, handlePlusIng}) => {
+const BuildControlItem = ({name, handlePlusIng, price}) => {
     let ingClass = [classes.BuildControlItem];
     switch (name) {
         case 'meat':
@@ -18,6 +18,18 @@ const BuildControlItem = ({name, handlePlusIng}) => {
         case 'salad':
             ingClass.push(classes.Salad);
             break;
+        case 'chicken':
+            ingClass.push(classes.Chicken);
+            break;
+        case 'tomato':
+            ingClass.push(classes.Tomato);
+            break;
+        case 'cucumber':
+            ingClass.push(classes.Cucumber);
+            break;
+        case 'onion':
+            ingClass.push(classes.Onion);
+            break;
         default:
             break;
     }
@@ -27,6 +39,7 @@ const BuildControlItem = ({name, handlePlusIng}) => {
                 <IconPlus/>
             </IconButton>
             <div>{name}</div>
+            <div className={classes.Price}>{price} UAH</div>
         </li>
     );
 

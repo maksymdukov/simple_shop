@@ -80,8 +80,40 @@
     box-shadow: inset 1px 3px #c9c9c9;
 }
 
-.Meat, .Cheese, .Bacon, .Salad {
+.Meat, .Cheese, .Bacon, .Salad, .Chicken, .Tomato, .Cucumber, .Onion  {
     position: relative;
+}
+
+.Onion {
+    width: 65%;
+    height: 5%;
+    margin: 2% auto;
+    background: linear-gradient(#ac56c8, #8d58a8);
+    border-radius: 10px;
+}
+
+.Cucumber {
+    width: 72%;
+    height: 5%;
+    margin: 2% auto;
+    background: linear-gradient(#09ab0e, #09870e);
+    border-radius: 10px;
+}
+
+.Tomato {
+    width: 72%;
+    height: 5%;
+    margin: 2% auto;
+    background: linear-gradient(#b82f1d, #8c261b);
+    border-radius: 10px;
+}
+
+.Chicken {
+    width: 70%;
+    height: 8%;
+    background: linear-gradient(#7f5910, #684210);
+    margin: 2% auto;
+    border-radius: 15px;
 }
 
 .Meat {

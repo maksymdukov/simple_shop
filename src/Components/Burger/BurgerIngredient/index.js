@@ -31,6 +31,18 @@ const BurgerIngredient = ({type, removeIngredient}) => {
         case 'bacon':
             ingredientClass = classes.Bacon;
             break;
+        case 'chicken':
+            ingredientClass = classes.Chicken;
+            break;
+        case 'tomato':
+            ingredientClass = classes.Tomato;
+            break;
+        case 'cucumber':
+            ingredientClass = classes.Cucumber;
+            break;
+        case 'onion':
+            ingredientClass = classes.Onion;
+            break;
         default:
             ingredientClass = null;
     }

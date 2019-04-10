@@ -8,9 +8,13 @@ const styles = theme => ({
     }
 });
 
-const AddToBasket = ({classes, onClick, children}) => {
+const AddToBasket = ({classes, children, className, ...others }) => {
+    let classesArr = [classes.addToBasket];
+    if (className) {
+        classesArr.push(className)
+    }
     return (
-        <Button className={classes.addToBasket} {...{onClick}}>
+        <Button className={classesArr.join(" ")} {...others}>
             {children}
         </Button>
     );

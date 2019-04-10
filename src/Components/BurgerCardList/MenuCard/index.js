@@ -3,25 +3,27 @@ import {
     Button,
     Card,
     CardActionArea,
-    CardActions,
+    CardActions, CardContent, CardHeader,
     CardMedia,
-    IconButton,
+    IconButton, Tooltip,
     Typography,
     withStyles
 } from "@material-ui/core";
 import IconPlus from '@material-ui/icons/Add';
 import IconMinus from '@material-ui/icons/Remove'
-import IconBasket from '@material-ui/icons/ShoppingBasketTwoTone';
+
 import AddToBasket from "../../UI/Buttons/AddToBasket";
 import RemoveFromBasket from "../../UI/Buttons/RemoveFromBasket";
+import BurgerOnHoverContent from "./BurgerOnHoverContent";
+import OnHoverContent from "./OnHoverContent";
 
 const styles = {
     card: {
-        width: 250,
+        width: 300,
         margin: 5,
     },
     media: {
-        height: 140,
+        height: 200
     },
     addToBasket: {
         backgroundColor: "green",
@@ -35,7 +37,8 @@ const styles = {
     price: {
         color: "#d2a006"
     },
-    areaHover: {
+    areaBack: {
+        zIndex: -10,
         position: "absolute",
         top: 0,
         left: 0,
@@ -50,17 +53,31 @@ const styles = {
     },
     area: {
         position: "relative",
-        '&:hover $areaHover': {
+        '&:hover $areaBack': {
+            zIndex: 10,
             opacity: 0.9,
             backgroundColor: "#d692a0"
         },
         '&:hover $areaFront': {
-            opacity: 1
+            opacity: 1,
+            zIndex: -10
         }
     }
 };
 
-const MenuCard = ({itemObj,classes, isInBasket, indexInBasket, basketObj, addItemToBasket, removeItemFromBasket, plusQuantity, minusQuantity, onAreaClick}) => {
+const MenuCard = ({
+                      type,
+                      itemObj,
+                      classes,
+                      isInBasket,
+                      indexInBasket,
+                      basketObj,
+                      addItemToBasket,
+                      removeItemFromBasket,
+                      plusQuantity,
+                      minusQuantity,
+                      onAreaClick
+}) => {
 
     let actionSection;
     if (isInBasket) {
@@ -90,7 +107,7 @@ const MenuCard = ({itemObj,classes, isInBasket, indexInBasket, basketObj, addIte
 
     return (
         <Card className={classes.card}>
-            <CardActionArea className={classes.area} onClick={()=>onAreaClick(itemObj)}>
+            <div className={classes.area}>
                 <div className={classes.areaFront}>
                     <CardMedia
                         className={classes.media}
@@ -98,12 +115,19 @@ const MenuCard = ({itemObj,classes, isInBasket, indexInBasket, basketObj, addIte
                         title={itemObj.name}
                     />
                 </div>
-                <div className={classes.areaHover}>
-                    ingredients: {itemObj.ingredients.join(", ")}
+                <div className={classes.areaBack}>
+                    {type === 'burger' &&
+                    <BurgerOnHoverContent
+                        onSettingsClick={()=>onAreaClick(itemObj)}
+                        {...{itemObj}}
+                    />}
+                    {type === 'normal' &&
+                    <OnHoverContent
+                        {...{itemObj}}
+                    />}
                 </div>
-            </CardActionArea>
+            </div>
             <CardActions className={classes.cardAction}>
-                
                 <Typography gutterBottom variant="h6" align="left" className={classes.price}>
                     {itemObj.price} UAH
                 </Typography>

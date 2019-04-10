@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Logo from "../../UI/Logo";
 import {
+    AppBar,
     Badge,
     Button,
     ClickAwayListener,
@@ -18,11 +19,21 @@ import {connect} from "react-redux";
 import CartWidget from "../../CartWidget";
 
 const styles = theme => ({
-    root: {
-        backgroundImage: "url(https://mrgrill.com.ua/wp-content/uploads/2017/09/banner.jpg)",
-        backgroundSize: "cover",
-        height: "200px",
-        alignItems: "initial"
+    rootStatic: {
+        backgroundColor: "transparent",
+        boxShadow: "none"
+    },
+    rootFixed: {
+        backgroundColor: "white"
+    },
+    toolbar: {
+        justifyContent: "space-between",
+        alignItems: "initial",
+        [theme.breakpoints.up('sm')]: {
+            justifyContent: "initial"
+        }
+    },
+    toolbarFixed: {
     },
     navItems: {
         display: "none",
@@ -37,33 +48,59 @@ const styles = theme => ({
             display: "none"
         }
     },
+    togglerIcon: {
+        color: "white"
+    },
+    togglerIconFixed: {
+        color: "grey"
+    },
     shoppingCart: {
         color: "white"
+    },
+    shoppingCartFixed: {
+        color: "grey"
     }
 });
 
-const MyToolbar = ({classes, handleDrawerOpen, basket, totalQuantity}) => {
+const MyToolbar = ({classes, handleDrawerOpen, basket, totalQuantity, position }) => {
     const [isMenuOpened, setMenuOpened] = useState(null);
     const handleOpenCart = (event) => setMenuOpened(event.currentTarget);
     const handleCloseCart = () => setMenuOpened(null);
+
+    const toolbarClasses = [classes.toolbar];
+    if (position === "fixed") {
+        toolbarClasses.push(classes.toolbarFixed)
+    }
+
+    const togglerIconClasses = [classes.togglerIcon];
+    if (position === "fixed") {
+        togglerIconClasses.push(classes.togglerIconFixed)
+    }
+
+    const shoppingCartClasses = [classes.shoppingCart];
+    if (position === "fixed") {
+        shoppingCartClasses.push(classes.shoppingCartFixed)
+    }
+
     return (
-        <Toolbar component="header" className={classes.root}>
+        <AppBar position={position} className={position === 'static' ? classes.rootStatic : classes.rootFixed}>
+        <Toolbar className={toolbarClasses.join(" ")}>
             <div className={classes.drawerToggler}>
                 <IconButton
-                    style={{color: 'white'}}
+                    className={togglerIconClasses.join(" ")}
                     onClick={handleDrawerOpen}>
                     <MenuIcon/>
                 </IconButton>
             </div>
             <Logo/>
             <div className={classes.navItems}>
-                <NavItems/>
+                <NavItems {...{position}}/>
             </div>
             <div>
                 <Button color="inherit">Login</Button>
             </div>
             <div>
-                <IconButton className={classes.shoppingCart}
+                <IconButton className={shoppingCartClasses.join(" ")}
                             onClick={handleOpenCart}
                             aria-owns={isMenuOpened ? 'simple-menu' : undefined}
                             aria-haspopup="true">
@@ -74,6 +111,7 @@ const MyToolbar = ({classes, handleDrawerOpen, basket, totalQuantity}) => {
                 <CartWidget anchorEl={isMenuOpened} {...{handleCloseCart}}/>
             </div>
         </Toolbar>
+        </AppBar>
     );
 };
 
