@@ -6,6 +6,8 @@ import {addIngredient, initIngredients, removeIngredient, addAdditive, removeAdd
 import {addItemToBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
 import {Typography} from "@material-ui/core";
+import Heading from "../UI/Heading";
+import HeadingDivider from "../UI/HeadingDivider";
 
 const BurgerEditor = ({
                           newIngredients,
@@ -29,9 +31,11 @@ const BurgerEditor = ({
     return (
         <div>
             <Burger {...{ingredients, removeIngredient}}/>
-            <Typography variant="h4" align="center">Main ingredients</Typography>
+            <Heading variant="h4" color="primary" component="h2">Main ingredients</Heading>
+            <HeadingDivider/>
             <BuildControls {...{addIngredient, ingredientsMenu, ingPrices}}/>
-            <Typography variant="h4" align="center">Additives</Typography>
+            <Heading variant="h4" color="primary" component="h2">Additives</Heading>
+            <HeadingDivider/>
             <AdditiveControls {...{additivesMenu,additives, addAdditive, removeAdditive, ingPrices}}/>
         </div>
     );

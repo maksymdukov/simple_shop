@@ -3,7 +3,8 @@ import {withStyles} from "@material-ui/core";
 
 const styles = theme => ({
     container: {
-        padding: 4
+        padding: 4,
+        color: theme.card.backSide.textColor
     },
     settings: {
         flexShrink: 0,

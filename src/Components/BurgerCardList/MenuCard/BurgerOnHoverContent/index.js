@@ -1,14 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
 import {IconButton, Tooltip, withStyles} from "@material-ui/core";
 import IconSettings from '@material-ui/icons/Settings';
 
 const styles = theme => ({
     container: {
-        padding: 4
+        padding: 4,
+        color: theme.card.backSide.textColor
     },
     settings: {
         flexShrink: 0,
-        alignSelf: "flex-start"
+        alignSelf: "flex-start",
+        color: theme.card.backSide.textColor
     },
     title: {
         display: "flex",
@@ -16,7 +18,7 @@ const styles = theme => ({
     }
 });
 
-const BurgerOnHoverContent = ({classes, itemObj, onSettingsClick}) => {
+const BurgerOnHoverContent = ({classes, itemObj, onSettingsClick, settingsClass}) => {
     return (
         <div className={classes.container}>
             <div className={classes.title}>
@@ -32,6 +34,13 @@ const BurgerOnHoverContent = ({classes, itemObj, onSettingsClick}) => {
             <ul>
                 {itemObj.ingredients.map((ing,idx) => <li key={idx}>{ing}</li>)}
             </ul>
+            {itemObj.additives &&
+            <Fragment>
+                <p>Sauces:</p>
+                <ul>
+                    {Object.entries(itemObj.additives).map((additive,idx) => <li key={idx}>{additive[0]}: x{additive[1]}</li>)}
+                </ul>
+            </Fragment>}
         </div>
     );
 };

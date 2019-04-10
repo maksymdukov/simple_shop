@@ -7,6 +7,7 @@ import {
     CardMedia, Divider,
     IconButton, Tooltip,
     Typography,
+    Grid,
     withStyles
 } from "@material-ui/core";
 import IconPlus from '@material-ui/icons/Add';
@@ -16,8 +17,9 @@ import AddToBasket from "../../UI/Buttons/AddToBasket";
 import RemoveFromBasket from "../../UI/Buttons/RemoveFromBasket";
 import BurgerOnHoverContent from "./BurgerOnHoverContent";
 import OnHoverContent from "./OnHoverContent";
+import ScrollBar from "../../UI/ScrollBar";
 
-const styles = {
+const styles = (theme) => ({
     card: {
         width: 300,
         margin: 5,
@@ -32,10 +34,12 @@ const styles = {
     cardAction: {
         display: "flex",
         justifyContent: "flex-end",
-        flexDirection: "column"
+        flexDirection: "column",
+        padding: 0,
+        height: 50
     },
     price: {
-        color: "#d2a006"
+        color: theme.card.price.mainColor
     },
     areaBack: {
         zIndex: -10,
@@ -45,7 +49,9 @@ const styles = {
         bottom: 0,
         right: 0,
         opacity: 0,
-        transition: "opacity .2s linear"
+        backgroundColor: theme.card.backSide.backgroundColor,
+        transition: "opacity .2s linear",
+        overflow: "auto"
     },
     areaFront: {
         transition: "opacity .2s linear",
@@ -54,19 +60,63 @@ const styles = {
     area: {
         '&:hover $areaBack': {
             zIndex: 10,
-            opacity: 0.9,
-            backgroundColor: "#d692a0"
+            opacity: 0.9
         },
         '&:hover $areaFront': {
+        },
+        '&:hover': {
+            backgroundColor: theme.card.backSide.backgroundColor,
+            color: theme.card.backSide.textColor,
+            '& $productName': {
+                color: theme.card.backSide.textColor
+            },
+            '& $addToBasketButton': {
+                backgroundColor: theme.card.price.mainColor
+            },
+            '& $removeFromBasketButton': {
+                backgroundColor: theme.palette.primary.dark
+            },
+            '& $verticalDivider': {
+                borderColor: theme.card.backSide.dividerColor
+            },
+            '& $divider': {
+                backgroundColor: theme.card.backSide.dividerColor
+            }
         }
     },
+    productName: {},
+    settingIcon: {},
+    divider: {},
     areaBottom: {
         display: "flex",
         justifyContent: "space-between",
         margin: "10px 0",
-        padding: "0 10px"
+        padding: "0 10px",
+        alignItems: "baseline"
+    },
+    addToBasketButton: {
+        backgroundColor: theme.card.frontSide.backgroundColor,
+        height: "100%"
+    },
+    removeFromBasketButton: {
+        backgroundColor: theme.card.frontSide.backgroundColor,
+        height: "100%"
+    },
+    actionContainer: {
+        height: "100%"
+    },
+    iconButtonPlus: {
+        color: "inherit"
+    },
+    iconButtonMinus: {
+        color: "inherit"
+    },
+    verticalDivider: {
+        borderRight: '0.1em solid',
+        borderColor: theme.palette.divider,
+        textAlign: "center"
     }
-};
+});
 
 const MenuCard = ({
                       type,
@@ -82,31 +132,33 @@ const MenuCard = ({
                       onAreaClick,
                       showNotification
 }) => {
-
+    let addToBasketHandler = () => {
+        showNotification(itemObj.name);
+        addItemToBasket(itemObj);
+    };
     let actionSection;
     if (isInBasket) {
         actionSection = (
-            <Fragment>
-                <div>
-                    <IconButton onClick={()=>minusQuantity(indexInBasket)}>
-                        <IconMinus/>
-                    </IconButton>
-                    {basketObj.quantity}
-                    <IconButton onClick={()=>plusQuantity(indexInBasket)}>
-                        <IconPlus/>
-                    </IconButton>
-                </div>
-                <RemoveFromBasket onClick={()=>removeItemFromBasket(indexInBasket)}>
-                    Удалить из корзины
-                </RemoveFromBasket>
-            </Fragment>
+                <Grid container alignItems="stretch" className={classes.actionContainer}>
+                    <Grid item xs={6} className={classes.verticalDivider}>
+                        <IconButton className={classes.iconButtonPlus} onClick={()=>minusQuantity(indexInBasket)}>
+                            <IconMinus/>
+                        </IconButton>
+                        {basketObj.quantity}
+                        <IconButton className={classes.iconButtonMinus} onClick={()=>plusQuantity(indexInBasket)}>
+                            <IconPlus/>
+                        </IconButton>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <RemoveFromBasket className={classes.removeFromBasketButton} fullWidth onClick={()=>removeItemFromBasket(indexInBasket)}>
+                            Удалить
+                        </RemoveFromBasket>
+                    </Grid>
+                </Grid>
         );
     } else {
         actionSection = (
-            <AddToBasket onClick={ () => {
-                showNotification(itemObj.name);
-                addItemToBasket(itemObj);
-            } }>
+            <AddToBasket fullWidth className={classes.addToBasketButton} onClick={addToBasketHandler}>
                 Добавить в корзину
             </AddToBasket>
         )
@@ -122,27 +174,29 @@ const MenuCard = ({
                         title={itemObj.name}
                     />
                     <div className={classes.areaBack}>
-                        {type === 'burger' &&
-                        <BurgerOnHoverContent
-                            onSettingsClick={()=>onAreaClick(itemObj)}
-                            {...{itemObj}}
-                        />}
-                        {type === 'normal' &&
-                        <OnHoverContent
-                            {...{itemObj}}
-                        />}
+                        <ScrollBar>
+                            {type === 'burger' &&
+                            <BurgerOnHoverContent
+                                onSettingsClick={()=>onAreaClick(itemObj)}
+                                {...{itemObj}}
+                            />}
+                            {type === 'normal' &&
+                            <OnHoverContent
+                                {...{itemObj}}
+                            />}
+                        </ScrollBar>
                     </div>
-                    <Divider/>
                 </div>
+                <Divider className={classes.divider}/>
                 <div className={classes.areaBottom}>
-                    <Typography gutterBottom variant="h6" component="h2" align="right">
+                    <Typography gutterBottom variant="h6" component="h2" align="left" className={classes.productName}>
                         {itemObj.name}
                     </Typography>
-                    <Typography gutterBottom variant="subtitle1" align="left" className={classes.price}>
+                    <Typography gutterBottom variant="subtitle1" align="right" className={classes.price}>
                         {itemObj.price} UAH
                     </Typography>
                 </div>
-                <Divider/>
+                <Divider className={classes.divider}/>
                 <CardActions className={classes.cardAction}>
                     {actionSection}
                 </CardActions>
