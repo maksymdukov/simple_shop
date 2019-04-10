@@ -1,0 +1,25 @@
+import {HIDE_MESSAGE, SHOW_MESSAGE} from "../actionTypes";
+
+const initialState = {
+    isOpened: false,
+    itemName: ''
+};
+
+const notificatorReducer = (state = {}, {type, itemName}) => {
+    switch (type) {
+        case SHOW_MESSAGE:
+            return {
+                isOpened: true,
+                itemName
+            };
+        case HIDE_MESSAGE:
+            return {
+                isOpened: false,
+                itemName
+            };
+        default:
+            return state;
+    }
+};
+
+export default notificatorReducer;

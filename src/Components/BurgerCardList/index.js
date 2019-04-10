@@ -3,6 +3,7 @@ import MenuCard from "./MenuCard";
 import classes from './index.module.css';
 import {connect} from "react-redux";
 import {addItemToBasket, minusQuantity, plusQuantity, removeItemFromBasket} from "../../store/actions/basketActions";
+import {showMessage} from "../../store/actions/notificatorActions";
 import BurgerCardModal from "./BurgerCardModal";
 import {initIngredients} from "../../store/actions/burgerEditorActions";
 
@@ -15,7 +16,8 @@ const BurgersList = ({
                          plusQuantity,
                          minusQuantity,
                          burgerEditorState,
-                         initIngredients
+                         initIngredients,
+                         showMessage
 }) => {
     const [modalState, setModalState] = useState({opened: false, item: {}});
     const openModal = (menuItem) => {
@@ -38,7 +40,7 @@ const BurgersList = ({
                     isInBasket={indexInBasket !== -1}
                     basketObj={basket[indexInBasket]}
                     onAreaClick={openModal}
-                    {...{type, indexInBasket, addItemToBasket, removeItemFromBasket, plusQuantity, minusQuantity}}
+                    {...{type, indexInBasket, addItemToBasket, removeItemFromBasket, plusQuantity, minusQuantity, showMessage}}
                 />
             );
         } );
@@ -69,7 +71,8 @@ const mapDispatchToProps = (dispatch) => ({
     removeItemFromBasket: (index) => dispatch(removeItemFromBasket(index)),
     plusQuantity: (index) => dispatch(plusQuantity(index)),
     minusQuantity: (index) => dispatch(minusQuantity(index)),
-    initIngredients: (ingredients, additives, initCost) => dispatch(initIngredients(ingredients, additives, initCost))
+    initIngredients: (ingredients, additives, initCost) => dispatch(initIngredients(ingredients, additives, initCost)),
+    showMessage: (itemName) => dispatch(showMessage(itemName))
 
 });
 

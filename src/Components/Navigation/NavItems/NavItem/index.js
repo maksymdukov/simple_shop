@@ -24,6 +24,9 @@ const styles = theme => ({
         backgroundColor: "grey"
     },
     customButtonFixed: {
+        '&:hover': {
+            backgroundColor: "white"
+        },
         [theme.breakpoints.up('sm')]: {
             color: "red"
         }

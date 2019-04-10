@@ -8,10 +8,6 @@ import Menu from "./Containers/Menu";
 import BurgerBuilder from "./Containers/BurgerBuilder";
 
 class App extends Component {
-
-  componentDidMount() {
-  }
-
   render() {
     return (
       <div className="App">

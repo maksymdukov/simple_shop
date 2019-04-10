@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import classes from './index.module.css';
+import burgerLogo from '../../../assets/burger-logo.png';
 
 class Logo extends Component {
     render() {
         return (
-            <div>
-                Logo
+            <div className={classes.Logo}>
+                <img src={burgerLogo} alt="Logo"/>
             </div>
         );
     }

@@ -22,7 +22,8 @@ const CartWidget = ({anchorEl, handleCloseCart, basket, plusQuantity, minusQuant
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={handleCloseCart}
-            placement="bottom"
+            placement="bottom-end"
+            style={{zIndex: 2000}}
         >
             {()=>(
                 <ClickAwayListener onClickAway={handleCloseCart}>

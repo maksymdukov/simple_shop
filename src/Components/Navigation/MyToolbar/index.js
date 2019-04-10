@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import Logo from "../../UI/Logo";
 import {
     AppBar,
@@ -8,7 +8,7 @@ import {
     IconButton,
     Menu,
     MenuItem, Paper,
-    Popper,
+    Popper, RootRef,
     Toolbar,
     withStyles
 } from "@material-ui/core";
@@ -27,6 +27,7 @@ const styles = theme => ({
         backgroundColor: "white"
     },
     toolbar: {
+        padding: 4,
         justifyContent: "space-between",
         alignItems: "initial",
         [theme.breakpoints.up('sm')]: {
@@ -59,12 +60,20 @@ const styles = theme => ({
     },
     shoppingCartFixed: {
         color: "grey"
+    },
+    logo: {
+        height: 50,
+        backgroundColor: "transparent"
     }
 });
 
 const MyToolbar = ({classes, handleDrawerOpen, basket, totalQuantity, position }) => {
+    const appbarEl = useRef(null);
     const [isMenuOpened, setMenuOpened] = useState(null);
-    const handleOpenCart = (event) => setMenuOpened(event.currentTarget);
+    const handleOpenCart = (event) => {
+        setMenuOpened(event.currentTarget);
+        // setMenuOpened(appbarEl.current);
+    };
     const handleCloseCart = () => setMenuOpened(null);
 
     const toolbarClasses = [classes.toolbar];
@@ -83,7 +92,10 @@ const MyToolbar = ({classes, handleDrawerOpen, basket, totalQuantity, position }
     }
 
     return (
-        <AppBar position={position} className={position === 'static' ? classes.rootStatic : classes.rootFixed}>
+        <RootRef rootRef={appbarEl}>
+        <AppBar position={position}
+                className={position === 'static' ? classes.rootStatic : classes.rootFixed}
+        >
         <Toolbar className={toolbarClasses.join(" ")}>
             <div className={classes.drawerToggler}>
                 <IconButton
@@ -92,7 +104,9 @@ const MyToolbar = ({classes, handleDrawerOpen, basket, totalQuantity, position }
                     <MenuIcon/>
                 </IconButton>
             </div>
-            <Logo/>
+            <div className={classes.logo}>
+                <Logo/>
+            </div>
             <div className={classes.navItems}>
                 <NavItems {...{position}}/>
             </div>
@@ -112,6 +126,7 @@ const MyToolbar = ({classes, handleDrawerOpen, basket, totalQuantity, position }
             </div>
         </Toolbar>
         </AppBar>
+        </RootRef>
     );
 };
 

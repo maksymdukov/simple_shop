@@ -76,7 +76,8 @@ const MenuCard = ({
                       removeItemFromBasket,
                       plusQuantity,
                       minusQuantity,
-                      onAreaClick
+                      onAreaClick,
+                      showMessage
 }) => {
 
     let actionSection;
@@ -99,7 +100,10 @@ const MenuCard = ({
         );
     } else {
         actionSection = (
-            <AddToBasket onClick={ () => addItemToBasket(itemObj) }>
+            <AddToBasket onClick={ () => {
+                showMessage(itemObj.name);
+                addItemToBasket(itemObj);
+            } }>
                 Добавить в корзину
             </AddToBasket>
         )
