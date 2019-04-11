@@ -22,7 +22,7 @@ import ScrollBar from "../../UI/ScrollBar";
 const styles = (theme) => ({
     card: {
         width: 300,
-        margin: 5,
+        margin: "15px 5px",
     },
     media: {
         height: 200
@@ -151,7 +151,7 @@ const MenuCard = ({
                     </Grid>
                     <Grid item xs={6}>
                         <RemoveFromBasket className={classes.removeFromBasketButton} fullWidth onClick={()=>removeItemFromBasket(indexInBasket)}>
-                            Удалить
+                            Remove
                         </RemoveFromBasket>
                     </Grid>
                 </Grid>
@@ -159,7 +159,7 @@ const MenuCard = ({
     } else {
         actionSection = (
             <AddToBasket fullWidth className={classes.addToBasketButton} onClick={addToBasketHandler}>
-                Добавить в корзину
+                Add to cart
             </AddToBasket>
         )
     }
@@ -174,7 +174,6 @@ const MenuCard = ({
                         title={itemObj.name}
                     />
                     <div className={classes.areaBack}>
-                        <ScrollBar>
                             {type === 'burger' &&
                             <BurgerOnHoverContent
                                 onSettingsClick={()=>onAreaClick(itemObj)}
@@ -184,7 +183,6 @@ const MenuCard = ({
                             <OnHoverContent
                                 {...{itemObj}}
                             />}
-                        </ScrollBar>
                     </div>
                 </div>
                 <Divider className={classes.divider}/>

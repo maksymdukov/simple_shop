@@ -8,12 +8,35 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-import {AppBar, DialogActions, DialogContent, DialogTitle, Toolbar} from "@material-ui/core";
+import {AppBar, DialogActions, DialogContent, DialogTitle, Fab, Toolbar, Grid, Badge} from "@material-ui/core";
 import BurgerEditor from "../../BurgerEditor";
 import AddToBasket from "../../UI/Buttons/AddToBasket";
-import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined'
+import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined';
 
-const BurgerCardModal = ({handleClose, item, basket, addToBasket, removeFromBasket, opened, addItemToBasket, burgerEditorState, initIngredients, showNotification}) => {
+const styles = (theme) => ({
+   fabContainer: {
+       position: 'sticky',
+       bottom: theme.spacing.unit * 2,
+       top: "auto",
+       textAlign: "right",
+   },
+    fab: {
+       marginRight: 10,
+        backgroundColor: theme.card.price.mainColor,
+        color: theme.card.frontSide.backgroundColor
+    },
+    toolbar: {
+       justifyContent: "center",
+    },
+    title: {
+        fontWeight: 300,
+        '& span': {
+            color: theme.card.price.mainColor
+        }
+    }
+});
+
+const BurgerCardModal = ({classes, handleClose, item, basket, addToBasket, removeFromBasket, opened, addItemToBasket, burgerEditorState, initIngredients, showNotification}) => {
     const handleAddToBasket = () => {
         const item = {
             name: 'Custom Burger',
@@ -59,25 +82,24 @@ const BurgerCardModal = ({handleClose, item, basket, addToBasket, removeFromBask
                     {/*<div>test</div>*/}
                 {/*</DialogActions>*/}
                 <AppBar position="sticky" color="default">
-                    <Toolbar>
-                        <Typography variant="h6" color="inherit">
-                            Current cost: {burgerEditorState.burgerCost} UAH
-                        </Typography>
-                        <IconButton disabled={!burgerEditorState.ingredients.length} onClick={handleAddToBasket}>
-                            <IconAddToBasket/>
-                        </IconButton>
+                    <Toolbar className={classes.toolbar}>
+                            <Typography variant="h6" color="inherit" className={classes.title}>
+                                Current cost: <span>{burgerEditorState.burgerCost} UAH</span>
+                            </Typography>
                     </Toolbar>
                 </AppBar>
-                <Typography align="center" variant="h4">
-                    Burger Constructor
-                </Typography>
-                <BurgerEditor newIngredients={item.ingredients} newAdditives={item.additives} newCost={item.price} />
-                <div style={{textAlign: "center"}}>
-                    <AddToBasket disabled={!burgerEditorState.ingredients.length} onClick={handleAddToBasket}>Добавить в корзину</AddToBasket>
+                    <Typography align="center" variant="h4">
+                        Burger Constructor
+                    </Typography>
+                    <BurgerEditor newIngredients={item.ingredients} newAdditives={item.additives} newCost={item.price} />
+                <div className={classes.fabContainer}>
+                        <Fab className={classes.fab} disabled={!burgerEditorState.ingredients.length} onClick={handleAddToBasket}>
+                            <IconAddToBasket/>
+                        </Fab>
                 </div>
             </Dialog>
         </div>
     );
 };
 
-export default BurgerCardModal;
+export default withStyles(styles)(BurgerCardModal);

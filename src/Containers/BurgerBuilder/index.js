@@ -1,12 +1,51 @@
 import React from 'react';
+import {Helmet} from "react-helmet/es/Helmet";
 import BurgerEditor from "../../Components/BurgerEditor";
 import {addIngredient, initIngredients, removeIngredient} from "../../store/actions/burgerEditorActions";
 import {addItemToBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
 import AddToBasket from "../../Components/UI/Buttons/AddToBasket";
 import {showNotification} from "../../store/actions/notificatorActions";
+import {Badge, Divider, Fab, Paper, withStyles} from "@material-ui/core";
+import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined';
+
+const styles = (theme) => ({
+    container: {
+        padding: "20px 5px 0 5px"
+    },
+    fixedControls: {
+        position: "sticky",
+        bottom: 0,
+        top: "auto",
+        display: "flex",
+        justifyContent: "center"
+    },
+    cartIcon: {
+        textAlign: "center",
+        marginBottom: 2
+    },
+    fab: {
+        backgroundColor: theme.card.price.mainColor,
+        color: theme.card.frontSide.backgroundColor
+    },
+    paper: {
+        width: "auto",
+        padding: "10px 40px",
+        backgroundColor: theme.card.frontSide.backgroundColor,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
+    },
+    priceTag: {
+        padding: 5,
+        margin: 0,
+        '& span': {
+            color: theme.card.price.mainColor,
+        }
+    }
+});
 
 const BurgerBuilder = ({
+                            classes,
                            ingredients,
                            addToBasket,
                            burgerCost,
@@ -28,10 +67,21 @@ const BurgerBuilder = ({
         showNotification(item.name);
     };
     return (
-        <div style={{padding: "10px"}}>
+        <div className={classes.container}>
+            <Helmet>
+                <title>Burger Builder</title>
+            </Helmet>
             <BurgerEditor />
-            <div style={{textAlign: "center"}}>
-                <AddToBasket disabled={!ingredients.length} onClick={handleAddToBasket}>Добавить в корзину</AddToBasket>
+            <div className={classes.fixedControls}>
+                    <Paper className={classes.paper}>
+                        <div className={classes.cartIcon}>
+                            <Fab className={classes.fab} disabled={!ingredients.length} onClick={handleAddToBasket}>
+                                <IconAddToBasket/>
+                            </Fab>
+                        </div>
+                        <Divider variant="fullWidth"/>
+                        <p className={classes.priceTag}>Current cost: <span>{burgerCost} UAH</span></p>
+                    </Paper>
             </div>
         </div>
     );
@@ -50,4 +100,4 @@ const mapDispatchToProps = (dispatch) => ({
     showNotification: (itemName) => dispatch(showNotification(itemName))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BurgerBuilder);
+export default withStyles(styles)( connect(mapStateToProps, mapDispatchToProps)(BurgerBuilder) ) ;

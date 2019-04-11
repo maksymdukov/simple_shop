@@ -1,10 +1,50 @@
 import React from 'react';
-import {ClickAwayListener, List, Menu, Paper, Popper, Typography} from "@material-ui/core";
+import {
+    ClickAwayListener,
+    Divider,
+    List,
+    Menu,
+    Paper,
+    Popover,
+    Popper,
+    Typography,
+    withStyles
+} from "@material-ui/core";
 import {plusQuantity, minusQuantity, removeItemFromBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
 import CartWidgetItem from "./CartWidgetItem";
+import ScrollBar from "../UI/ScrollBar";
 
-const CartWidget = ({anchorEl, handleCloseCart, basket, plusQuantity, minusQuantity, removeItem, totalPrice}) => {
+const styles = (theme) => ({
+    paper: {
+        [theme.breakpoints.up("xs")]: {
+            width: "80vw",
+        },
+        [theme.breakpoints.up("sm")]: {
+            width: 400
+        },
+        [theme.breakpoints.up("md")]: {
+            width: 500
+        }
+    },
+    listContainer: {
+        // maxHeight: 300,
+        // overflow: "auto",
+    },
+    productList: {
+    },
+    price: {
+        paddingRight: 10
+    },
+    priceTag: {
+        color: theme.palette.primary.main
+    },
+    empty: {
+        paddingLeft: 20
+    }
+});
+
+const CartWidget = ({classes, anchorEl, handleCloseCart, basket, plusQuantity, minusQuantity, removeItem, totalPrice}) => {
     let basketItems = basket.map((item,idx) => (
         <CartWidgetItem
             key={item.id || item.name}
@@ -14,30 +54,37 @@ const CartWidget = ({anchorEl, handleCloseCart, basket, plusQuantity, minusQuant
             {...{idx, plusQuantity, minusQuantity, removeItem}}/>
     ));
     if (!basket.length) {
-        basketItems = <p>Корзина пуста</p>;
+        basketItems = (
+            <Typography align="left" className={classes.empty} gutterBottom variant="subtitle1">
+                Cart is empty.
+            </Typography>
+        );
     }
 
     return (
-        <Popper
+        <Popover
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={handleCloseCart}
-            placement="bottom-end"
-            style={{zIndex: 2000}}
+            classes={{paper: classes.paper}}
+            disableRestoreFocus
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+            }}
+
         >
-            {()=>(
-                <ClickAwayListener onClickAway={handleCloseCart}>
-                    <Paper>
-                        <List>
-                            {basketItems}
-                        </List>
-                        <Typography align="center" gutterBottom variant="h6">
-                            Общая стоимость: {totalPrice} ГРН
+            <div className={classes.listContainer}>
+                    <List className={classes.productList}>
+                        {basketItems}
+                    </List>
+            </div>
+            <Divider/>
+                        <Typography className={classes.price} align="right" gutterBottom variant="h6">
+                            Total: <span className={classes.priceTag}>{totalPrice} UAH</span>
                         </Typography>
-                    </Paper>
-                </ClickAwayListener>
-            )}
-        </Popper>
+                        <Divider/>
+        </Popover>
     );
 };
 
@@ -52,4 +99,4 @@ const mapDispatchToProps = (dispatch) => ({
     removeItem: (index) => dispatch(removeItemFromBasket(index))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartWidget);
+export default withStyles(styles)( connect(mapStateToProps, mapDispatchToProps)(CartWidget) );

@@ -8,6 +8,7 @@ import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import red from '@material-ui/core/colors/red';
+import 'typeface-roboto';
 import menuReducer from "./store/reducers/menuReducer";
 import basketReducer from "./store/reducers/basketReducer";
 import burgerEditorReducer from "./store/reducers/burgerEditorReducer";
@@ -28,7 +29,12 @@ const theme = createMuiTheme({
     palette: {
         primary: {
             main: "#e91e63"
-        }
+        },
+        common: {
+            white: "#fff",
+            grey: "#c3c3c3",
+            darkGrey: "#373737"
+        },
     },
     card: {
         price: {
@@ -41,6 +47,7 @@ const theme = createMuiTheme({
             dividerColor: "#bdbdbd",
             backgroundColor: "#212121",
             textColor: "#fff",
+            textColorSecondary: "#e1e1e1",
             dangerColor: "red"
         }
     },
@@ -58,7 +65,7 @@ const theme = createMuiTheme({
 
 const app = (
     <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="/simple_shop/">
             <MuiThemeProvider theme={theme}>
                 <App />
             </MuiThemeProvider>

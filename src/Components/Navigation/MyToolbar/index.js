@@ -29,8 +29,8 @@ const styles = theme => ({
     toolbar: {
         padding: 4,
         justifyContent: "space-between",
-        alignItems: "initial",
-        [theme.breakpoints.up('sm')]: {
+        alignItems: "center",
+        [theme.breakpoints.up('md')]: {
             justifyContent: "initial"
         }
     },
@@ -38,14 +38,14 @@ const styles = theme => ({
     },
     navItems: {
         display: "none",
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             display: "block",
             flex: 1,
             textAlign: "center"
         }
     },
     drawerToggler: {
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             display: "none"
         }
     },
@@ -56,14 +56,35 @@ const styles = theme => ({
         color: "grey"
     },
     shoppingCart: {
-        color: "white"
+        color: "white",
+        marginLeft: 10,
+        marginRight: 10
     },
     shoppingCartFixed: {
         color: "grey"
     },
     logo: {
         height: 50,
-        backgroundColor: "transparent"
+        backgroundColor: "transparent",
+        margin: 10,
+        flex: 1,
+        [theme.breakpoints.up('md')]: {
+            flex: 0
+        }
+    },
+    login: {
+        transition: "color 0.2s linear",
+        display: "none",
+        '&:hover': {
+            // backgroundColor: "white"
+            color: theme.palette.primary.main
+        },
+        [theme.breakpoints.up('sm')]: {
+            display: "block"
+        }
+    },
+    loginFixed: {
+        color: "grey"
     }
 });
 
@@ -91,6 +112,11 @@ const MyToolbar = ({classes, handleDrawerOpen, basket, totalQuantity, position }
         shoppingCartClasses.push(classes.shoppingCartFixed)
     }
 
+    const logInButtonClasses = [classes.login];
+    if (position === "fixed") {
+        logInButtonClasses.push(classes.loginFixed)
+    }
+
     return (
         <RootRef rootRef={appbarEl}>
         <AppBar position={position}
@@ -110,16 +136,18 @@ const MyToolbar = ({classes, handleDrawerOpen, basket, totalQuantity, position }
             <div className={classes.navItems}>
                 <NavItems {...{position}}/>
             </div>
-            <div>
-                <Button color="inherit">Login</Button>
+            <div className={logInButtonClasses.join(" ")}>
+                <Button color="inherit" variant="outlined">Login</Button>
             </div>
             <div>
                 <IconButton className={shoppingCartClasses.join(" ")}
                             onClick={handleOpenCart}
                             aria-owns={isMenuOpened ? 'simple-menu' : undefined}
                             aria-haspopup="true">
-                    <Badge badgeContent={totalQuantity} color="primary">
-                        <ShoppingCart/> Корзина
+                    <Badge badgeContent={totalQuantity}
+                           color="primary"
+                    >
+                        <ShoppingCart/> Cart
                     </Badge>
                 </IconButton>
                 <CartWidget anchorEl={isMenuOpened} {...{handleCloseCart}}/>

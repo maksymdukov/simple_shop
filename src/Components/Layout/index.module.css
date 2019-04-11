@@ -2,4 +2,11 @@
     height: 200px;
     background-image: url(https://mrgrill.com.ua/wp-content/uploads/2017/09/banner.jpg);
     background-size: cover;
+    position: relative;
+}
+
+.Title {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
 }

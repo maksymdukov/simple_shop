@@ -7,7 +7,7 @@ const Burger = ({ingredients, removeIngredient}) => {
         <BurgerIngredient type={ing} key={ing + String(idx)} removeIngredient={ () => removeIngredient(idx) } />
     ));
     if (!ingredients.length) {
-        transformedIngredients = <p>Начните добавлять ингридиенты.</p>
+        transformedIngredients = <p>Start adding ingredients.</p>
     }
 
     return (

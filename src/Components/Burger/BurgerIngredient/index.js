@@ -54,7 +54,7 @@ const BurgerIngredient = ({type, removeIngredient}) => {
                 </div>
                 <div className={classes.RemoveButton}>
                     <IconButton onClick={removeIngredient}>
-                        <IconRemove/>
+                        <IconRemove fontSize="small"/>
                     </IconButton>
                 </div>
             </div>

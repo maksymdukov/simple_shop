@@ -1,5 +1,6 @@
 import React from 'react';
 import {withStyles} from "@material-ui/core";
+import ScrollBar from "../../../UI/ScrollBar";
 
 const styles = theme => ({
     container: {
@@ -23,9 +24,12 @@ const styles = theme => ({
 
 const OnHoverContent = ({classes, itemObj}) => {
     return (
-        <div className={classes.container}>
-                <p className={classes.description}>{itemObj.description}</p>
-        </div>
+        <ScrollBar>
+            <div className={classes.container}>
+
+                    <p className={classes.description}>{itemObj.description}</p>
+            </div>
+        </ScrollBar>
     );
 };
 

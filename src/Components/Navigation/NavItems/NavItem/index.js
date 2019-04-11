@@ -12,23 +12,29 @@ const styles = theme => ({
     },
     customButton: {
         transition: "color 0.2s linear",
-        color: "red",
+        background: "none",
+        margin: "0 5px",
+        borderRadius: 0,
+        color: theme.palette.common.darkGrey,
         '&:hover': {
-            backgroundColor: "grey"
+            background: "none",
+            borderRadius: 0,
+            color: theme.palette.primary.main
         },
-        [theme.breakpoints.up('sm')]: {
-            color: "white"
+        [theme.breakpoints.up('md')]: {
+            color: theme.palette.common.white
         }
     },
     customButtonActive: {
-        backgroundColor: "grey"
+        borderBottom: `1px solid ${theme.palette.primary.main}`,
     },
     customButtonFixed: {
+        color: theme.palette.common.grey,
         '&:hover': {
-            backgroundColor: "white"
+            backgroundColor: theme.palette.common.white
         },
-        [theme.breakpoints.up('sm')]: {
-            color: "red"
+        [theme.breakpoints.up('md')]: {
+            color: theme.palette.common.darkGrey,
         }
     }
 });
@@ -43,6 +49,7 @@ const NavItem = ({classes, to, children, position}) => {
             <Button
                 className={btnClasses.join(" ")}
                 component={Link}
+                disableRipple
                 activeClassName={classes.customButtonActive}
                 {...{to}}
             >
