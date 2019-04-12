@@ -1,7 +1,8 @@
 import React from 'react';
-import {Snackbar} from "@material-ui/core";
+import {Button, Snackbar} from "@material-ui/core";
 import {connect} from "react-redux";
 import {showNotification, hideNotification} from "../../store/actions/notificatorActions";
+import {Link} from "react-router-dom";
 
 const Notificator = ({isOpened, showNotification, hideNotification, itemName}) => {
     return (
@@ -16,7 +17,16 @@ const Notificator = ({isOpened, showNotification, hideNotification, itemName}) =
             ContentProps={{
                 'aria-describedby': 'message-id',
             }}
-            message={<span id="message-id">"{itemName}" added to the basket</span>}
+            message={
+                <div id="message-id">"{itemName}" added to the basket
+                    <Button component={ (props)=> <Link {...props} to="/checkout"/> }
+                            variant="text"
+                            color="primary"
+                    >
+                        Checkout
+                    </Button>
+                </div>
+            }
         />
     );
 };

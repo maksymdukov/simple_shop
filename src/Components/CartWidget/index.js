@@ -8,12 +8,14 @@ import {
     Popover,
     Popper,
     Typography,
-    withStyles
+    withStyles,
+    Grid, Button
 } from "@material-ui/core";
 import {plusQuantity, minusQuantity, removeItemFromBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
 import CartWidgetItem from "./CartWidgetItem";
 import ScrollBar from "../UI/ScrollBar";
+import {Link} from "react-router-dom";
 
 const styles = (theme) => ({
     paper: {
@@ -41,6 +43,12 @@ const styles = (theme) => ({
     },
     empty: {
         paddingLeft: 20
+    },
+    actionsContainer: {
+        padding: 15
+    },
+    checkoutBtn: {
+
     }
 });
 
@@ -80,9 +88,27 @@ const CartWidget = ({classes, anchorEl, handleCloseCart, basket, plusQuantity, m
                     </List>
             </div>
             <Divider/>
-                        <Typography className={classes.price} align="right" gutterBottom variant="h6">
-                            Total: <span className={classes.priceTag}>{totalPrice} UAH</span>
-                        </Typography>
+            <Grid container className={classes.actionsContainer}>
+                <Grid item xs={6}>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        color="primary"
+                        className={classes.checkoutBtn}
+                        disabled={!basket.length}
+                        component={(props) => <Link to="/checkout" {...props}/>}
+                        onClick={handleCloseCart}
+                    >
+                        Checkout
+                    </Button>
+                </Grid>
+                <Grid item xs={6}>
+                    <Typography className={classes.price} align="right" gutterBottom variant="h6">
+                        Total: <span className={classes.priceTag}>{totalPrice} UAH</span>
+                    </Typography>
+                </Grid>
+            </Grid>
+
                         <Divider/>
         </Popover>
     );

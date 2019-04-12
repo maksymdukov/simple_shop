@@ -12,6 +12,7 @@ import {AppBar, DialogActions, DialogContent, DialogTitle, Fab, Toolbar, Grid, B
 import BurgerEditor from "../../BurgerEditor";
 import AddToBasket from "../../UI/Buttons/AddToBasket";
 import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined';
+import IconEdit from '@material-ui/icons/Edit';
 
 const styles = (theme) => ({
    fabContainer: {
@@ -36,18 +37,46 @@ const styles = (theme) => ({
     }
 });
 
-const BurgerCardModal = ({classes, handleClose, item, basket, addToBasket, removeFromBasket, opened, addItemToBasket, burgerEditorState, initIngredients, showNotification}) => {
+const BurgerCardModal = ({
+                             classes,
+                             handleClose,
+                             item,
+                             basket,
+                             addToBasket,
+                             removeFromBasket,
+                             opened,
+                             addItemToBasket,
+                             editBasketItem,
+                             burgerEditorState,
+                             initIngredients,
+                             showNotification,
+                             isEditMode,
+                             indexToEdit
+}) => {
     const handleAddToBasket = () => {
-        const item = {
+        const newItem = {
             name: 'Custom Burger',
             ingredients: burgerEditorState.ingredients,
             additives: burgerEditorState.additives,
             price: burgerEditorState.burgerCost,
             id: Date.now()
         };
-        addItemToBasket(item);
+        addItemToBasket(newItem);
         handleClose();
-        showNotification(item.name);
+        showNotification(newItem.name);
+    };
+
+    const handleEditBasketItem = () => {
+        const newItem = {
+            name: 'Custom Burger',
+            ingredients: burgerEditorState.ingredients,
+            additives: burgerEditorState.additives,
+            price: burgerEditorState.burgerCost,
+            quantity: item.quantity,
+            id: Date.now()
+        };
+        editBasketItem(indexToEdit, newItem);
+        handleClose();
     };
     return (
         <div>
@@ -57,31 +86,7 @@ const BurgerCardModal = ({classes, handleClose, item, basket, addToBasket, remov
                 open={opened}
                 onExited={ () => initIngredients([],{}, burgerEditorState.menu.prices.initial) }
             >
-                {/*<DialogTitle id="customized-dialog-title" onClose={handleClose}>*/}
-                    {/*<IconButton aria-label="Close" onClick={handleClose}>*/}
-                        {/*<CloseIcon />*/}
-                    {/*</IconButton>*/}
-                {/*</DialogTitle>*/}
-                {/*<DialogContent>*/}
-                    {/*<Typography gutterBottom>*/}
-                        {/*Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac*/}
-                        {/*facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum*/}
-                        {/*at eros.*/}
-                    {/*</Typography>*/}
-                    {/*<Typography gutterBottom>*/}
-                        {/*Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis*/}
-                        {/*lacus vel augue laoreet rutrum faucibus dolor auctor.*/}
-                    {/*</Typography>*/}
-                    {/*<Typography gutterBottom>*/}
-                        {/*Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel*/}
-                        {/*scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus*/}
-                        {/*auctor fringilla.*/}
-                    {/*</Typography>*/}
-                {/*</DialogContent>*/}
-                {/*<DialogActions>*/}
-                    {/*<div>test</div>*/}
-                {/*</DialogActions>*/}
-                <AppBar position="sticky" color="default">
+                 <AppBar position="sticky" color="default">
                     <Toolbar className={classes.toolbar}>
                             <Typography variant="h6" color="inherit" className={classes.title}>
                                 Current cost: <span>{burgerEditorState.burgerCost} UAH</span>
@@ -93,9 +98,14 @@ const BurgerCardModal = ({classes, handleClose, item, basket, addToBasket, remov
                     </Typography>
                     <BurgerEditor newIngredients={item.ingredients} newAdditives={item.additives} newCost={item.price} />
                 <div className={classes.fabContainer}>
-                        <Fab className={classes.fab} disabled={!burgerEditorState.ingredients.length} onClick={handleAddToBasket}>
-                            <IconAddToBasket/>
-                        </Fab>
+                    {isEditMode
+                        ?   <Fab className={classes.fab} disabled={!burgerEditorState.ingredients.length} onClick={handleEditBasketItem}>
+                                <IconEdit/>
+                            </Fab>
+                        :   <Fab className={classes.fab} disabled={!burgerEditorState.ingredients.length} onClick={handleAddToBasket}>
+                                <IconAddToBasket/>
+                            </Fab>
+                    }
                 </div>
             </Dialog>
         </div>

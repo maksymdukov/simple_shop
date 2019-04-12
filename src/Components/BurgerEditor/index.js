@@ -25,6 +25,7 @@ const BurgerEditor = ({
                           ingPrices
 
 }) => {
+    console.log(newIngredients);
     useEffect(() => {
         if (newIngredients) initIngredients(newIngredients, newAdditives, newCost);
     },[]);

@@ -6,6 +6,7 @@ import Layout from "./Components/Layout";
 import {Route} from "react-router";
 import Menu from "./Containers/Menu";
 import BurgerBuilder from "./Containers/BurgerBuilder";
+import Checkout from "./Containers/Checkout";
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         <Layout>
             <Route path="/menu" component={Menu}/>
             <Route path="/builder" component={BurgerBuilder}/>
+            <Route path="/checkout" component={Checkout}/>
         </Layout>
       </div>
     );

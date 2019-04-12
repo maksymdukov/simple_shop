@@ -3,7 +3,7 @@ import classes from './index.module.css';
 import {IconButton} from "@material-ui/core";
 import IconRemove from "@material-ui/icons/RemoveCircleOutline"
 
-const BurgerIngredient = ({type, removeIngredient}) => {
+const BurgerIngredient = ({type, removeIngredient, notEditable}) => {
     let ingredientClass = null,
         ingredient = null,
         bread = null;
@@ -52,11 +52,13 @@ const BurgerIngredient = ({type, removeIngredient}) => {
                 <div className={classes.IngredientName}>
                     <div>{type}</div>
                 </div>
-                <div className={classes.RemoveButton}>
-                    <IconButton onClick={removeIngredient}>
-                        <IconRemove fontSize="small"/>
-                    </IconButton>
-                </div>
+                {!notEditable &&
+                    <div className={classes.RemoveButton}>
+                        <IconButton onClick={removeIngredient}>
+                            <IconRemove fontSize="small"/>
+                        </IconButton>
+                    </div>
+                }
             </div>
         );
     }

@@ -1,4 +1,4 @@
-import {ADD_TO_BASKET, MINUS_BASKET_ITEM, PLUS_BASKET_ITEM, REMOVE_FROM_BASKET} from "../actionTypes";
+import {ADD_TO_BASKET, EDIT_BASKET_ITEM, MINUS_BASKET_ITEM, PLUS_BASKET_ITEM, REMOVE_FROM_BASKET} from "../actionTypes";
 
 export const addItemToBasket = (item) => ({
     type: ADD_TO_BASKET,
@@ -7,6 +7,12 @@ export const addItemToBasket = (item) => ({
 
 export const removeItemFromBasket = (index) => ({
     type: REMOVE_FROM_BASKET,
+    index
+});
+
+export const editBasketItem = (index, item) => ({
+    type: EDIT_BASKET_ITEM,
+    item,
     index
 });
 

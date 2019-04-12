@@ -29,10 +29,11 @@ const styles = theme => ({
     }
 });
 
-const BurgerOnHoverContent = ({classes, itemObj, onSettingsClick, settingsClass}) => {
+const BurgerOnHoverContent = ({classes, itemObj, onSettingsClick, settingsClass, customizeOff}) => {
     return (
         <div className={classes.container}>
             <div className={classes.fixedControls}>
+                {!customizeOff &&
                 <Tooltip title="Customize this burger"
                          disableFocusListener
                 >
@@ -40,6 +41,7 @@ const BurgerOnHoverContent = ({classes, itemObj, onSettingsClick, settingsClass}
                         <IconSettings/>
                     </IconButton>
                 </Tooltip>
+                }
             </div>
             <ScrollBar>
                 <div className={classes.innerContainer}>
@@ -49,7 +51,7 @@ const BurgerOnHoverContent = ({classes, itemObj, onSettingsClick, settingsClass}
                     </ul>
                     {itemObj.additives &&
                     <Fragment>
-                        <p className={classes.list}>Sauces:</p>
+                        <p className={classes.list}>Sauces:{Object.keys(itemObj.additives).length ? null: " none"}</p>
                         <ul>
                             {Object.entries(itemObj.additives).map((additive,idx) => <li key={idx}>{additive[0]}: x{additive[1]}</li>)}
                         </ul>
