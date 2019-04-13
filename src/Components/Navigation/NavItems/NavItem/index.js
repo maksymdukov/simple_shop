@@ -45,7 +45,6 @@ const NavItem = ({classes, to, children, position}) => {
         btnClasses.push(classes.customButtonFixed)
     }
     return (
-        <li>
             <Button
                 className={btnClasses.join(" ")}
                 component={Link}
@@ -55,7 +54,6 @@ const NavItem = ({classes, to, children, position}) => {
             >
                 {children}
             </Button>
-        </li>
     );
 };
 

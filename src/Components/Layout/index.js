@@ -22,6 +22,9 @@ const styles = (theme) => ({
         fontWeight: 100,
         // fontStyle: "italic",
         color: theme.palette.common.grey
+    },
+    main: {
+        marginBottom: theme.spacing.unit * 5
     }
 });
 
@@ -61,7 +64,7 @@ const Layout = ({classes, children}) => {
             </header>
             <SideDrawer {...{drawerOpened, handleDrawerClose}}/>
             <Notificator/>
-            <main>
+            <main className={classes.main}>
                 {children}
             </main>
         </Fragment>

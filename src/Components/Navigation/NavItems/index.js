@@ -21,11 +21,21 @@ const styles = theme => ({
 const NavItems = ({classes, position}) => {
     return (
         <ul className={classes.navItems} >
-            <NavItem {...{position}} to="/">Home</NavItem>
-            <NavItem {...{position}} to="/menu">Menu</NavItem>
-            <NavItem {...{position}} to="/builder">Burger Builder</NavItem>
-            <NavItem {...{position}} to="/about">About</NavItem>
-            <NavItem {...{position}} to="/contacts">Contacts</NavItem>
+            <li>
+                <NavItem {...{position}} to="/">Home</NavItem>
+            </li>
+            <li>
+                <NavItem {...{position}} to="/menu">Menu</NavItem>
+            </li>
+            <li>
+                <NavItem {...{position}} to="/builder">Burger Builder</NavItem>
+            </li>
+            <li>
+                <NavItem {...{position}} to="/about">About</NavItem>
+            </li>
+            <li>
+                <NavItem {...{position}} to="/contacts">Contacts</NavItem>
+            </li>
         </ul>
     );
 };

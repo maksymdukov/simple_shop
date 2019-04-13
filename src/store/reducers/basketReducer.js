@@ -1,12 +1,21 @@
-import {ADD_TO_BASKET, EDIT_BASKET_ITEM, MINUS_BASKET_ITEM, PLUS_BASKET_ITEM, REMOVE_FROM_BASKET} from "../actionTypes";
+import {
+    ADD_TO_BASKET,
+    EDIT_BASKET_ITEM,
+    MINUS_BASKET_ITEM,
+    PLUS_BASKET_ITEM, PURCHASE_FAIL,
+    PURCHASE_START, PURCHASE_SUCCESS,
+    REMOVE_FROM_BASKET, RESET_PURCHASE_SUCCESS
+} from "../actionTypes";
 
 const initialState = {
     basket: [],
     totalPrice: 0,
-    totalQuantity: 0
+    totalQuantity: 0,
+    loading: false,
+    error: null
 };
 
-const basketReducer = (state = initialState, {type, item, index}) => {
+const basketReducer = (state = initialState, {type, item, index, error}) => {
     switch (type) {
         case ADD_TO_BASKET:
             const basketItem = {...item, quantity: 1};
@@ -54,6 +63,32 @@ const basketReducer = (state = initialState, {type, item, index}) => {
                 basket: updBasket,
                 totalQuantity: state.totalQuantity - 1,
                 totalPrice: state.totalPrice - state.basket[index].price
+            };
+        case PURCHASE_START:
+            return {
+                ...state,
+                loading: true
+            };
+        case PURCHASE_SUCCESS:
+            return {
+                basket: [],
+                totalPrice: 0,
+                totalQuantity: 0,
+                loading: false,
+                success: true,
+                error: null,
+            };
+        case PURCHASE_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: error
+            };
+        case RESET_PURCHASE_SUCCESS:
+            return {
+                ...state,
+                success: null,
+                error: null
             };
         default:
             return state;

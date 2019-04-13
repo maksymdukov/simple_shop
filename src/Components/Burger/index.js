@@ -2,7 +2,7 @@ import React from 'react';
 import BurgerIngredient from "./BurgerIngredient";
 import classes from './index.module.css';
 
-const Burger = ({ingredients, removeIngredient = ()=>{}, notEditable}) => {
+const Burger = ({ingredients, removeIngredient = ()=>{}, notEditable, isInModal}) => {
     let transformedIngredients = ingredients.map((ing,idx) => (
         <BurgerIngredient
             type={ing}

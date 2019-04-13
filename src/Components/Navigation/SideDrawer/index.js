@@ -1,6 +1,8 @@
 import React from 'react';
-import {Drawer} from "@material-ui/core";
+import {Divider, Drawer} from "@material-ui/core";
 import NavItems from "../NavItems";
+import HeadingDivider from "../../UI/HeadingDivider";
+import NavItem from "../NavItems/NavItem";
 
 const SideDrawer = ({drawerOpened, handleDrawerClose}) => {
     return (
@@ -10,7 +12,11 @@ const SideDrawer = ({drawerOpened, handleDrawerClose}) => {
             onClose={handleDrawerClose}
             onClick={handleDrawerClose}
         >
-            <NavItems/>
+                <NavItems/>
+            <Divider/>
+            <section>
+                <NavItem to="/checkout">Checkout</NavItem>
+            </section>
         </Drawer>
     );
 };

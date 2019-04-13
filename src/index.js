@@ -36,6 +36,9 @@ const theme = createMuiTheme({
             darkGrey: "#373737"
         },
     },
+    additionalColors: {
+        success: "#33a828"
+    },
     card: {
         price: {
             mainColor: "#fabf00"

@@ -11,14 +11,15 @@ import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined';
 
 const styles = (theme) => ({
     container: {
-        padding: "20px 5px 0 5px"
+        padding: "20px 5px 120px 5px"
     },
     fixedControls: {
-        position: "sticky",
+        position: "fixed",
         bottom: 0,
-        top: "auto",
         display: "flex",
-        justifyContent: "center"
+        justifyContent: "center",
+        left: "50%",
+        transform: "translateX(-50%)"
     },
     cartIcon: {
         textAlign: "center",
