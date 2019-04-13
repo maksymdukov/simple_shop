@@ -5,6 +5,7 @@ import SideDrawer from "../Navigation/SideDrawer";
 import classes from './index.module.css';
 import Notificator from "../Notificator";
 import {Typography,withStyles} from "@material-ui/core";
+import AuthModal from "../Authentication/AuthModal";
 
 const TITLE_PREFIX = "MySite.com - ";
 

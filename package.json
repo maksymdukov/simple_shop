@@ -8,6 +8,7 @@
     "@material-ui/icons": "^3.0.2",
     "@types/react-router": "^4.4.5",
     "axios": "^0.18.0",
+    "firebase": "^5.9.4",
     "formik": "^1.5.2",
     "react": "^16.8.6",
     "react-custom-scrollbars": "^4.2.1",

@@ -13,6 +13,7 @@ import menuReducer from "./store/reducers/menuReducer";
 import basketReducer from "./store/reducers/basketReducer";
 import burgerEditorReducer from "./store/reducers/burgerEditorReducer";
 import notificatorReducer from "./store/reducers/notificatorReducer";
+import authReducer from "./store/reducers/authReducer";
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     menu: menuReducer,
     basket: basketReducer,
     burgerEditor: burgerEditorReducer,
-    notificator: notificatorReducer
+    notificator: notificatorReducer,
+    auth: authReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));

@@ -14,11 +14,10 @@ const styles = (theme) => ({
     orders: {
         margin: "20px 5px"
     },
-    form: {
-
-    },
+    form: {},
     successMessage: {
-        color: theme.additionalColors.success
+        color: theme.additionalColors.success,
+        margin: `${theme.spacing.unit * 5}px`
     }
 });
 
@@ -35,9 +34,9 @@ const Checkout = ({
                       resetSuccessStatus,
                       makePurchase
                   }) => {
-    useEffect(()=>{
+    useEffect(() => {
         resetSuccessStatus();
-    },[]);
+    }, []);
     const [modalState, setModalState] = useState({opened: false, item: {}, indexInBasket: null});
     const openModal = (indexInBasket, activeItem) => {
         setModalState({
@@ -51,46 +50,47 @@ const Checkout = ({
     };
     return (
         <div>
-            <Helmet title="Checkout" />
-            <section className={classes.orders}>
-                {basket.length
-                    ? (
-                        <Fragment>
-                            <MySwiper {...{openModal}}/>
-                            <BurgerCardModal
-                                opened={modalState.opened}
-                                handleClose={closeModal}
-                                item={modalState.item}
-                                indexToEdit={modalState.indexInBasket}
-                                isEditMode={true}
-                                {...{editBasketItem, burgerEditorState, initIngredients}}
-                            />
-                        </Fragment>
-                    )
-                    : <Typography variant="h3" component="h3" align="center">
-                        Cart is empty.
+            <Helmet title="Checkout"/>
+            {!isSuccess
+                ? <section className={classes.orders}>
+                    {basket.length
+                        ? (
+                            <Fragment>
+                                <MySwiper {...{openModal}}/>
+                                <BurgerCardModal
+                                    opened={modalState.opened}
+                                    handleClose={closeModal}
+                                    item={modalState.item}
+                                    indexToEdit={modalState.indexInBasket}
+                                    isEditMode={true}
+                                    {...{editBasketItem, burgerEditorState, initIngredients}}
+                                />
+                            </Fragment>
+                        )
+                        : <Typography variant="h3" component="h3" align="center">
+                            Cart is empty.
+                        </Typography>
+                    }
+                    <HeadingDivider/>
+                    <Typography variant="h3" component="h3" color="primary" align="center">
+                        {totalPrice} UAH
                     </Typography>
-                }
-                <HeadingDivider/>
-                <Typography variant="h3" component="h3" color="primary" align="center">
-                    {totalPrice} UAH
-                </Typography>
-                <Typography variant="subheading" component="p" color="primary" align="center">
-                    Total amount to pay
-                </Typography>
-            </section>
+                    <Typography variant="subheading" component="p" color="primary" align="center">
+                        Total amount to pay
+                    </Typography>
+                </section>
+                :   <Typography variant="h4" className={classes.successMessage} align="center">
+                        Your order has been shipped!
+                    </Typography>
+            }
             <section className={classes.form}>
-                { basket.length || isErrorPurchasing
+                {basket.length || isErrorPurchasing
                     ? <OrderForm
-                    {...{makePurchase}}
-                    isErrorPosting={isErrorPurchasing}
-                    isPosting={isPurchasing}
+                        {...{makePurchase}}
+                        isErrorPosting={isErrorPurchasing}
+                        isPosting={isPurchasing}
                     />
                     : null}
-                {isSuccess &&
-                <Typography variant="h4" className={classes.successMessage} align="center">
-                    Your order is taken care of!
-                </Typography>}
             </section>
         </div>
     );
@@ -112,4 +112,4 @@ const mapDispatchToProps = (dispatch) => ({
     makePurchase: (orderData, isAnonymous) => dispatch(makePurchase(orderData, isAnonymous))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)( withStyles(styles)(Checkout) );
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Checkout));
