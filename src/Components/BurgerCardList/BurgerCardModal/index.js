@@ -57,7 +57,8 @@ const BurgerCardModal = ({
                              initIngredients,
                              showNotification,
                              isEditMode,
-                             indexToEdit
+                             indexToEdit,
+                             error
                          }) => {
     const handleAddToBasket = () => {
         const newItem = {
@@ -90,7 +91,7 @@ const BurgerCardModal = ({
             aria-labelledby="customized-dialog-title"
             open={opened}
             classes={{paper: classes.paper}}
-            onExited={() => initIngredients([], {}, burgerEditorState.menu.prices.initial)}
+            onExited={() => initIngredients([], {}, burgerEditorState.error ? 0 : burgerEditorState.menu.prices.initial)}
         >
             <AppBar position="sticky" color="default">
                 <Toolbar className={classes.toolbar}>
@@ -106,11 +107,11 @@ const BurgerCardModal = ({
                 <BurgerEditor newIngredients={item.ingredients} newAdditives={item.additives} newCost={item.price}/>
                 <div className={classes.fabContainer}>
                     {isEditMode
-                        ? <Fab className={classes.fab} disabled={!burgerEditorState.ingredients.length}
+                        ? <Fab className={classes.fab} disabled={!burgerEditorState.ingredients.length || !!burgerEditorState.error}
                                onClick={handleEditBasketItem}>
                             <IconEdit/>
                         </Fab>
-                        : <Fab className={classes.fab} disabled={!burgerEditorState.ingredients.length}
+                        : <Fab className={classes.fab} disabled={!burgerEditorState.ingredients.length || !!burgerEditorState.error}
                                onClick={handleAddToBasket}>
                             <IconAddToBasket/>
                         </Fab>

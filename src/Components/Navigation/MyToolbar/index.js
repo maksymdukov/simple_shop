@@ -20,7 +20,7 @@ import {connect} from "react-redux";
 import CartWidget from "../../CartWidget";
 import AuthMenu from "../../Authentication/AuthMenu";
 import AuthModal from "../../Authentication/AuthModal";
-import {logout, resetErrors} from "../../../store/actions/authActions";
+import {tryLogout, resetErrors} from "../../../store/actions/authActions";
 
 const styles = theme => ({
     rootStatic: {
@@ -77,7 +77,7 @@ const styles = theme => ({
     },
     login: {
         transition: "color 0.2s linear",
-        display: "none",
+        // display: "none",
         '&:hover': {
             // backgroundColor: "white"
             color: theme.palette.primary.main
@@ -99,7 +99,8 @@ const MyToolbar = ({
                        position,
                        isAuthenticated,
                        doLogout,
-                       doResetErrors
+                       doResetErrors,
+                       email
 }) => {
     const appbarEl = useRef(null);
     const [isMenuOpened, setMenuOpened] = useState(null);
@@ -175,11 +176,11 @@ const MyToolbar = ({
                                 variant="outlined"
                                 onClick={openAuthModal}
                             >
-                                Sign in/up
+                                Sign in
                             </Button>
                         }
                         <AuthMenu
-                            {...{isAuthMenuOpened, handleAuthMenuClosed, doLogout}}
+                            {...{isAuthMenuOpened, handleAuthMenuClosed, doLogout, email}}
                         />
                         <AuthModal
                             isOpened={isAuthModalOpened}
@@ -208,11 +209,12 @@ const MyToolbar = ({
 const mapStateToProps = (state) => ({
     basket: state.basket.basket,
     totalQuantity: state.basket.totalQuantity,
-    isAuthenticated: !!state.auth.token
+    isAuthenticated: !state.auth.isAnonymous,
+    email: state.auth.email
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    doLogout: () => dispatch(logout()),
+    doLogout: () => dispatch(tryLogout()),
     doResetErrors: () => dispatch(resetErrors())
 });
 

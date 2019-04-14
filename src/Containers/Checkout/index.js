@@ -109,7 +109,7 @@ const mapDispatchToProps = (dispatch) => ({
     initIngredients: (ingredients, additives, initCost) => dispatch(initIngredients(ingredients, additives, initCost)),
     editBasketItem: (index, newItem) => dispatch(editBasketItem(index, newItem)),
     resetSuccessStatus: () => dispatch(resetPurchaseSuccess()),
-    makePurchase: (orderData, isAnonymous) => dispatch(makePurchase(orderData, isAnonymous))
+    makePurchase: (contactData) => dispatch(makePurchase(contactData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Checkout));

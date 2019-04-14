@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "orders": {
+      ".read": "auth.token.email === 'admin@admin.com'",
+      ".write" : "auth.token.email === 'admin@admin.com'",
+      "$user_id": {
+        ".read": "$user_id === auth.uid",
+        ".write": "$user_id === auth.uid"
+      },
+      "anonymous": {
+        ".write": "true"
+      }
+    },
+    "menu": {
+      ".read": "true"
+    }
+  }
+}

@@ -51,10 +51,11 @@ const BurgerBuilder = ({
                            addToBasket,
                            burgerCost,
                            additives,
-                           initialCost,
+                           menu,
                            initIngredients,
                            showNotification
 }) => {
+    const initialCost = menu ? menu.prices.initial : 0;
     const item = {
         name: 'Custom Burger',
         ingredients: ingredients,
@@ -69,9 +70,7 @@ const BurgerBuilder = ({
     };
     return (
         <div className={classes.container}>
-            <Helmet>
-                <title>Burger Builder</title>
-            </Helmet>
+            <Helmet title="Burger Builder"/>
             <BurgerEditor />
             <div className={classes.fixedControls}>
                     <Paper className={classes.paper}>
@@ -92,7 +91,7 @@ const mapStateToProps = (state) => ({
     ingredients: state.burgerEditor.ingredients,
     additives: state.burgerEditor.additives,
     burgerCost: state.burgerEditor.burgerCost,
-    initialCost: state.burgerEditor.menu.prices.initial
+    menu: state.burgerEditor.menu
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,6 +1,6 @@
 import {
     ADD_BURGER_ADDITIVE,
-    ADD_BURGER_INGREDIENT,
+    ADD_BURGER_INGREDIENT, FETCH_INGREDIENTS_FAIL, FETCH_INGREDIENTS_START, FETCH_INGREDIENTS_SUCCESS,
     INIT_BURGER_INGREDIENTS, REMOVE_BURGER_ADDITIVE,
     REMOVE_BURGER_INGREDIENT
 } from "../actionTypes";
@@ -8,30 +8,14 @@ import {
 const initialState = {
     ingredients: [],
     additives: {},
-    burgerCost: 40,
-    menu: {
-        mainIngredients: ['chicken', 'meat', 'bacon', 'cheese', 'salad', 'cucumber', 'tomato', 'onion'],
-        additives: ['chilly sauce', 'cesar sauce', 'bbq sauce', 'cheese sauce'],
-        prices: {
-            initial: 40,
-            salad: 10,
-            chicken: 25,
-            meat: 30,
-            bacon: 50,
-            cheese: 10,
-            cucumber: 3,
-            tomato: 5,
-            onion: 3,
-            'chilly sauce': 10,
-            'cesar sauce': 12,
-            'bbq sauce': 8,
-            'cheese sauce': 11
-        }
-    }
+    burgerCost: null,
+    loading: false,
+    error: null,
+    menu: null
 
 };
 
-const reducer = (state = initialState, {type, ingredients, additives, ingName, index, additiveName, burgerCost}) => {
+const reducer = (state = initialState, {type, error, menu, ingredients, additives, ingName, index, additiveName, burgerCost}) => {
   switch (type) {
       case INIT_BURGER_INGREDIENTS:
           return {
@@ -75,6 +59,25 @@ const reducer = (state = initialState, {type, ingredients, additives, ingName, i
               ...state,
               additives: updatedAdditives,
               burgerCost: state.burgerCost - state.menu.prices[additiveName]
+          };
+      case FETCH_INGREDIENTS_START:
+          return {
+              ...state,
+              loading: true,
+              error: null
+          };
+      case FETCH_INGREDIENTS_FAIL:
+          return {
+              ...state,
+              loading: false,
+              error
+          };
+      case FETCH_INGREDIENTS_SUCCESS:
+          return {
+              ...state,
+              loading: false,
+              menu,
+              burgerCost: menu.prices.initial
           };
       default:
           return state;

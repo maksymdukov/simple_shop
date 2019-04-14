@@ -9,18 +9,17 @@ import {
 } from "../actionTypes";
 
 const initState = {
-    token: null,
     email: null,
-    expiration: null,
-    uid: null,
+    isAnonymous: true,
     signUpLoading: false,
     signUpSuccess: null,
     signUpError: null,
     signInLoading: false,
-    signInError: null
+    signInError: null,
+    uid: null
 };
 
-const authReducer = (state = initState, {type, error, token, expiration, email, uid}) => {
+const authReducer = (state = initState, {type, error,  email, isAnonymous, uid}) => {
     switch (type) {
         case SIGN_UP_START:
             return {
@@ -35,10 +34,6 @@ const authReducer = (state = initState, {type, error, token, expiration, email, 
                 signUpLoading: false,
                 signUpSuccess: true,
                 signUpError: null,
-                token,
-                expiration,
-                email,
-                uid
             };
         case SIGN_UP_FAIL:
             return {
@@ -66,10 +61,9 @@ const authReducer = (state = initState, {type, error, token, expiration, email, 
                 ...state,
                 signInLoading: false,
                 signInError: false,
-                token,
-                expiration,
+                uid,
                 email,
-                uid
+                isAnonymous
             };
         case SIGN_IN_FAIL:
             return {
@@ -79,15 +73,14 @@ const authReducer = (state = initState, {type, error, token, expiration, email, 
             };
         case LOGOUT:
             return {
-                token: null,
                 email: null,
-                expiration: null,
-                uid: null,
+                isAnonymous: true,
                 signUpLoading: false,
                 signUpSuccess: null,
                 signUpError: null,
                 signInLoading: false,
-                signInError: null
+                signInError: null,
+                uid: null
             };
         default:
             return state;

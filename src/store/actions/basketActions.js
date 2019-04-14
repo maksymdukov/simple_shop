@@ -6,6 +6,7 @@ import {
     REMOVE_FROM_BASKET,
     RESET_PURCHASE_SUCCESS
 } from "../actionTypes";
+import firebase from '../../firebase/config';
 
 export const addItemToBasket = (item) => ({
     type: ADD_TO_BASKET,
@@ -50,14 +51,32 @@ export const purchaseFail = (error) => ({
     error
 });
 
-export const makePurchase = (orderData, isAnonymous) => {
-    return (dispatch) => {
+export const makePurchase = (contactData) => {
+    return async (dispatch, getState) => {
         dispatch( startPurchasing() );
-        if (isAnonymous) {
-            setTimeout(()=>{
-                dispatch( purchaseSuccess() );
-                // dispatch( purchaseFail("error"))
-            }, 2000);
+        const isAnonymous = getState().auth.isAnonymous;
+        const order = {
+            orderData: {
+                basket: getState().basket.basket,
+                totalPrice: getState().basket.totalPrice,
+                totalQuantity: getState().basket.totalQuantity
+            },
+            contactData,
+        };
+        try {
+            if (isAnonymous) {
+                let res = await firebase.database().ref('orders/anonymous').push(order);
+                console.log(res);
+                dispatch(purchaseSuccess());
+            } else {
+                const uid = getState().auth.uid;
+                let res = await firebase.database().ref('orders/' + uid).push(order);
+                console.log(res);
+                dispatch(purchaseSuccess());
+            }
+        }
+        catch (e) {
+            dispatch(purchaseFail(e))
         }
     };
 };

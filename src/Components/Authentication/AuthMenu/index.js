@@ -1,11 +1,11 @@
 import React from 'react';
-import {Menu, MenuItem, Popover, withStyles} from "@material-ui/core";
+import {DialogTitle, Divider, Menu, MenuItem, Popover, withStyles} from "@material-ui/core";
 
 const styles = (theme) => ({
 
 });
 
-const AuthMenu = ({classes, isAuthMenuOpened, handleAuthMenuClosed, doLogout}) => {
+const AuthMenu = ({classes, isAuthMenuOpened, handleAuthMenuClosed, doLogout, email}) => {
     const handleLogoutClick = () => {
         doLogout();
         handleAuthMenuClosed();
@@ -18,6 +18,8 @@ const AuthMenu = ({classes, isAuthMenuOpened, handleAuthMenuClosed, doLogout}) =
             open={Boolean(isAuthMenuOpened)}
             onClose={handleAuthMenuClosed}
         >
+            {email && <DialogTitle>{email}</DialogTitle> }
+            <Divider/>
             <MenuItem onClick={handleAuthMenuClosed}>Profile</MenuItem>
             <MenuItem onClick={handleAuthMenuClosed}>My account</MenuItem>
             <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>

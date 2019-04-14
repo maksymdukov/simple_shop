@@ -1,13 +1,13 @@
 import {FETCH_MENU_FAILED, FETCH_MENU_START, FETCH_MENU_SUCCESS} from "../actionTypes";
-import axios from '../../axious-menu';
+import firebase from "../../firebase/config";
 
 const fetchMenuStart = () => ({
     type: FETCH_MENU_START
 });
 
-const fetchMenuSuccess = (payload) => ({
+const fetchMenuSuccess = (menu) => ({
     type: FETCH_MENU_SUCCESS,
-    payload
+    menu
 });
 
 const fetchMenuFailed = (error) => ({
@@ -16,14 +16,17 @@ const fetchMenuFailed = (error) => ({
 });
 
 export const fetchMenu = () => {
-    return dispatch => {
-        dispatch( fetchMenuStart() );
-        axios.get("/menu")
-            .then(res => {
-            dispatch(fetchMenuSuccess(res.data));
-        })
-            .catch(err => {
-                dispatch(fetchMenuFailed(err));
-            });
+    return async (dispatch, getState) => {
+        console.log( !!getState().menu.menu );
+        if (!getState().menu.menu) {
+            dispatch( fetchMenuStart() );
+            try {
+                const snapshot = await firebase.database().ref('/menu').once('value');
+                dispatch ( fetchMenuSuccess( snapshot.val() ) );
+            }
+            catch (e) {
+                dispatch(fetchMenuFailed(e));
+            }
+        }
     }
 };

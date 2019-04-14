@@ -9,12 +9,12 @@ const initialState = {
     error: null
 };
 
-const menuReducer = (state = initialState, {type, payload, error}) => {
+const menuReducer = (state = initialState, {type, menu, error}) => {
     switch (type) {
         case FETCH_MENU_SUCCESS:
             return {
                 ...state,
-                menu: payload,
+                menu,
                 error: null,
                 loading: false
             };
@@ -28,7 +28,7 @@ const menuReducer = (state = initialState, {type, payload, error}) => {
             return {
                 ...state,
                 error: error,
-                loading: false
+                loading: true
             };
         default:
             return state;

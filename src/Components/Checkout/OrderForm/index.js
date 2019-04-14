@@ -37,7 +37,7 @@ const OrderForm = ({classes, makePurchase, isErrorPosting, isPosting}) => {
         address: ""
     };
     const handleSubmit = (values, actions) => {
-        makePurchase("orderData", true);
+        makePurchase(values);
     };
     return (
             <Paper elevation={1} className={classes.paper}>
