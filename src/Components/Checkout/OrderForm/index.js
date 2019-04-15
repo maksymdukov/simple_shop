@@ -28,10 +28,10 @@ const styles = (theme) => ({
     },
 });
 
-const OrderForm = ({classes, makePurchase, isErrorPosting, isPosting}) => {
+const OrderForm = ({classes, makePurchase, isErrorPosting, isPosting, authState}) => {
     const initValues = {
         name: "",
-        email: "",
+        email: authState.isAnonymous ? "": authState.email,
         phone: "",
         city: "Kyiv",
         address: ""
@@ -41,6 +41,11 @@ const OrderForm = ({classes, makePurchase, isErrorPosting, isPosting}) => {
     };
     return (
             <Paper elevation={1} className={classes.paper}>
+                {isErrorPosting
+                    ? <Typography color="primary" variant="h5" align="center">
+                        {isErrorPosting.code || isErrorPosting.message}
+                    </Typography>
+                    :null}
                 <Formik
                     onSubmit={handleSubmit}
                     validationSchema={validationSchema}

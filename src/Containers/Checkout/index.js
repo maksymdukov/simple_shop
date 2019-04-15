@@ -9,6 +9,7 @@ import {initIngredients} from "../../store/actions/burgerEditorActions";
 import OrderForm from "../../Components/Checkout/OrderForm";
 import HeadingDivider from "../../Components/UI/HeadingDivider";
 import {Link} from "react-router-dom";
+import {Redirect} from "react-router";
 
 const styles = (theme) => ({
     orders: {
@@ -18,7 +19,11 @@ const styles = (theme) => ({
     successMessage: {
         color: theme.additionalColors.success,
         margin: `${theme.spacing.unit * 5}px`
-    }
+    },
+    redirect: {
+        color: theme.additionalColors.dangerColor,
+        margin: `${theme.spacing.unit * 2}px`
+    },
 });
 
 const Checkout = ({
@@ -32,11 +37,37 @@ const Checkout = ({
                       isPurchasing,
                       isErrorPurchasing,
                       resetSuccessStatus,
-                      makePurchase
+                      makePurchase,
+                      authState
                   }) => {
+    const [isRedirected, setIsRedirected] = useState(false);
+    const [countDown, setCountDown] = useState(3);
+    //Reset success
     useEffect(() => {
-        resetSuccessStatus();
+        return () => {
+            resetSuccessStatus();
+        }
     }, []);
+    //Redirect
+    useEffect(()=> {
+        let timer, interval;
+        if (isSuccess) {
+            timer = setTimeout(()=>{
+                setIsRedirected(true);
+                console.log('Redirect shown');
+            },3000);
+            interval = setInterval(()=>{
+                setCountDown((state) => state - 1);
+            },1000)
+        }
+        return () => {
+            clearInterval(interval);
+            if (timer) {
+                clearTimeout(timer);
+            }
+        }
+    },[isSuccess]);
+    //BurgerEditor modal
     const [modalState, setModalState] = useState({opened: false, item: {}, indexInBasket: null});
     const openModal = (indexInBasket, activeItem) => {
         setModalState({
@@ -51,6 +82,7 @@ const Checkout = ({
     return (
         <div>
             <Helmet title="Checkout"/>
+            {isRedirected && <Redirect to="/menu"/>}
             {!isSuccess
                 ? <section className={classes.orders}>
                     {basket.length
@@ -79,14 +111,19 @@ const Checkout = ({
                         Total amount to pay
                     </Typography>
                 </section>
-                :   <Typography variant="h4" className={classes.successMessage} align="center">
-                        Your order has been shipped!
-                    </Typography>
+                :   <Fragment>
+                        <Typography variant="h4" className={classes.successMessage} align="center">
+                            Your order has been shipped!
+                        </Typography>
+                        <Typography variant='body1' className={classes.redirect} align="center">
+                            Redirect in {countDown} seconds
+                        </Typography>
+                    </Fragment>
             }
             <section className={classes.form}>
                 {basket.length || isErrorPurchasing
                     ? <OrderForm
-                        {...{makePurchase}}
+                        {...{makePurchase, authState}}
                         isErrorPosting={isErrorPurchasing}
                         isPosting={isPurchasing}
                     />
@@ -102,7 +139,8 @@ const mapStateToProps = (state) => ({
     totalPrice: state.basket.totalPrice,
     isSuccess: state.basket.success,
     isPurchasing: state.basket.loading,
-    isErrorPurchasing: state.basket.error
+    isErrorPurchasing: state.basket.error,
+    authState: state.auth
 });
 const mapDispatchToProps = (dispatch) => ({
     addItemToBasket: (item) => dispatch(addItemToBasket(item)),

@@ -1,18 +1,20 @@
 {
   "rules": {
     "orders": {
-      ".read": "auth.token.email === 'admin@admin.com'",
-      ".write" : "auth.token.email === 'admin@admin.com'",
-      "$user_id": {
-        ".read": "$user_id === auth.uid",
-        ".write": "$user_id === auth.uid"
+      "$order_id": {
+        ".read": "root.child('/users/'+auth.uid+'/orders/'+$order_id).exists()"
       },
-      "anonymous": {
-        ".write": "true"
-      }
+      ".write": true
     },
     "menu": {
       ".read": "true"
+    },
+    "users": {
+      "$uid": {
+        ".read": "$uid == auth.uid"
+      },
+      ".write": "auth != null"
     }
   }
 }
+

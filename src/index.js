@@ -14,6 +14,7 @@ import basketReducer from "./store/reducers/basketReducer";
 import burgerEditorReducer from "./store/reducers/burgerEditorReducer";
 import notificatorReducer from "./store/reducers/notificatorReducer";
 import authReducer from "./store/reducers/authReducer";
+import userOrdersReducer from "./store/reducers/userOrdersReducer";
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
     basket: basketReducer,
     burgerEditor: burgerEditorReducer,
     notificator: notificatorReducer,
-    auth: authReducer
+    auth: authReducer,
+    userOrders: userOrdersReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
@@ -35,11 +37,13 @@ const theme = createMuiTheme({
         common: {
             white: "#fff",
             grey: "#c3c3c3",
-            darkGrey: "#373737"
+            darkGrey: "#373737",
+            brown: "rgb(139, 69, 19)"
         },
     },
     additionalColors: {
-        success: "#33a828"
+        success: "#33a828",
+        dangerColor: "red"
     },
     card: {
         price: {

@@ -56,22 +56,23 @@ export const makePurchase = (contactData) => {
         dispatch( startPurchasing() );
         const isAnonymous = getState().auth.isAnonymous;
         const order = {
-            orderData: {
-                basket: getState().basket.basket,
-                totalPrice: getState().basket.totalPrice,
-                totalQuantity: getState().basket.totalQuantity
-            },
-            contactData,
+            basket: getState().basket.basket,
+            totalPrice: getState().basket.totalPrice,
+            totalQuantity: getState().basket.totalQuantity,
+            timestamp: Date.now(),
+            tokenEmail: isAnonymous ? false : getState().auth.email,
+            uid: isAnonymous ? false : getState().auth.uid,
+            ...contactData
         };
         try {
             if (isAnonymous) {
-                let res = await firebase.database().ref('orders/anonymous').push(order);
+                let res = await firebase.database().ref('orders/').push(order);
                 console.log(res);
                 dispatch(purchaseSuccess());
             } else {
                 const uid = getState().auth.uid;
-                let res = await firebase.database().ref('orders/' + uid).push(order);
-                console.log(res);
+                let orderSnap = await firebase.database().ref('orders/').push(order);
+                let userRes = await firebase.database().ref('users/'+uid+'/orders/'+orderSnap.key).set(true)
                 dispatch(purchaseSuccess());
             }
         }

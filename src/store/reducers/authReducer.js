@@ -10,16 +10,17 @@ import {
 
 const initState = {
     email: null,
+    uid: null,
     isAnonymous: true,
     signUpLoading: false,
     signUpSuccess: null,
     signUpError: null,
     signInLoading: false,
     signInError: null,
-    uid: null
+    token: null
 };
 
-const authReducer = (state = initState, {type, error,  email, isAnonymous, uid}) => {
+const authReducer = (state = initState, {type, error,  email, isAnonymous, uid, token}) => {
     switch (type) {
         case SIGN_UP_START:
             return {
@@ -63,7 +64,8 @@ const authReducer = (state = initState, {type, error,  email, isAnonymous, uid})
                 signInError: false,
                 uid,
                 email,
-                isAnonymous
+                isAnonymous,
+                token
             };
         case SIGN_IN_FAIL:
             return {
@@ -74,13 +76,14 @@ const authReducer = (state = initState, {type, error,  email, isAnonymous, uid})
         case LOGOUT:
             return {
                 email: null,
+                uid: null,
+                token: null,
                 isAnonymous: true,
                 signUpLoading: false,
                 signUpSuccess: null,
                 signUpError: null,
                 signInLoading: false,
-                signInError: null,
-                uid: null
+                signInError: null
             };
         default:
             return state;

@@ -37,11 +37,12 @@ export const signInFail = (error) => ({
     error
 });
 
-export const signInSuccess = (email, isAnonymous, uid) => ({
+export const signInSuccess = (email, isAnonymous, uid, token) => ({
     type: SIGN_IN_SUCCESS,
     email,
     isAnonymous,
-    uid
+    uid,
+    token
 });
 
 export const authLogout = () => {
@@ -76,6 +77,7 @@ export const signUp = (email, password) => {
     return async (dispatch) => {
         try {
             dispatch(signUpStart());
+            await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
             await firebase
                 .auth()
                 .createUserWithEmailAndPassword(email, password);
@@ -111,20 +113,26 @@ export const signIn = (email, password) => {
 
 export const authCheckState = () => {
     return async dispatch => {
-        firebase.auth().onAuthStateChanged((user) => {
+        dispatch(signInStart());
+        firebase.auth().onAuthStateChanged(async (user) => {
             console.log(user);
             if (user && !user.isAnonymous) {
                 const expirationDate = localStorage.getItem('expirationDate');
                 if (expirationDate) {
                     if (new Date(+expirationDate) > new Date()) {
-                        dispatch(signInSuccess(user.email, false, user.uid));
+                        const token = await user.getIdToken();
+                        dispatch(signInSuccess(user.email, false, user.uid, token));
                     } else {
                         dispatch(tryLogout());
                     }
                 } else {
                     dispatch(signInSuccess(user.email, false, user.uid));
                 }
+            } else {
+                dispatch(signInFail(null));
             }
+        }, (err)=>{
+            dispatch(signInFail(err))
         });
     }
 };

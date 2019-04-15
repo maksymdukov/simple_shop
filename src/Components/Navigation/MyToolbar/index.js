@@ -3,7 +3,7 @@ import Logo from "../../UI/Logo";
 import {
     AppBar,
     Badge,
-    Button,
+    Button, CircularProgress,
     ClickAwayListener,
     IconButton,
     Menu,
@@ -100,7 +100,8 @@ const MyToolbar = ({
                        isAuthenticated,
                        doLogout,
                        doResetErrors,
-                       email
+                       email,
+                       isSigningIn
 }) => {
     const appbarEl = useRef(null);
     const [isMenuOpened, setMenuOpened] = useState(null);
@@ -171,7 +172,7 @@ const MyToolbar = ({
                             </IconButton>
 
                             :
-                            <Button
+                            isSigningIn ? <CircularProgress/> :<Button
                                 color="inherit"
                                 variant="outlined"
                                 onClick={openAuthModal}
@@ -210,7 +211,8 @@ const mapStateToProps = (state) => ({
     basket: state.basket.basket,
     totalQuantity: state.basket.totalQuantity,
     isAuthenticated: !state.auth.isAnonymous,
-    email: state.auth.email
+    email: state.auth.email,
+    isSigningIn: state.auth.signInLoading
 });
 
 const mapDispatchToProps = (dispatch) => ({
