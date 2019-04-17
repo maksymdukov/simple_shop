@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useRef} from 'react';
 import {
     Button,
     Card,
@@ -8,7 +8,7 @@ import {
     IconButton, Tooltip,
     Typography,
     Grid,
-    withStyles
+    withStyles, RootRef
 } from "@material-ui/core";
 import IconPlus from '@material-ui/icons/Add';
 import IconMinus from '@material-ui/icons/Remove'
@@ -59,13 +59,13 @@ const styles = (theme) => ({
         position: "relative"
     },
     area: {
-        '&:hover $areaBack': {
+        '&:hover $areaBack, &:focus $areaBack': {
             zIndex: 10,
             opacity: 0.9
         },
-        '&:hover $areaFront': {
+        '&:hover $areaFront, &:focus $areaFront': {
         },
-        '&:hover': {
+        '&:hover, &:focus': {
             backgroundColor: theme.card.backSide.backgroundColor,
             color: theme.card.backSide.textColor,
             '& $productName': {
@@ -133,9 +133,13 @@ const MenuCard = ({
                       onAreaClick,
                       showNotification
 }) => {
+    let cardRef = useRef(null);
     let addToBasketHandler = () => {
+        console.log("CARD REF")
+        console.log(cardRef)
         showNotification(itemObj.name);
         addItemToBasket(itemObj);
+        cardRef.current.focus();
     };
     let actionSection;
     if (isInBasket) {
@@ -167,7 +171,7 @@ const MenuCard = ({
 
     return (
         <Card className={classes.card}>
-            <div className={classes.area}>
+            <div className={classes.area} ref={cardRef} tabIndex={0} >
                 <div className={classes.areaFront}>
                     <CardMedia
                         className={classes.media}

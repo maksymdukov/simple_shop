@@ -61,7 +61,7 @@ const BurgerBuilder = ({
         ingredients: ingredients,
         additives: additives,
         price: burgerCost,
-        image: burger,
+        image: "/static/media/burger-logo.png",
         id: Date.now()
     };
     const handleAddToBasket = () => {

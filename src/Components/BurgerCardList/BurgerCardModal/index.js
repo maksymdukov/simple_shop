@@ -75,7 +75,7 @@ const BurgerCardModal = ({
             additives: burgerEditorState.additives,
             price: burgerEditorState.burgerCost,
             quantity: item.quantity,
-            image: burger,
+            image: "/static/media/burger-logo.png",
             id: Date.now()
         };
         editBasketItem(indexToEdit, newItem);

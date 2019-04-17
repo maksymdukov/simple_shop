@@ -1,17 +1,57 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import {withStyles} from "@material-ui/core";
 import firebase from '../../../firebase/config';
 import OrderCard from "../../../Components/MyOrders/OrderCardList/OrderCard";
 import OrderCardDetails from "../../../Components/MyOrders/OrderCardList/OrderCard/OrderCardDetails";
 import LastOrderSummary from "../../../Components/Admins/LastOrders/Card/LastOrderSummary";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
+import audio from '../../../assets/notification.mp3';
+
+const styles = (theme) => ({
+    transitionItem: {
+        '&-enter': {
+            opacity: 0,
+        },
+        '&-enter-active':{
+            opacity: 1,
+            transition: "opacity 500ms ease-in"
+        },
+        '&-exit': {
+            opacity: 1
+        },
+        '&-exit-active': {
+        opacity: 0,
+        transition: "opacity 500ms ease-in"
+        }
+    },
+    transitionItemEnter: {
+        opacity: 0,
+        transition: "opacity 500ms ease-in"
+    },
+    transitionItemEnterActive: {
+        opacity: 1,
+        transition: "opacity 500ms ease-in"
+
+    }
+});
 
 const LastOrders = ({classes}) => {
+    const audRef = useRef(null);
+    const [count, setCount] = useState(0);
     const [lastOrders, setLastOrders] = useState([]);
     const newOrdersListener = (res) => {
-            console.log("new order")
+            console.log("new order");
             const order = res.val();
             const orderId = res.key;
             console.log(orderId);
             setLastOrders((prevState)=>[{order, orderId}, ...prevState]);
+            setCount((prevState) => {
+                //Play sound after 10 orders has been loaded
+                if (prevState > 9) {
+                    audRef.current.play();
+                }
+                return prevState+1;
+            });
     };
     const orderStatusChangedListener = res => {
         console.log("child changed");
@@ -43,17 +83,28 @@ const LastOrders = ({classes}) => {
     },[]);
     return (
         <div>
+            <audio ref={audRef}>
+                <source src={audio} type="audio/mpeg"/>
+            </audio>
+
             New orders
+            <TransitionGroup>
             {lastOrders.map((orderObj) => (
+                <CSSTransition
+                    key={orderObj.orderId}
+                    timeout={500}
+                    classNames={`${classes.transitionItem}`}>
                 <OrderCard
                     key={orderObj.orderId}
                     cardSummary={() => <LastOrderSummary order={orderObj.order} orderId={orderObj.orderId}/>}
                     cardDetails={() => <OrderCardDetails order={orderObj.order} orderId={orderObj.orderId}/>}
                     order={orderObj.order}
                 />
+                </CSSTransition>
             ))}
+            </TransitionGroup>
         </div>
     );
 };
 
-export default LastOrders;
+export default withStyles(styles)(LastOrders);
