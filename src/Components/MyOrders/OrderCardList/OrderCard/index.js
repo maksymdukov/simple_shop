@@ -14,6 +14,7 @@ import HeadingDivider from "../../../UI/HeadingDivider";
 
 const styles = (theme) => ({
     card: {
+        backgroundColor: theme.palette.common.brightBrown,
         marginBottom: theme.spacing.unit * 2,
         transition: "box-shadow .1s linear",
         '&:hover': {
@@ -25,35 +26,25 @@ const styles = (theme) => ({
     },
     price: {
         color: theme.palette.primary.main
+    },
+    orderTaken: {
+        backgroundColor: theme.additionalColors.successLight
     }
 });
 
-const OrderCard = ({classes, order}) => {
-    const date = new Date(order.timestamp);
+const OrderCard = ({classes, order, cardSummary, cardDetails}) => {
+    const cardClasses = [classes.card];
+    if (order.taken) {
+        cardClasses.push(classes.orderTaken)
+    }
     return (
-        <ExpansionPanel className={classes.card}>
+        <ExpansionPanel className={cardClasses.join(" ")}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Grid container>
-                    <Grid item xs={6}>
-                        {date.toLocaleString()}
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Grid container alignItems={"flex-end"} direction="column" >
-                            <div>{order.totalQuantity} {order.totalQuantity > 1 ? "items" : "item"}</div>
-                            <Typography variant="subtitle1" className={classes.price}>{order.totalPrice} UAH</Typography>
-                        </Grid>
-                    </Grid>
-                </Grid>
+                { cardSummary() }
             </ExpansionPanelSummary>
             <ExpansionPanelDetails classes={{root: classes.details}}>
                 <HeadingDivider/>
-                <Grid container>
-                    {order.basket.map(basketItem => <ItemCard
-                        key={basketItem.id || basketItem.name}
-                        {...{basketItem}}
-                    />)
-                    }
-                </Grid>
+                { cardDetails() }
             </ExpansionPanelDetails>
         </ExpansionPanel>
     );

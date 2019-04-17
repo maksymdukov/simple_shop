@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {ExpansionPanel, TableCell, TableRow, withStyles} from "@material-ui/core";
 import Spinner from "../../UI/Spinner";
 import OrderCard from "./OrderCard";
+import OrderCardSummary from './OrderCard/OrderCardSummary';
+import OrderCardDetails from "./OrderCard/OrderCardDetails";
 
 const styles = (theme) => ({
     mainCell: {
@@ -28,7 +30,11 @@ const Orders = (props) => {
         : ordersContent.map(order => (
         <TableRow key={order.timestamp}>
             <TableCell className={classes.mainCell}>
-                <OrderCard order={order}/>
+                <OrderCard
+                    cardSummary={() => <OrderCardSummary order={order}/>}
+                    cardDetails={() => <OrderCardDetails order={order}/>}
+                    order={order}
+                />
             </TableCell>
         </TableRow>
         ))

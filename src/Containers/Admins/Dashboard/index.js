@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import {AppBar, Drawer, IconButton, withStyles} from "@material-ui/core";
 import AdminSidebar from "../../../Components/Admins/Sidebar";
-import NewOrders from "../NewOrders";
+import LastOrders from "../LastOrders";
+import {Route, withRouter} from "react-router";
 
 const styles = (theme) => ({
     root: {
         display: "flex",
     },
     content: {
+        padding: 10,
         flex: 1,
         background: theme.palette.background.paper,
         position: "relative"
@@ -18,7 +20,7 @@ const styles = (theme) => ({
     }
 });
 
-const Panel = ({classes}) => {
+const Panel = ({classes, match}) => {
     const [isSibebarOpened, setIsSidebarOpened] = useState(true);
     const drawerClasses = [classes.sidebar];
     return (
@@ -28,10 +30,10 @@ const Panel = ({classes}) => {
                 onToggle={() => setIsSidebarOpened(!isSibebarOpened)}
             />
             <div className={classes.content}>
-                <NewOrders/>
+                <Route path={`${match.url}/last-orders`} component={LastOrders}/>
             </div>
         </section>
     );
 };
 
-export default withStyles(styles)(Panel);
+export default withRouter(withStyles(styles)(Panel));

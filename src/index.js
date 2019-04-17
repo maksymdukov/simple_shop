@@ -39,13 +39,15 @@ const theme = createMuiTheme({
         common: {
             white: "#fff",
             grey: "#c3c3c3",
+            brightBrown: "#cbb18c",
             darkGrey: "#373737",
             brown: "rgb(139, 69, 19)"
         },
     },
     additionalColors: {
         success: "#33a828",
-        dangerColor: "red"
+        dangerColor: "red",
+        successLight: "#b6fec3"
     },
     card: {
         price: {
