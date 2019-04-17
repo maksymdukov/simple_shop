@@ -1,5 +1,5 @@
 import {
-    LOGOUT, RESET_ERRORS,
+    LOGOUT, RESET_ERRORS, SET_IS_MANAGER,
     SIGN_IN_FAIL,
     SIGN_IN_START,
     SIGN_IN_SUCCESS,
@@ -9,9 +9,13 @@ import {
 } from "../actionTypes";
 
 const initState = {
+    name: null,
+    address: null,
+    phone: null,
     email: null,
     uid: null,
     isAnonymous: true,
+    isManager: false,
     signUpLoading: false,
     signUpSuccess: null,
     signUpError: null,
@@ -47,7 +51,7 @@ const authReducer = (state = initState, {type, error,  email, isAnonymous, uid, 
                 ...state,
                 signUpSuccess: null,
                 signUpError: null,
-                signInError: null
+                signInError: null,
             };
         case SIGN_IN_START:
             return {
@@ -65,7 +69,7 @@ const authReducer = (state = initState, {type, error,  email, isAnonymous, uid, 
                 uid,
                 email,
                 isAnonymous,
-                token
+                token,
             };
         case SIGN_IN_FAIL:
             return {
@@ -73,18 +77,13 @@ const authReducer = (state = initState, {type, error,  email, isAnonymous, uid, 
                 signInLoading: false,
                 signInError: error
             };
-        case LOGOUT:
+        case SET_IS_MANAGER:
             return {
-                email: null,
-                uid: null,
-                token: null,
-                isAnonymous: true,
-                signUpLoading: false,
-                signUpSuccess: null,
-                signUpError: null,
-                signInLoading: false,
-                signInError: null
+                ...state,
+                isManager: true
             };
+        case LOGOUT:
+            return initState;
         default:
             return state;
     }

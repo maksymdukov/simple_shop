@@ -31,7 +31,7 @@ const styles = (theme) => ({
         boxShadow: theme.shadows[10],
         height: 200,
         width: "100%",
-        backgroundSize: "cover",
+        backgroundSize: "100%",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         display: "flex",
@@ -134,7 +134,6 @@ const Card = ({
                          backgroundImage: `url(${basketItem.image})`
                      }}>
                     <div className={classes.area}>
-                            {!basketItem.image && <img src={burgerLogo}/>}
                             <div className={classes.areaBack}>
                                 {basketItem.ingredients
                                     ? <BurgerOnHoverContent

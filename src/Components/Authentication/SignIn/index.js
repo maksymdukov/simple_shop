@@ -8,14 +8,14 @@ const styles = (theme) => ({
 
 });
 
-const SignIn = ({classes, toSignUpMode, doSignIn, signInLoading, signInError, handleClose}) => {
+const SignIn = ({classes, toSignUpMode, doSignIn, signInLoading, signInError, handleClose, onlySignIn}) => {
     const initValues = {
         email: "",
         password: ""
     };
     const onSubmitHandler = (values, actions) => {
-        doSignIn(values.email, values.password)
-            .then( (res) => res && handleClose() );
+            doSignIn(values.email, values.password)
+                .then( (res) => res && handleClose() );
     };
     return (
         <Fragment>
@@ -26,7 +26,7 @@ const SignIn = ({classes, toSignUpMode, doSignIn, signInLoading, signInError, ha
                 initialValues={initValues}
                 validationSchema={validationSchema}
                 onSubmit={onSubmitHandler}
-                render={ (props) => <SignInForm {...props} {...{toSignUpMode, signInLoading}} /> }
+                render={ (props) => <SignInForm {...props} {...{toSignUpMode, signInLoading, onlySignIn}} /> }
             />
         </Fragment>
     );

@@ -1,18 +1,12 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-import {AppBar, DialogActions, DialogContent, DialogTitle, Fab, Toolbar, Grid, Badge} from "@material-ui/core";
+import {AppBar, Fab, Toolbar} from "@material-ui/core";
 import BurgerEditor from "../../BurgerEditor";
-import AddToBasket from "../../UI/Buttons/AddToBasket";
 import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined';
 import IconEdit from '@material-ui/icons/Edit';
+import burger from '../../../assets/burger-logo.png';
 
 const styles = (theme) => ({
     fabContainer: {
@@ -66,6 +60,7 @@ const BurgerCardModal = ({
             ingredients: burgerEditorState.ingredients,
             additives: burgerEditorState.additives,
             price: burgerEditorState.burgerCost,
+            image: burger,
             id: Date.now()
         };
         addItemToBasket(newItem);
@@ -80,6 +75,7 @@ const BurgerCardModal = ({
             additives: burgerEditorState.additives,
             price: burgerEditorState.burgerCost,
             quantity: item.quantity,
+            image: burger,
             id: Date.now()
         };
         editBasketItem(indexToEdit, newItem);

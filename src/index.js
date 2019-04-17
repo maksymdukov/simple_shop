@@ -15,6 +15,7 @@ import burgerEditorReducer from "./store/reducers/burgerEditorReducer";
 import notificatorReducer from "./store/reducers/notificatorReducer";
 import authReducer from "./store/reducers/authReducer";
 import userOrdersReducer from "./store/reducers/userOrdersReducer";
+import profileReducer from "./store/reducers/profileReducer";
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
     burgerEditor: burgerEditorReducer,
     notificator: notificatorReducer,
     auth: authReducer,
-    userOrders: userOrdersReducer
+    userOrders: userOrdersReducer,
+    profile: profileReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));

@@ -4,6 +4,7 @@
       "$order_id": {
         ".read": "root.child('/users/'+auth.uid+'/orders/'+$order_id).exists()"
       },
+      ".read" : "auth.token.email == 'aa@aa.ru'  || root.child('/users/'+auth.uid+'/manager').exists()",
       ".write": true
     },
     "menu": {
@@ -11,10 +12,16 @@
     },
     "users": {
       "$uid": {
-        ".read": "$uid == auth.uid"
+        ".read": "$uid == auth.uid",
+        "orders": {
+          ".write": "$uid == auth.uid"
+        },
+        "profile": {
+          ".write": "$uid == auth.uid"
+        }
       },
-      ".write": "auth != null"
+      ".read" : "auth.token.email == 'aa@aa.ru' || root.child('/users/'+auth.uid+'/manager').exists()",
+      ".write": "auth.token.email == 'aa@aa.ru'"
     }
   }
 }
-

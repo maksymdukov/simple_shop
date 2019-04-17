@@ -38,11 +38,11 @@ const Checkout = ({
                       isErrorPurchasing,
                       resetSuccessStatus,
                       makePurchase,
-                      authState
+                      profile
                   }) => {
     const [isRedirected, setIsRedirected] = useState(false);
     const [countDown, setCountDown] = useState(3);
-    //Reset success
+    //Reset possible successfully shipped order.
     useEffect(() => {
         return () => {
             resetSuccessStatus();
@@ -107,7 +107,7 @@ const Checkout = ({
                     <Typography variant="h3" component="h3" color="primary" align="center">
                         {totalPrice} UAH
                     </Typography>
-                    <Typography variant="subheading" component="p" color="primary" align="center">
+                    <Typography variant="subtitle1" component="p" color="primary" align="center">
                         Total amount to pay
                     </Typography>
                 </section>
@@ -123,7 +123,7 @@ const Checkout = ({
             <section className={classes.form}>
                 {basket.length || isErrorPurchasing
                     ? <OrderForm
-                        {...{makePurchase, authState}}
+                        {...{makePurchase, profile}}
                         isErrorPosting={isErrorPurchasing}
                         isPosting={isPurchasing}
                     />
@@ -140,7 +140,7 @@ const mapStateToProps = (state) => ({
     isSuccess: state.basket.success,
     isPurchasing: state.basket.loading,
     isErrorPurchasing: state.basket.error,
-    authState: state.auth
+    profile: state.profile.profile
 });
 const mapDispatchToProps = (dispatch) => ({
     addItemToBasket: (item) => dispatch(addItemToBasket(item)),

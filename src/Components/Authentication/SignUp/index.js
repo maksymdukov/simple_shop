@@ -16,7 +16,7 @@ const SignUp = ({classes, toSignInMode, doSignUp, signUpSuccess, errorMessage, s
         confirmPassword: ""
     };
     const onSubmitHandler = (values, actions) => {
-        doSignUp(values.email, values.password);
+        doSignUp(values.email, values.password, values.name);
     };
 
     return (

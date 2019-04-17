@@ -7,7 +7,7 @@ const styles = (theme) => ({
     mainCell: {
         width: "100%",
         borderBottom: "none"
-    }
+    },
 });
 
 const Orders = (props) => {

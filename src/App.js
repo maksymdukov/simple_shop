@@ -1,6 +1,4 @@
-import React, {Component, useEffect} from 'react';
-import logo from './logo.svg';
-import axios from 'axios';
+import React, {Component, useEffect, Suspense} from 'react';
 import {CssBaseline} from "@material-ui/core";
 import Layout from "./Components/Layout";
 import {Route} from "react-router";
@@ -10,8 +8,12 @@ import Checkout from "./Containers/Checkout";
 import {connect} from "react-redux";
 import {authCheckState} from "./store/actions/authActions";
 import MyOrders from "./Containers/MyOrders";
+import Profile from "./Containers/Profile";
+import Spinner from "./Components/UI/Spinner";
 
-const App = ({isAuthenticated, checkAuthState, tryAutoSignIn}) => {
+const Panel = React.lazy(() => import('./Containers/Admins/Dashboard'));
+
+const App = ({isAuthenticated, checkAuthState, tryAutoSignIn, isManager}) => {
     useEffect(()=>{
         tryAutoSignIn();
     },[]);
@@ -23,13 +25,20 @@ const App = ({isAuthenticated, checkAuthState, tryAutoSignIn}) => {
                 <Route path="/builder" component={BurgerBuilder}/>
                 <Route path="/checkout" component={Checkout}/>
                 {isAuthenticated && <Route path="/orders" component={MyOrders}/>}
+                {isAuthenticated && <Route path="/profile" component={Profile}/>}
+                {isManager &&
+                    <Suspense fallback={<Spinner/>}>
+                        <Route path="/manager-panel" component={Panel}/>
+                    </Suspense>
+                }
             </Layout>
         </div>
     );
 };
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: !state.auth.isAnonymous
+    isAuthenticated: !state.auth.isAnonymous,
+    isManager: state.auth.isManager
 });
 const mapDispatchToProps = (dispatch) => ({
     tryAutoSignIn: () => dispatch( authCheckState() )

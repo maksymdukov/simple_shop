@@ -25,7 +25,8 @@ const styles = (theme) => ({
         margin: "15px 5px",
     },
     media: {
-        height: 200
+        height: 200,
+        backgroundSize: "100%"
     },
     addToBasket: {
         backgroundColor: "green",

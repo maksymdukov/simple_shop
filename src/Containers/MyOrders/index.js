@@ -6,6 +6,7 @@ import {withStyles} from "@material-ui/core";
 import Pagination from "../../Components/UI/Pagination";
 import Orders from "../../Components/MyOrders/OrderCardList";
 import Spinner from "../../Components/UI/Spinner";
+import withErrorModal from "../../hoc/withErrorModal";
 
 const styles = (theme) => ({
     orders: {
@@ -66,7 +67,8 @@ const mapStateToProps = (state) => ({
     listLoading: state.userOrders.listLoading,
     contentLoading: state.userOrders.contentLoading,
     listError: state.userOrders.listError,
-    contentError: state.userOrders.contentError
+    contentError: state.userOrders.contentError,
+    error: state.userOrders.listError || state.userOrders.contentError
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -74,4 +76,5 @@ const mapDispatchToProps = (dispatch) => ({
     fetchContent: (start, end) => dispatch(fetchContent(start, end))
 });
 
-export default withStyles(styles)( connect(mapStateToProps, mapDispatchToProps)(MyOrders) ) ;
+const EnhancedComponent = withErrorModal(MyOrders);
+export default withStyles(styles)( connect(mapStateToProps, mapDispatchToProps)(EnhancedComponent) );

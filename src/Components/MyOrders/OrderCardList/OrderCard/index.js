@@ -9,10 +9,12 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ItemCard from "./ItemCard";
+import HeadingDivider from "../../../UI/HeadingDivider";
 
 
 const styles = (theme) => ({
     card: {
+        marginBottom: theme.spacing.unit * 2,
         transition: "box-shadow .1s linear",
         '&:hover': {
             boxShadow: `0px 3px 3px -1px ${theme.palette.primary.main}, 0px 3px 3px 0px ${theme.palette.primary.main}, 0px 1px 5px 0px ${theme.palette.primary.main}`,
@@ -44,7 +46,7 @@ const OrderCard = ({classes, order}) => {
                 </Grid>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails classes={{root: classes.details}}>
-                <Divider/>
+                <HeadingDivider/>
                 <Grid container>
                     {order.basket.map(basketItem => <ItemCard
                         key={basketItem.id || basketItem.name}

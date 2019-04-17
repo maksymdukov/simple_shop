@@ -28,13 +28,13 @@ const styles = (theme) => ({
     },
 });
 
-const OrderForm = ({classes, makePurchase, isErrorPosting, isPosting, authState}) => {
+const OrderForm = ({classes, makePurchase, isErrorPosting, isPosting, profile}) => {
     const initValues = {
-        name: "",
-        email: authState.isAnonymous ? "": authState.email,
-        phone: "",
-        city: "Kyiv",
-        address: ""
+        name: profile.name ? profile.name : "",
+        email: profile.email ? profile.email : "",
+        phone: profile.phone ? profile.phone : "",
+        city: profile.city ? profile.city : "Kyiv",
+        address: profile.address ? profile.address : ""
     };
     const handleSubmit = (values, actions) => {
         makePurchase(values);
@@ -50,6 +50,8 @@ const OrderForm = ({classes, makePurchase, isErrorPosting, isPosting, authState}
                     onSubmit={handleSubmit}
                     validationSchema={validationSchema}
                     initialValues={initValues}
+                    isInitialValid={validationSchema.isValidSync(initValues)}
+                    enableReinitialize
                     render={ (props) => <FormView {...{isErrorPosting, isPosting}} {...props} /> }
                 />
             </Paper>

@@ -101,7 +101,8 @@ const MyToolbar = ({
                        doLogout,
                        doResetErrors,
                        email,
-                       isSigningIn
+                       isSigningIn,
+                       isManager
 }) => {
     const appbarEl = useRef(null);
     const [isMenuOpened, setMenuOpened] = useState(null);
@@ -161,27 +162,27 @@ const MyToolbar = ({
                     </div>
                     <div className={logInButtonClasses.join(" ")}>
                         {isAuthenticated
-                            ?
-                            <IconButton
-                                aria-owns={isAuthMenuOpened ? 'auth-menu' : undefined}
-                                aria-haspopup="true"
-                                color="inherit"
-                                onClick={handleAuthMenuOpened}
-                            >
+                            ?   <IconButton
+                                    aria-owns={isAuthMenuOpened ? 'auth-menu' : undefined}
+                                    aria-haspopup="true"
+                                    color="inherit"
+                                    onClick={handleAuthMenuOpened}
+                                >
                                 <AccountCircle/>
                             </IconButton>
 
-                            :
-                            isSigningIn ? <CircularProgress/> :<Button
-                                color="inherit"
-                                variant="outlined"
-                                onClick={openAuthModal}
-                            >
-                                Sign in
-                            </Button>
+                            :   isSigningIn
+                                    ?   <CircularProgress/>
+                                    :   <Button
+                                            color="inherit"
+                                            variant="outlined"
+                                            onClick={openAuthModal}
+                                        >
+                                            Sign in
+                                        </Button>
                         }
                         <AuthMenu
-                            {...{isAuthMenuOpened, handleAuthMenuClosed, doLogout, email}}
+                            {...{isAuthMenuOpened, handleAuthMenuClosed, doLogout, email, isManager}}
                         />
                         <AuthModal
                             isOpened={isAuthModalOpened}
@@ -211,6 +212,7 @@ const mapStateToProps = (state) => ({
     basket: state.basket.basket,
     totalQuantity: state.basket.totalQuantity,
     isAuthenticated: !state.auth.isAnonymous,
+    isManager: state.auth.isManager,
     email: state.auth.email,
     isSigningIn: state.auth.signInLoading
 });

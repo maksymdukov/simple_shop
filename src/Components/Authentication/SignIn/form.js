@@ -23,7 +23,8 @@ const SignInForm = ({
                       handleChange,
                       isValid,
                       setFieldTouched,
-                      signInLoading
+                      signInLoading,
+                        onlySignIn
                   }) => {
 
     const change = (name, e) => {
@@ -72,13 +73,15 @@ const SignInForm = ({
                         Login
                     </Button>
                 }
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={toSignUpMode}
-                >
-                    Sign up
-                </Button>
+                {!onlySignIn &&
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        onClick={toSignUpMode}
+                    >
+                        Sign up
+                    </Button>
+                }
             </div>
         </form>
     );

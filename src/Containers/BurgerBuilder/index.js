@@ -1,13 +1,13 @@
 import React from 'react';
 import {Helmet} from "react-helmet/es/Helmet";
 import BurgerEditor from "../../Components/BurgerEditor";
-import {addIngredient, initIngredients, removeIngredient} from "../../store/actions/burgerEditorActions";
+import {initIngredients} from "../../store/actions/burgerEditorActions";
 import {addItemToBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
-import AddToBasket from "../../Components/UI/Buttons/AddToBasket";
 import {showNotification} from "../../store/actions/notificatorActions";
-import {Badge, Divider, Fab, Paper, withStyles} from "@material-ui/core";
+import {Divider, Fab, Paper, withStyles} from "@material-ui/core";
 import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined';
+import burger from '../../assets/burger-logo.png';
 
 const styles = (theme) => ({
     container: {
@@ -61,6 +61,7 @@ const BurgerBuilder = ({
         ingredients: ingredients,
         additives: additives,
         price: burgerCost,
+        image: burger,
         id: Date.now()
     };
     const handleAddToBasket = () => {

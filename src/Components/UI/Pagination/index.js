@@ -42,6 +42,11 @@ class Pagination extends React.Component {
                     <Table className={classes.table}>
                         <TableBody>
                             {render(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}
+                            {emptyRows > 0 && (
+                                <TableRow style={{ height: 48 * emptyRows }}>
+                                    <TableCell colSpan={6} />
+                                </TableRow>
+                            )}
                             {/*{rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (*/}
                                 {/*<TableRow key={row.id}>*/}
                                     {/*<TableCell component="th" scope="row">*/}

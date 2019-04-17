@@ -1,6 +1,6 @@
 import React from 'react';
 import {DialogTitle, Divider, Menu, MenuItem, Popover, withStyles} from "@material-ui/core";
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 
 const styles = (theme) => ({
     navItems: {
@@ -17,9 +17,24 @@ const styles = (theme) => ({
     active: {}
 });
 
-const AuthMenu = ({classes, isAuthMenuOpened, handleAuthMenuClosed, doLogout, email}) => {
+const AuthMenu = (props) => {
+    const {classes, isAuthMenuOpened, handleAuthMenuClosed, doLogout, email, history, isManager} = props;
     const handleLogoutClick = () => {
         doLogout();
+        handleAuthMenuClosed();
+    };
+    const handleMyOrdersClick = () => {
+        history.push('/orders');
+        handleAuthMenuClosed();
+    };
+
+    const handleEditProfileClick = () => {
+        history.push('/profile');
+        handleAuthMenuClosed();
+    };
+
+    const handlePanelClick = () => {
+        history.push('/manager-panel');
         handleAuthMenuClosed();
     };
     return (
@@ -32,8 +47,27 @@ const AuthMenu = ({classes, isAuthMenuOpened, handleAuthMenuClosed, doLogout, em
         >
             {email && <DialogTitle>{email}</DialogTitle> }
             <Divider/>
-            <MenuItem onClick={handleAuthMenuClosed}>Profile</MenuItem>
-            <MenuItem onClick={handleAuthMenuClosed}>
+            {isManager &&
+                <MenuItem onClick={handlePanelClick}>
+                    <NavLink
+                        className={classes.navItems}
+                        activeClassName={classes.active}
+                        to="/manager-panel"
+                    >
+                        Manager panel
+                    </NavLink>
+                </MenuItem>
+            }
+            <MenuItem onClick={handleEditProfileClick}>
+                <NavLink
+                    className={classes.navItems}
+                    activeClassName={classes.active}
+                    to="/profile"
+                >
+                    Edit Profile
+                </NavLink>
+            </MenuItem>
+            <MenuItem onClick={handleMyOrdersClick}>
                 <NavLink
                     className={classes.navItems}
                     activeClassName={classes.active}
@@ -47,4 +81,4 @@ const AuthMenu = ({classes, isAuthMenuOpened, handleAuthMenuClosed, doLogout, em
     );
 };
 
-export default withStyles(styles)(AuthMenu);
+export default withRouter( withStyles(styles)(AuthMenu) );

@@ -5,13 +5,12 @@ import {
     DialogContent,
     DialogTitle,
     IconButton,
-    Slide, Fade
+    Slide
 } from "@material-ui/core";
 import IconClose from '@material-ui/icons/CloseRounded'
-import SignUp from "../SignUp";
-import SignIn from "../SignIn";
-import {signUp, resetErrors, signIn} from "../../../store/actions/authActions";
+import {signIn} from "../../../store/actions/authActions";
 import {connect} from "react-redux";
+import SignIn from "../../Authentication/SignIn";
 
 const styles = (theme) => ({
     closeBtn: {
@@ -27,26 +26,23 @@ const styles = (theme) => ({
         [theme.breakpoints.up('sm')]: {
             width: 400
         }
+    },
+    title: {
+        textAlign: "center"
     }
 });
 
 const Transition = (props) => <Slide direction="down" {...props}/>;
 
-const AuthModal = ({
+const OnlySignInModal = ({
                        classes,
                        isOpened,
                        handleClose,
-                       doSignUp,
-                       signUpSuccess,
                        errorMessage,
-                       signUpLoading,
                        signInLoading,
                        signInError,
                        doSignIn
-}) => {
-    const [isSignUp, setIsSignUp] = useState(false);
-    const toSignUpMode = () => setIsSignUp(true);
-    const toSignInMode = () => setIsSignUp(false);
+                   }) => {
     return (
         <Dialog onClose={handleClose}
                 aria-labelledby="customized-dialog-title"
@@ -60,32 +56,25 @@ const AuthModal = ({
             >
                 <IconClose/>
             </IconButton>
-            <DialogTitle>
-                {isSignUp
-                    ? "Sign Up"
-                    : "Sign In"
-                }
+            <DialogTitle className={classes.title}>
+                Please, Log In again.
             </DialogTitle>
             <DialogContent>
-                {isSignUp
-                    ? <SignUp {...{toSignInMode, signUpSuccess, signUpLoading, errorMessage, doSignUp}}/>
-                    : <SignIn {...{toSignUpMode, doSignIn, handleClose, signInLoading, signInError}}/>
-                }
+                <SignIn
+                    onlySignIn
+                    {...{doSignIn, handleClose, signInLoading, signInError}}
+                />
             </DialogContent>
         </Dialog>
     );
 };
 
 const mapStateToProps = (state) => ({
-    signUpLoading: state.auth.signUpLoading,
-    signUpSuccess: state.auth.signUpSuccess,
-    errorMessage: state.auth.signUpError,
     signInLoading: state.auth.signInLoading,
     signInError: state.auth.signInError
 });
 const mapDispatchToProps = (dispatch) => ({
-    doSignUp: (email, password, name) => dispatch( signUp(email, password, name) ),
     doSignIn: (email, password) => dispatch( signIn(email, password) ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)( withStyles(styles)(AuthModal) );
+export default connect(mapStateToProps, mapDispatchToProps)( withStyles(styles)(OnlySignInModal) );

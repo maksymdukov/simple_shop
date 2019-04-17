@@ -1,5 +1,5 @@
 import {
-    LOGOUT, RESET_ERRORS,
+    LOGOUT, RESET_ERRORS, SET_IS_MANAGER,
     SIGN_IN_FAIL,
     SIGN_IN_START,
     SIGN_IN_SUCCESS,
@@ -8,6 +8,8 @@ import {
     SIGN_UP_SUCCESS,
 } from "../actionTypes";
 import firebase from '../../firebase/config';
+import {eraseProfileOnLogout, loadProfile} from "./profileActions";
+import {eraseOrders} from "./userOrdersActions";
 
 const TOKEN_EXPIRATION = 3600;
 
@@ -45,6 +47,10 @@ export const signInSuccess = (email, isAnonymous, uid, token) => ({
     token
 });
 
+export const setIsManager = () => ({
+    type: SET_IS_MANAGER
+});
+
 export const authLogout = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("expirationDate");
@@ -56,8 +62,10 @@ export const authLogout = () => {
 export const tryLogout = () => {
     return async (dispatch) => {
         try {
-            await firebase.auth().signOut();
             dispatch(authLogout());
+            dispatch(eraseProfileOnLogout());
+            dispatch(eraseOrders());
+            await firebase.auth().signOut();
         } catch (e) {
             alert(e);
         }
@@ -73,14 +81,16 @@ export const checkAuthTimeOut = (expirationTime) => {
 };
 
 
-export const signUp = (email, password) => {
+export const signUp = (email, password, name) => {
     return async (dispatch) => {
         try {
             dispatch(signUpStart());
             await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-            await firebase
+            let result = await firebase
                 .auth()
                 .createUserWithEmailAndPassword(email, password);
+            const uid = result.user.uid;
+            await firebase.database().ref('users/'+uid+'/profile/').set({name, email});
             dispatch(signUpSuccess());
             const expirationDate = new Date(new Date().getTime() + TOKEN_EXPIRATION * 1000);
             localStorage.setItem("email", email);
@@ -122,11 +132,13 @@ export const authCheckState = () => {
                     if (new Date(+expirationDate) > new Date()) {
                         const token = await user.getIdToken();
                         dispatch(signInSuccess(user.email, false, user.uid, token));
+                        dispatch(loadProfile(user.uid));
                     } else {
                         dispatch(tryLogout());
                     }
                 } else {
                     dispatch(signInSuccess(user.email, false, user.uid));
+                    dispatch(loadProfile(user.uid));
                 }
             } else {
                 dispatch(signInFail(null));

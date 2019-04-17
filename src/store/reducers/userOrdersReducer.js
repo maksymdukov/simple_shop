@@ -1,5 +1,4 @@
-import {} from "../actionTypes";
-import {FETCH_ORDER_LIST_START} from "../actionTypes";
+import {ERASE_ORDERS_LOCALLY, FETCH_ORDER_LIST_START} from "../actionTypes";
 import {FETCH_ORDER_LIST_FAIL} from "../actionTypes";
 import {FETCH_ORDER_LIST_SUCCESS} from "../actionTypes";
 import {FETCH_ORDERS_START} from "../actionTypes";
@@ -20,7 +19,8 @@ const userOrdersReducer = (state = initState, {type, listError, ordersList, orde
         case FETCH_ORDER_LIST_START:
             return {
                 ...state,
-                listLoading: true
+                listLoading: true,
+                listError: null
             };
         case FETCH_ORDER_LIST_FAIL:
             return {
@@ -37,7 +37,8 @@ const userOrdersReducer = (state = initState, {type, listError, ordersList, orde
         case FETCH_ORDERS_START:
             return {
                 ...state,
-                contentLoading: true
+                contentLoading: true,
+                contentError: false
             };
         case FETCH_ORDERS_FAIL:
             return {
@@ -51,6 +52,8 @@ const userOrdersReducer = (state = initState, {type, listError, ordersList, orde
                 contentLoading: false,
                 ordersContent
             };
+        case ERASE_ORDERS_LOCALLY:
+            return initState;
         default:
             return state;
     }
