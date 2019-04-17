@@ -8,7 +8,7 @@ const validationSchema = Yup.object({
         .required("Email is required"),
     phone: Yup.string("Format: 0XX-XXX-XX-XX")
         .required("Phone is required")
-        .matches(/^(\+?38)?\d{3}-?\d{3}-?\d{2}-?\d{2}-?$/i, "Is not valid"),
+        .matches(/^(\+?38)?\d{3}-?\d{3}-?\d{2}-?\d{2}-?$/i, "Example: 066-290-68-66"),
     city: Yup.string("City").required(),
     address: Yup.string("Delivery address").required()
 });

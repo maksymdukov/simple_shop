@@ -7,7 +7,7 @@ const validationSchema = object({
         .email("Enter a valid email")
         .required("Email is required"),
     phone: string("Format: 0XX-XXX-XX-XX")
-        .matches(/^(\+?38)?\d{3}-?\d{3}-?\d{2}-?\d{2}-?$/i, "Is not valid"),
+        .matches(/^(\+?38)?\d{3}-?\d{3}-?\d{2}-?\d{2}-?$/i, "Example: 066-290-68-66"),
     city: string("City").required(),
     address: string("Delivery address"),
     password: string("Enter new password")

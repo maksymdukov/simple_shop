@@ -60,7 +60,7 @@ const BurgerCardModal = ({
             ingredients: burgerEditorState.ingredients,
             additives: burgerEditorState.additives,
             price: burgerEditorState.burgerCost,
-            image: burger,
+            image: "/static/media/burger-logo.png",
             id: Date.now()
         };
         addItemToBasket(newItem);

@@ -51,10 +51,13 @@ const styles = (theme) => ({
         top: 0,
         bottom: 0,
         backgroundColor: theme.palette.common.grey,
-        width: 40
-        // display: "flex",
-        // justifyContent: "center",
-        // alignItems: "center"
+        width: 40,
+        flexDirection: "column",
+        justifyContent: "flex-start"
+    },
+    arrowWrapper:{
+        position: "sticky",
+        top: 150
     },
     arrow: {
         position: "sticky",
@@ -79,13 +82,15 @@ const AdminSidebar = ({classes, onToggle, isOpened, match}) => {
     }
     return (
             <aside className={sidebarClasses.join(" ")}>
-                <ButtonBase className={classes.toggleBtnWrapper} onClick={onToggle}>
-                        <IconArrow className={arrowClasses.join(" ")}/>
+                <ButtonBase className={classes.toggleBtnWrapper}  onClick={onToggle}>
+                    <div className={classes.arrowWrapper}>
+                            <IconArrow className={arrowClasses.join(" ")}/>
+                    </div>
                 </ButtonBase>
                 <ul className={classes.list}>
                     <li>
                         <NavLink className={classes.route} to={`${match.url}/last-orders`} activeClassName={classes.activeRoute}>
-                            Last Orders
+                            Orders Live
                         </NavLink>
                     </li>
                     <li>

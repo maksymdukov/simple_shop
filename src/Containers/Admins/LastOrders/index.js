@@ -6,6 +6,8 @@ import OrderCardDetails from "../../../Components/MyOrders/OrderCardList/OrderCa
 import LastOrderSummary from "../../../Components/Admins/LastOrders/Card/LastOrderSummary";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import audio from '../../../assets/notification.mp3';
+import Spinner from "../../../Components/UI/Spinner";
+import {Helmet} from "react-helmet/es/Helmet";
 
 const styles = (theme) => ({
     transitionItem: {
@@ -86,8 +88,8 @@ const LastOrders = ({classes}) => {
             <audio ref={audRef}>
                 <source src={audio} type="audio/mpeg"/>
             </audio>
-
             New orders
+            {!lastOrders.length && <Spinner/>}
             <TransitionGroup>
             {lastOrders.map((orderObj) => (
                 <CSSTransition
