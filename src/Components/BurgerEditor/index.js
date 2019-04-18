@@ -2,20 +2,12 @@ import React, {useEffect, Fragment, useState} from 'react';
 import Burger from "../Burger";
 import BuildControls from "../Burger/BurgerControls";
 import AdditiveControls from "../Burger/AdditiveControls";
-import {
-    addIngredient,
-    initIngredients,
-    removeIngredient,
-    addAdditive,
-    removeAdditive,
-    fetchIngredients
-} from "../../store/actions/burgerEditorActions";
-import {addItemToBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
-import {CircularProgress, Typography} from "@material-ui/core";
+import {CircularProgress} from "@material-ui/core";
 import Heading from "../UI/Heading";
 import HeadingDivider from "../UI/HeadingDivider";
 import ErrorModal from "../UI/ErrorModal";
+import {mapStateToProps, mapDispatchToProps} from "./redux";
 
 const BurgerEditor = ({
                           menu,
@@ -65,22 +57,5 @@ const BurgerEditor = ({
         </div>
     );
 };
-
-const mapStateToProps = (state) => ({
-    ingredients: state.burgerEditor.ingredients,
-    additives: state.burgerEditor.additives,
-    menu: state.burgerEditor.menu,
-    loading: state.burgerEditor.loading,
-    error: state.burgerEditor.error
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    initIngredients: (ingredients, additives, burgerCost) => dispatch(initIngredients(ingredients, additives, burgerCost)),
-    addIngredient: (ingName) => dispatch(addIngredient(ingName)),
-    removeIngredient: (index) => dispatch(removeIngredient(index)),
-    addAdditive: (additiveName) => dispatch(addAdditive(additiveName)),
-    removeAdditive: (additiveName) => dispatch(removeAdditive(additiveName)),
-    fetchIngs: () => dispatch(fetchIngredients())
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(BurgerEditor);

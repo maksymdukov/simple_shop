@@ -42,16 +42,6 @@ const BuildControlItem = ({name, handlePlusIng, price}) => {
             <div className={classes.Price}>{price} UAH</div>
         </li>
     );
-
-    // return (
-    //         <IconButton onClick={handlePlusIng} className={ingClass.join(' ')}>
-    //             <div>
-    //                 <IconPlus/>
-    //                 <div className={classes.Name}>{name}</div>
-    //             </div>
-    //         </IconButton>
-    //
-    // );
 };
 
 export default BuildControlItem;

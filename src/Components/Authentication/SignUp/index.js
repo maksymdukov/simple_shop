@@ -1,12 +1,8 @@
 import React, {Fragment} from 'react';
-import {withStyles, Button, Dialog, DialogActions, DialogContent, Typography} from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 import {Formik} from "formik";
 import SignUpForm from "./form";
 import validationSchema from "./validation";
-
-const styles = (theme) => ({
-
-});
 
 const SignUp = ({classes, toSignInMode, doSignUp, signUpSuccess, errorMessage, signUpLoading}) => {
     const initValues = {
@@ -39,4 +35,4 @@ const SignUp = ({classes, toSignInMode, doSignUp, signUpSuccess, errorMessage, s
     );
 };
 
-export default withStyles(styles)(SignUp);
+export default SignUp;

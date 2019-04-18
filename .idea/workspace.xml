@@ -2,12 +2,116 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2171dabc-0d69-45a2-b9e0-2666d52e1633" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Admins/LastOrders/Card/LastOrderSummary/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Admins/Sidebar/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Authentication/AuthMenu/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Authentication/AuthModal/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Authentication/AuthModal/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/BurgerCardModal/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/BurgerOnHoverContent/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/OnHoverContent/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/BurgerEditor/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/CartWidget/CartWidgetItem/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/CartWidget/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/CartWidget/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Checkout/Card/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Checkout/MySwiper/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Checkout/MySwiper/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Checkout/OrderForm/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Layout/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/ItemCard/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/OrderCardSummary/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Navigation/MyToolbar/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Navigation/MyToolbar/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Navigation/NavItems/NavItem/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Navigation/NavItems/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Notificator/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Profile/OnlySignInModal/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Profile/OnlySignInModal/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Profile/ProfileForm/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/UI/Buttons/AddToBasket/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/UI/Buttons/RemoveFromBasket/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/UI/ErrorModal/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/UI/Heading/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/UI/HeadingDivider/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/UI/Pagination/PaginationActions/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/UI/Pagination/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Containers/Admins/Dashboard/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Containers/Admins/LastOrders/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Containers/BurgerBuilder/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Containers/BurgerBuilder/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Containers/Checkout/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Containers/Checkout/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Containers/Menu/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Containers/MyOrders/redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Containers/MyOrders/styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Containers/Profile/redux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Admins/LastOrders/Card/LastOrderSummary/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admins/LastOrders/Card/LastOrderSummary/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Admins/Sidebar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Admins/Sidebar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Authentication/AuthMenu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Authentication/AuthMenu/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Authentication/AuthModal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Authentication/AuthModal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Authentication/SignIn/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Authentication/SignIn/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Authentication/SignIn/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Authentication/SignIn/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Authentication/SignIn/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Authentication/SignIn/validation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Authentication/SignUp/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Authentication/SignUp/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Authentication/SignUp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Authentication/SignUp/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Burger/AdditiveControls/AdditiveControl/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Burger/AdditiveControls/AdditiveControl/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Burger/AdditiveControls/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Burger/AdditiveControls/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Burger/BurgerControls/BuildControlItem/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Burger/BurgerControls/BuildControlItem/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/BurgerCardList/BurgerCardModal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/BurgerCardModal/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Checkout/OrderForm/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Checkout/OrderForm/validation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Profile/ProfileForm/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile/ProfileForm/validation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/BurgerOnHoverContent/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/BurgerOnHoverContent/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/OnHoverContent/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/OnHoverContent/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BurgerCardList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BurgerCardList/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BurgerCardList/index.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/BurgerEditor/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/BurgerEditor/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CartWidget/CartWidgetItem/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CartWidget/CartWidgetItem/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CartWidget/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CartWidget/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Checkout/CardList/Card/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Checkout/Card/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Checkout/CardList/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Checkout/MySwiper/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Checkout/MySwiper/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Checkout/OrderForm/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Checkout/OrderForm/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Checkout/OrderForm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Checkout/OrderForm/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Layout/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Layout/index.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/ItemCard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/ItemCard/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/OrderCardDetails/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/OrderCardDetails/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/OrderCardSummary/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/OrderCardSummary/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Navigation/MyToolbar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navigation/MyToolbar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Navigation/MyToolbar/index.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Navigation/NavItems/NavItem/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navigation/NavItems/NavItem/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Navigation/NavItems/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navigation/NavItems/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Navigation/NavItems/index.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Navigation/SideDrawer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navigation/SideDrawer/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Notificator/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Notificator/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Profile/OnlySignInModal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile/OnlySignInModal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Profile/ProfileForm/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile/ProfileForm/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Profile/ProfileForm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile/ProfileForm/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/UI/Buttons/AddToBasket/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UI/Buttons/AddToBasket/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/UI/Buttons/RemoveFromBasket/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UI/Buttons/RemoveFromBasket/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/UI/ErrorModal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UI/ErrorModal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/UI/Heading/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UI/Heading/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/UI/HeadingDivider/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UI/HeadingDivider/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/UI/Pagination/PaginationActions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UI/Pagination/PaginationActions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/UI/Pagination/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/UI/Pagination/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Containers/Admins/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/Admins/Dashboard/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Containers/Admins/LastOrders/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/Admins/LastOrders/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Containers/BurgerBuilder/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/BurgerBuilder/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Containers/Checkout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/Checkout/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Containers/Menu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/Menu/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Containers/MyOrders/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/MyOrders/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Containers/Profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/Profile/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/basketActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/basketActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/userOrdersActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/userOrdersActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/notificatorReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/notificatorReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,112 +121,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/Admins/LastOrders/Card/LastOrderSummary/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Containers/Admins/LastOrders/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="87" column="32" lean-forward="true" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Containers/BurgerBuilder/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="73" column="44" lean-forward="true" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Containers/Admins/Dashboard/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Containers/Menu/index.js">
+        <entry file="file://$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="30" column="82" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="82" />
+            <state relative-caret-position="119">
+              <caret line="79" column="26" lean-forward="true" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
               <folding>
-                <element signature="e#0#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/Admins/Sidebar/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="92" column="39" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/Profile/ProfileForm/validation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="84" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="84" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/Checkout/OrderForm/validation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database.rules.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/BurgerCardList/BurgerCardModal/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#46#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,57 +159,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Components/MyOrders/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/UI/Pagination/PaginationActions/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/UI/Spinner/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/MyOrders/Orders/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/MyOrders/CardList/Card/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/ItemCard/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/UI/Pagination/index.js" />
-        <option value="$PROJECT_DIR$/src/store/actions/basketActions.js" />
-        <option value="$PROJECT_DIR$/src/hoc/withErrorModal/index.js" />
-        <option value="$PROJECT_DIR$/src/Containers/MyOrders/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/Authentication/SignUp/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/Checkout/OrderForm/index.js" />
-        <option value="$PROJECT_DIR$/src/store/reducers/userOrdersReducer.js" />
-        <option value="$PROJECT_DIR$/src/store/actions/userOrdersActions.js" />
+        <option value="$PROJECT_DIR$/src/Components/Navigation/SideDrawer/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/Notificator/redux.js" />
+        <option value="$PROJECT_DIR$/src/Components/Notificator/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/Profile/OnlySignInModal/styles.js" />
+        <option value="$PROJECT_DIR$/src/Components/Profile/OnlySignInModal/redux.js" />
+        <option value="$PROJECT_DIR$/src/Components/Profile/OnlySignInModal/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/Profile/ProfileForm/styles.js" />
         <option value="$PROJECT_DIR$/src/Components/Profile/ProfileForm/index.js" />
         <option value="$PROJECT_DIR$/src/Components/Profile/ProfileForm/form.js" />
-        <option value="$PROJECT_DIR$/src/Components/Checkout/CardList/Card/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/Authentication/AuthModal/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/Authentication/SignIn/form.js" />
-        <option value="$PROJECT_DIR$/src/Components/Authentication/SignIn/index.js" />
-        <option value="$PROJECT_DIR$/src/store/reducers/profileReducer.js" />
-        <option value="$PROJECT_DIR$/src/Containers/Profile/index.js" />
-        <option value="$PROJECT_DIR$/src/Containers/Checkout/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/Profile/OnlySignInModal/index.js" />
-        <option value="$PROJECT_DIR$/src/store/actionTypes.js" />
-        <option value="$PROJECT_DIR$/src/store/reducers/authReducer.js" />
-        <option value="$PROJECT_DIR$/src/store/actions/authActions.js" />
-        <option value="$PROJECT_DIR$/src/store/actions/profileActions.js" />
-        <option value="$PROJECT_DIR$/src/Components/Navigation/MyToolbar/index.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/Components/Authentication/AuthMenu/index.js" />
-        <option value="$PROJECT_DIR$/src/Containers/Admins/Panel/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/Admins/Menu/index.js" />
-        <option value="$PROJECT_DIR$/database.rules.json" />
-        <option value="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/OrderSummary/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/OrderCardSummary/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/OrderCardDetails/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/index.js" />
-        <option value="$PROJECT_DIR$/src/Containers/Admins/NewOrders/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/Admins/LastOrders/Order/Summary/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/index.js" />
-        <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/Containers/BurgerBuilder/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/Admins/LastOrders/Card/LastOrderSummary/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/BurgerCardList/BurgerCardModal/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/Admins/Sidebar/index.js" />
-        <option value="$PROJECT_DIR$/src/Components/Profile/ProfileForm/validation.js" />
-        <option value="$PROJECT_DIR$/src/Components/Checkout/OrderForm/validation.js" />
-        <option value="$PROJECT_DIR$/src/Containers/Admins/LastOrders/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/Buttons/AddToBasket/styles.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/Buttons/AddToBasket/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/Buttons/RemoveFromBasket/styles.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/Buttons/RemoveFromBasket/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/ErrorModal/styles.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/ErrorModal/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/Heading/styles.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/Heading/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/HeadingDivider/styles.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/HeadingDivider/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/Pagination/styles.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/Pagination/PaginationActions/styles.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/Pagination/PaginationActions/index.js" />
+        <option value="$PROJECT_DIR$/src/Containers/Admins/Dashboard/styles.js" />
         <option value="$PROJECT_DIR$/src/Containers/Admins/Dashboard/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/UI/Pagination/index.js" />
+        <option value="$PROJECT_DIR$/src/Containers/Admins/LastOrders/styles.js" />
+        <option value="$PROJECT_DIR$/src/Containers/BurgerBuilder/styles.js" />
+        <option value="$PROJECT_DIR$/src/Containers/BurgerBuilder/redux.js" />
+        <option value="$PROJECT_DIR$/src/Containers/BurgerBuilder/index.js" />
+        <option value="$PROJECT_DIR$/src/Containers/Checkout/styles.js" />
+        <option value="$PROJECT_DIR$/src/Containers/Checkout/redux.js" />
+        <option value="$PROJECT_DIR$/src/Containers/Checkout/index.js" />
+        <option value="$PROJECT_DIR$/src/Containers/Menu/redux.js" />
+        <option value="$PROJECT_DIR$/src/Containers/Menu/index.js" />
+        <option value="$PROJECT_DIR$/src/Containers/MyOrders/styles.js" />
+        <option value="$PROJECT_DIR$/src/Containers/MyOrders/redux.js" />
+        <option value="$PROJECT_DIR$/src/Containers/MyOrders/index.js" />
+        <option value="$PROJECT_DIR$/src/Containers/Profile/redux.js" />
+        <option value="$PROJECT_DIR$/src/Containers/Profile/index.js" />
+        <option value="$PROJECT_DIR$/src/store/actions/basketActions.js" />
+        <option value="$PROJECT_DIR$/src/store/actions/userOrdersActions.js" />
+        <option value="$PROJECT_DIR$/src/store/reducers/notificatorReducer.js" />
+        <option value="$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/ItemCard/index.js" />
+        <option value="$PROJECT_DIR$/src/Containers/Admins/LastOrders/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/Authentication/SignUp/form.js" />
+        <option value="$PROJECT_DIR$/src/Components/Authentication/AuthMenu/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/Admins/Sidebar/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/Admins/LastOrders/Card/LastOrderSummary/styles.js" />
+        <option value="$PROJECT_DIR$/src/Components/Admins/LastOrders/Card/LastOrderSummary/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/Authentication/AuthModal/index.js" />
+        <option value="$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/index.js" />
       </list>
     </option>
   </component>
@@ -212,8 +217,8 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="619" />
-    <option name="y" value="31" />
+    <option name="x" value="618" />
+    <option name="y" value="30" />
     <option name="width" value="981" />
     <option name="height" value="522" />
   </component>
@@ -225,6 +230,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -248,29 +254,6 @@
               <item name="diploma" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Admins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Admins" type="462c0819:PsiDirectoryNode" />
-              <item name="LastOrders" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Admins" type="462c0819:PsiDirectoryNode" />
-              <item name="Sidebar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
               <item name="BurgerCardList" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -279,44 +262,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Components" type="462c0819:PsiDirectoryNode" />
               <item name="BurgerCardList" type="462c0819:PsiDirectoryNode" />
-              <item name="BurgerCardModal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Checkout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Checkout" type="462c0819:PsiDirectoryNode" />
-              <item name="OrderForm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Notificator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Profile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Profile" type="462c0819:PsiDirectoryNode" />
-              <item name="ProfileForm" type="462c0819:PsiDirectoryNode" />
+              <item name="MenuCard" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
@@ -330,14 +276,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Containers" type="462c0819:PsiDirectoryNode" />
               <item name="Admins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Containers" type="462c0819:PsiDirectoryNode" />
-              <item name="Admins" type="462c0819:PsiDirectoryNode" />
-              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
@@ -346,40 +284,6 @@
               <item name="Containers" type="462c0819:PsiDirectoryNode" />
               <item name="Admins" type="462c0819:PsiDirectoryNode" />
               <item name="LastOrders" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Containers" type="462c0819:PsiDirectoryNode" />
-              <item name="BurgerBuilder" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Containers" type="462c0819:PsiDirectoryNode" />
-              <item name="Checkout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Containers" type="462c0819:PsiDirectoryNode" />
-              <item name="Menu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Containers" type="462c0819:PsiDirectoryNode" />
-              <item name="MyOrders" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="firebase" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="diploma" type="b2602c69:ProjectViewProjectNode" />
@@ -391,7 +295,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -407,15 +310,16 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2018.2.5\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\php-academy\diploma\src\Components\Authentication" />
-      <recent name="C:\php-academy\diploma\src\Components\Authentication\SignIn" />
-      <recent name="C:\php-academy\diploma\src\Containers\Menu" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\php-academy\diploma\src\Components\Profile\ProfileForm" />
       <recent name="C:\php-academy\diploma\src\Components\Authentication\SignUp" />
       <recent name="C:\php-academy\diploma\src\Components\Authentication\SignIn" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\php-academy\diploma\src\Components\Checkout" />
+      <recent name="C:\php-academy\diploma\src\Components\Authentication" />
+      <recent name="C:\php-academy\diploma\src\Components\Authentication\SignIn" />
+      <recent name="C:\php-academy\diploma\src\Containers\Menu" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -457,18 +361,19 @@
       <workItem from="1554920382575" duration="47495000" />
       <workItem from="1555045530661" duration="109899000" />
       <workItem from="1555306912480" duration="38376000" />
-      <workItem from="1555405604985" duration="74431000" />
+      <workItem from="1555405604985" duration="75958000" />
+      <workItem from="1555528570231" duration="8045000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="377580000" />
+    <option name="totallyTimeSpent" value="387152000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28097165" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28582996" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -495,334 +400,40 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/hoc/withErrorModal/index.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/UI/HeadingDivider/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/SignUp/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducers/basketReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="90" column="33" lean-forward="true" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/SignUp/validation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="53" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/SignUp/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="56" column="14" lean-forward="true" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+        <state relative-caret-position="34">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Checkout/OrderForm/index.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/UI/Logo/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="50" column="55" lean-forward="true" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Checkout/OrderForm/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="31" column="6" lean-forward="true" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducers/userOrdersReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="55" column="29" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Profile/ProfileForm/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="126" column="17" selection-start-line="126" selection-start-column="17" selection-end-line="126" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/SignIn/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/SignIn/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="101" selection-start-line="10" selection-start-column="101" selection-end-line="10" selection-end-column="101" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducers/profileReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#229#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Containers/Profile/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="69" column="50" lean-forward="true" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
+        <state>
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Profile/OnlySignInModal/index.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/UI/Pagination/styles.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="61" column="27" lean-forward="true" selection-start-line="61" selection-start-column="27" selection-end-line="61" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Profile/ProfileForm/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="94" column="34" lean-forward="true" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actionTypes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/authActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
-          <folding>
-            <element signature="e#0#175#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducers/authReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="81" column="25" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#175#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/profileActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="105" column="48" selection-start-line="105" selection-start-column="48" selection-end-line="105" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Navigation/MyToolbar/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="184" column="99" selection-start-line="184" selection-start-column="99" selection-end-line="184" selection-end-column="99" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/AuthModal/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="87" column="71" lean-forward="true" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/AuthMenu/index.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/UI/Pagination/PaginationActions/styles.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="21" lean-forward="true" selection-end-line="83" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Admins/Menu/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/userOrdersActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="81" column="30" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/basketActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="74" column="108" lean-forward="true" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="108" />
-          <folding>
-            <element signature="e#0#219#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/ItemCard/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/OrderCardDetails/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Layout/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <folding>
-            <element signature="e#0#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/OrderCardSummary/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="35" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="80" column="22" selection-start-line="80" selection-start-column="22" selection-end-line="80" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Containers/MyOrders/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Containers/Checkout/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="91" column="48" lean-forward="true" selection-start-line="91" selection-start-column="48" selection-end-line="91" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Checkout/CardList/index.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/UI/ScrollBar/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -831,106 +442,328 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Checkout/MySwiper/index.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/UI/Pagination/PaginationActions/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-605">
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Checkout/CardList/Card/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1404">
-          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+        <state relative-caret-position="102">
+          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/BurgerCardList/index.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/UI/Spinner/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510">
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Notificator/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="27" selection-end-column="22" />
+        <state>
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-735">
-          <caret line="139" column="14" selection-start-line="139" selection-start-column="14" selection-end-line="139" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Admins/LastOrders/Card/LastOrderSummary/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/BurgerCardList/BurgerCardModal/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database.rules.json">
+    <entry file="file://$PROJECT_DIR$/src/Components/UI/Pagination/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Admins/Sidebar/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="92" column="39" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="39" />
+          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Profile/ProfileForm/validation.js">
+    <entry file="file://$PROJECT_DIR$/src/Containers/Admins/Dashboard/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="84" selection-start-line="9" selection-start-column="60" selection-end-line="9" selection-end-column="84" />
+        <state relative-caret-position="211">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Checkout/OrderForm/validation.js">
+    <entry file="file://$PROJECT_DIR$/src/Containers/Admins/Dashboard/styles.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
+        <state relative-caret-position="272">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/Admins/LastOrders/styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/BurgerBuilder/redux.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Containers/BurgerBuilder/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="73" column="44" lean-forward="true" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="44" />
+        <state relative-caret-position="146">
+          <caret line="49" column="6" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/BurgerBuilder/styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/Checkout/redux.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/Checkout/styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/Checkout/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="80" column="46" selection-start-line="80" selection-start-column="46" selection-end-line="80" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/Menu/redux.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/Menu/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="43" column="2" lean-forward="true" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/Menu/menuMock.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/MyOrders/redux.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/MyOrders/styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/MyOrders/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/Profile/redux.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Containers/Profile/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="687">
+          <caret line="45" column="18" lean-forward="true" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/firebase/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hoc/withErrorModal/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/authActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/burgerEditorActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#243#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/basketActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="70" column="23" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#219#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/menuActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-299">
+          <folding>
+            <element signature="e#0#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/notificatorActions.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/profileActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1537">
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/userOrdersActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/authReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-928">
+          <caret line="23" column="15" lean-forward="true" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/basketReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1275">
+          <folding>
+            <element signature="e#0#219#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/burgerEditorReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1248">
+          <folding>
+            <element signature="e#0#243#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/notificatorReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/profileReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1268">
+          <folding>
+            <element signature="e#0#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/userOrdersReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-823">
+          <folding>
+            <element signature="e#0#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actionTypes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-826" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/MyOrders/OrderCardList/OrderCard/ItemCard/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="45" lean-forward="true" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/SignUp/form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1557">
+          <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/SignIn/form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -939,30 +772,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Containers/Admins/LastOrders/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="87" column="32" lean-forward="true" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+        <state relative-caret-position="68">
+          <caret line="13" column="37" lean-forward="true" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Containers/Admins/Dashboard/index.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/AuthMenu/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        <state relative-caret-position="17">
+          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Admins/Sidebar/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Admins/LastOrders/Card/LastOrderSummary/styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/Admins/LastOrders/Card/LastOrderSummary/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Containers/Menu/index.js">
+    <entry file="file://$PROJECT_DIR$/src/Components/Authentication/AuthModal/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="30" column="82" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="82" />
+        <state relative-caret-position="85">
+          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/BurgerCardList/MenuCard/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="79" column="26" lean-forward="true" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#0#46#0" expanded="true" />
           </folding>
         </state>
       </provider>

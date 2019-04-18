@@ -1,14 +1,11 @@
-import React, {useRef, useState, Fragment} from 'react';
+import React, {useRef, useState} from 'react';
 import Logo from "../../UI/Logo";
 import {
     AppBar,
     Badge,
     Button, CircularProgress,
-    ClickAwayListener,
     IconButton,
-    Menu,
-    MenuItem, Paper,
-    Popper, RootRef,
+    RootRef,
     Toolbar,
     withStyles
 } from "@material-ui/core";
@@ -20,76 +17,8 @@ import {connect} from "react-redux";
 import CartWidget from "../../CartWidget";
 import AuthMenu from "../../Authentication/AuthMenu";
 import AuthModal from "../../Authentication/AuthModal";
-import {tryLogout, resetErrors} from "../../../store/actions/authActions";
-
-const styles = theme => ({
-    rootStatic: {
-        backgroundColor: "transparent",
-        boxShadow: "none"
-    },
-    rootFixed: {
-        backgroundColor: "white"
-    },
-    toolbar: {
-        padding: 4,
-        justifyContent: "space-between",
-        alignItems: "center",
-        [theme.breakpoints.up('md')]: {
-            justifyContent: "initial"
-        }
-    },
-    toolbarFixed: {},
-    navItems: {
-        display: "none",
-        [theme.breakpoints.up('md')]: {
-            display: "block",
-            flex: 1,
-            textAlign: "center"
-        }
-    },
-    drawerToggler: {
-        [theme.breakpoints.up('md')]: {
-            display: "none"
-        }
-    },
-    togglerIcon: {
-        color: "white"
-    },
-    togglerIconFixed: {
-        color: "grey"
-    },
-    shoppingCart: {
-        color: "white",
-        marginLeft: 10,
-        marginRight: 10
-    },
-    shoppingCartFixed: {
-        color: "grey"
-    },
-    logo: {
-        height: 50,
-        backgroundColor: "transparent",
-        margin: 10,
-        flex: 1,
-        [theme.breakpoints.up('md')]: {
-            flex: 0
-        }
-    },
-    login: {
-        transition: "color 0.2s linear",
-        // display: "none",
-        '&:hover': {
-            // backgroundColor: "white"
-            color: theme.palette.primary.main
-        },
-        [theme.breakpoints.up('sm')]: {
-            display: "block"
-        }
-    },
-    loginFixed: {
-        color: "grey"
-    }
-});
+import styles from './styles';
+import {mapStateToProps, mapDispatchToProps} from "./redux";
 
 const MyToolbar = ({
                        classes,
@@ -103,7 +32,7 @@ const MyToolbar = ({
                        email,
                        isSigningIn,
                        isManager
-}) => {
+                   }) => {
     const appbarEl = useRef(null);
     const [isMenuOpened, setMenuOpened] = useState(null);
     const [isAuthMenuOpened, setAuthMenuOpened] = useState(null);
@@ -117,7 +46,7 @@ const MyToolbar = ({
     const handleAuthMenuClosed = () => setAuthMenuOpened(null);
     const handleOpenCart = (event) => {
         setMenuOpened(event.currentTarget);
-        // setMenuOpened(appbarEl.current);
+        // setMenuOpened(appbarEl.current); //stick cartWidget to the appbar
     };
     const handleCloseCart = () => setMenuOpened(null);
 
@@ -162,24 +91,23 @@ const MyToolbar = ({
                     </div>
                     <div className={logInButtonClasses.join(" ")}>
                         {isAuthenticated
-                            ?   <IconButton
-                                    aria-owns={isAuthMenuOpened ? 'auth-menu' : undefined}
-                                    aria-haspopup="true"
-                                    color="inherit"
-                                    onClick={handleAuthMenuOpened}
-                                >
+                            ? <IconButton
+                                aria-owns={isAuthMenuOpened ? 'auth-menu' : undefined}
+                                aria-haspopup="true"
+                                color="inherit"
+                                onClick={handleAuthMenuOpened}
+                            >
                                 <AccountCircle/>
                             </IconButton>
-
-                            :   isSigningIn
-                                    ?   <CircularProgress/>
-                                    :   <Button
-                                            color="inherit"
-                                            variant="outlined"
-                                            onClick={openAuthModal}
-                                        >
-                                            Sign in
-                                        </Button>
+                            : isSigningIn
+                                ? <CircularProgress/>
+                                : <Button
+                                    color="inherit"
+                                    variant="outlined"
+                                    onClick={openAuthModal}
+                                >
+                                    Sign in
+                                </Button>
                         }
                         <AuthMenu
                             {...{isAuthMenuOpened, handleAuthMenuClosed, doLogout, email, isManager}}
@@ -208,18 +136,6 @@ const MyToolbar = ({
     );
 };
 
-const mapStateToProps = (state) => ({
-    basket: state.basket.basket,
-    totalQuantity: state.basket.totalQuantity,
-    isAuthenticated: !state.auth.isAnonymous,
-    isManager: state.auth.isManager,
-    email: state.auth.email,
-    isSigningIn: state.auth.signInLoading
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    doLogout: () => dispatch(tryLogout()),
-    doResetErrors: () => dispatch(resetErrors())
-});
-
-export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(MyToolbar));
+export default connect(mapStateToProps, mapDispatchToProps)(
+    withStyles(styles)(MyToolbar)
+);

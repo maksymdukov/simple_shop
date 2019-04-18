@@ -1,7 +1,6 @@
 import React from 'react';
 import {Divider, Drawer} from "@material-ui/core";
 import NavItems from "../NavItems";
-import HeadingDivider from "../../UI/HeadingDivider";
 import NavItem from "../NavItems/NavItem";
 
 const SideDrawer = ({drawerOpened, handleDrawerClose}) => {

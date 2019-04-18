@@ -1,11 +1,6 @@
 import React from 'react';
 import {Grid, Typography, withStyles} from "@material-ui/core";
-
-const styles = (theme) => ({
-    price: {
-        color: theme.palette.primary.main
-    }
-});
+import styles from './styles';
 
 const OrderCardSummary = ({classes, order}) => {
     const date = new Date(order.timestamp);

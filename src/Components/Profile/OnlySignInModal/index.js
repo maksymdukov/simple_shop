@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
     withStyles,
     Dialog,
@@ -8,29 +8,10 @@ import {
     Slide
 } from "@material-ui/core";
 import IconClose from '@material-ui/icons/CloseRounded'
-import {signIn} from "../../../store/actions/authActions";
 import {connect} from "react-redux";
 import SignIn from "../../Authentication/SignIn";
-
-const styles = (theme) => ({
-    closeBtn: {
-        position: "absolute",
-        right: 0,
-        top: 0
-    },
-    paper: {
-        maxHeight: "none",
-        [theme.breakpoints.up('xs')]: {
-            width: "90%"
-        },
-        [theme.breakpoints.up('sm')]: {
-            width: 400
-        }
-    },
-    title: {
-        textAlign: "center"
-    }
-});
+import styles from './styles';
+import {mapStateToProps, mapDispatchToProps} from "./redux";
 
 const Transition = (props) => <Slide direction="down" {...props}/>;
 
@@ -69,12 +50,6 @@ const OnlySignInModal = ({
     );
 };
 
-const mapStateToProps = (state) => ({
-    signInLoading: state.auth.signInLoading,
-    signInError: state.auth.signInError
-});
-const mapDispatchToProps = (dispatch) => ({
-    doSignIn: (email, password) => dispatch( signIn(email, password) ),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)( withStyles(styles)(OnlySignInModal) );
+export default connect(mapStateToProps, mapDispatchToProps)(
+    withStyles(styles)(OnlySignInModal)
+);

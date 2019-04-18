@@ -1,17 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Checkbox, FormControlLabel, Grid, Typography, withStyles} from "@material-ui/core";
 import firebase from '../../../../../firebase/config';
-
-const styles = (theme) => ({
-    price: {
-        color: theme.palette.primary.main
-    },
-    container: {
-    },
-    isChecked: {
-        textAlign: 'center'
-    }
-});
+import styles from './styles';
 
 const LastOrderSummary = ({classes, order, orderId}) => {
     const updateOrderStatus = () => {

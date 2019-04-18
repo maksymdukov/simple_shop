@@ -1,12 +1,6 @@
 import React from 'react';
 import {Divider, withStyles} from "@material-ui/core";
-
-const styles = (theme) => ({
-    root: {
-        backgroundColor: theme.palette.primary.main,
-        margin: "10px 0",
-    }
-});
+import styles from './styles';
 
 const HeadingDivider = ({classes}) => {
     return (

@@ -2,32 +2,11 @@ import React, {Fragment, useEffect, useRef, useState} from 'react';
 import {Helmet} from "react-helmet/es/Helmet";
 import MyToolbar from "../Navigation/MyToolbar";
 import SideDrawer from "../Navigation/SideDrawer";
-import classes from './index.module.css';
 import Notificator from "../Notificator";
 import {Typography,withStyles} from "@material-ui/core";
-import AuthModal from "../Authentication/AuthModal";
+import styles from './styles';
 
 const TITLE_PREFIX = "MySite.com - ";
-
-const styles = (theme) => ({
-    header: {
-        height: 200,
-        backgroundImage: "url(https://mrgrill.com.ua/wp-content/uploads/2017/09/banner.jpg)",
-        backgroundSize: "cover",
-        position: "relative"
-    },
-    pageTitle: {
-        position: "absolute",
-        bottom: 20,
-        width: "100%",
-        fontWeight: 100,
-        // fontStyle: "italic",
-        color: theme.palette.common.grey
-    },
-    main: {
-        marginBottom: theme.spacing.unit * 5
-    }
-});
 
 const Layout = ({classes, children}) => {
     const headerEl = useRef(null);

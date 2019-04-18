@@ -1,26 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import {Helmet} from "react-helmet/es/Helmet";
 import MenuCardList from "../../Components/BurgerCardList";
-import {BURGERS, BEVERAGES} from "./menuMock";
-import {CircularProgress, Paper, Typography} from "@material-ui/core";
+import {CircularProgress} from "@material-ui/core";
 import Heading from "../../Components/UI/Heading";
 import HeadingDivider from "../../Components/UI/HeadingDivider";
 import {connect} from "react-redux";
-import {fetchMenu} from "../../store/actions/menuActions";
 import ErrorModal from "../../Components/UI/ErrorModal";
-
+import {mapStateToProps, mapDispatchToProps} from "./redux";
 
 
 const Menu = ({menu, loading, error, fetchFullMenu}) => {
-    useEffect(()=>{
+    useEffect(() => {
         fetchFullMenu();
-    },[]);
+    }, []);
     const [isErrModalOpened, setIsErrModalOpened] = useState(true);
     const spinner = loading ? <div style={{textAlign: "center"}}><CircularProgress/></div> : null;
     const errorModal = error
         ? <ErrorModal
             isOpened={isErrModalOpened}
-            handleClose={()=>setIsErrModalOpened(false)}
+            handleClose={() => setIsErrModalOpened(false)}
             message={error.message}
         />
         : null;
@@ -44,15 +42,5 @@ const Menu = ({menu, loading, error, fetchFullMenu}) => {
         </div>
     );
 };
-
-const mapStateToProps = (state) => ({
-    menu: state.menu.menu,
-    loading: state.menu.loading,
-    error: state.menu.error
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    fetchFullMenu: ()=>dispatch(fetchMenu())
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

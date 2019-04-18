@@ -1,15 +1,6 @@
 import React from 'react';
 import {Button, withStyles} from "@material-ui/core";
-
-const styles = theme => ({
-    removeFromBasket: {
-        color: "inherit",
-        borderRadius: 0,
-        '&:hover': {
-            opacity: 0.9
-        }
-    }
-});
+import styles from './styles';
 
 const RemoveFromBasket = ({classes, children, className, ...others}) => {
     let classesArr = [classes.removeFromBasket];

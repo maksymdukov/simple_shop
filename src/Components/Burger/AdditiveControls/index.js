@@ -1,5 +1,4 @@
 import React from 'react';
-import {List} from "@material-ui/core";
 import AdditiveControl from "./AdditiveControl";
 import classes from './index.module.css';
 

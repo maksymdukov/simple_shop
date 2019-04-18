@@ -1,17 +1,6 @@
 import React from 'react';
-import {Dialog, DialogContent, DialogTitle, Divider, Modal, Typography, withStyles} from "@material-ui/core";
-
-const styles = (theme) => ({
-    message: {
-        textAlign: "center",
-    },
-    title: {
-        textAlign: "center",
-    },
-    container: {
-        padding: theme.spacing.unit * 5
-    }
-});
+import {Dialog, DialogContent, DialogTitle, Divider, Typography, withStyles} from "@material-ui/core";
+import styles from './styles';
 
 const ErrorModal = ({classes, message, isOpened, handleClose}) => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {withStyles, Button, TextField, Grid, MenuItem, CircularProgress, Typography} from "@material-ui/core";
+import {withStyles, Button, TextField, MenuItem, CircularProgress, Typography} from "@material-ui/core";
 
 const styles = (theme) => ({
     submitContainer: {

@@ -1,16 +1,10 @@
 import React, {useEffect} from 'react';
-import {ExpansionPanel, TableCell, TableRow, withStyles} from "@material-ui/core";
+import {TableCell, TableRow, withStyles} from "@material-ui/core";
 import Spinner from "../../UI/Spinner";
 import OrderCard from "./OrderCard";
 import OrderCardSummary from './OrderCard/OrderCardSummary';
 import OrderCardDetails from "./OrderCard/OrderCardDetails";
-
-const styles = (theme) => ({
-    mainCell: {
-        width: "100%",
-        borderBottom: "none"
-    },
-});
+import styles from './styles';
 
 const Orders = (props) => {
     const {classes, start, end, ordersContent, fetchContent, contentLoading} = props;
@@ -19,7 +13,7 @@ const Orders = (props) => {
         console.log("start:"+ start);
         console.log("end:"+ end);
         fetchContent(start, end);
-    }, [props.end]);
+    }, [props.end, props.start]);
 
     return contentLoading
         ? <TableRow>

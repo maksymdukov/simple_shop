@@ -24,7 +24,7 @@ export const fetchOrderList = () => {
     return async (dispatch, getState) => {
         try {
             const uid = getState().auth.uid;
-            const token = getState().auth.token;
+            // const token = getState().auth.token;
             dispatch(fetchListStart());
             const snapshot = await firebase.database().ref(`/users/${uid}/orders`).once('value');
             console.log(snapshot.val());

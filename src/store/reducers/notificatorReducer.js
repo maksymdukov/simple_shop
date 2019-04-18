@@ -5,7 +5,7 @@ const initialState = {
     itemName: ''
 };
 
-const notificatorReducer = (state = {}, {type, itemName}) => {
+const notificatorReducer = (state = initialState, {type, itemName}) => {
     switch (type) {
         case SHOW_MESSAGE:
             return {

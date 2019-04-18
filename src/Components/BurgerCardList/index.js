@@ -1,13 +1,13 @@
 import React, {useState, Fragment} from 'react';
 import MenuCard from "./MenuCard";
-import classes from './index.module.css';
 import {connect} from "react-redux";
-import {addItemToBasket, minusQuantity, plusQuantity, removeItemFromBasket} from "../../store/actions/basketActions";
-import {showNotification} from "../../store/actions/notificatorActions";
 import BurgerCardModal from "./BurgerCardModal";
-import {initIngredients} from "../../store/actions/burgerEditorActions";
+import styles from './styles';
+import {withStyles} from "@material-ui/core";
+import {mapStateToProps, mapDispatchToProps} from "./redux";
 
 const BurgersList = ({
+                         classes,
                          type = 'normal',
                          list,
                          basket,
@@ -27,7 +27,7 @@ const BurgersList = ({
         setModalState({...modalState, opened: false});
     };
 
-    let cards, modal = null;
+    let cards = null;
     if (list) {
         cards = list.map( menuItem => {
             const indexInBasket = basket.reduce( (acc, basketItem, basketIndex) => {
@@ -48,7 +48,7 @@ const BurgersList = ({
 
     return (
         <Fragment>
-            <div className={classes.BurgerList}>
+            <div className={classes.list}>
                 {cards}
             </div>
             {type === 'burger' && <BurgerCardModal
@@ -61,19 +61,6 @@ const BurgersList = ({
     );
 };
 
-const mapStateToProps = (state) => ({
-    basket: state.basket.basket,
-    burgerEditorState: state.burgerEditor
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    addItemToBasket: (item) => dispatch(addItemToBasket(item)),
-    removeItemFromBasket: (index) => dispatch(removeItemFromBasket(index)),
-    plusQuantity: (index) => dispatch(plusQuantity(index)),
-    minusQuantity: (index) => dispatch(minusQuantity(index)),
-    initIngredients: (ingredients, additives, initCost) => dispatch(initIngredients(ingredients, additives, initCost)),
-    showNotification: (itemName) => dispatch(showNotification(itemName))
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(BurgersList);
+export default connect(mapStateToProps, mapDispatchToProps)(
+    withStyles(styles)(BurgersList)
+);

@@ -6,36 +6,7 @@ import {AppBar, Fab, Toolbar} from "@material-ui/core";
 import BurgerEditor from "../../BurgerEditor";
 import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined';
 import IconEdit from '@material-ui/icons/Edit';
-import burger from '../../../assets/burger-logo.png';
-
-const styles = (theme) => ({
-    fabContainer: {
-        position: 'absolute',
-        bottom: theme.spacing.unit * 2,
-        right: 10
-    },
-    fab: {
-        marginRight: 10,
-        backgroundColor: theme.card.price.mainColor,
-        color: theme.card.frontSide.backgroundColor
-    },
-    toolbar: {
-        justifyContent: "center",
-    },
-    title: {
-        fontWeight: 300,
-        '& span': {
-            color: theme.card.price.mainColor
-        }
-    },
-    container: {
-        overflow: "auto",
-        paddingBottom: 70
-    },
-    paper: {
-        overflow: "auto"
-    }
-});
+import styles from './styles';
 
 const BurgerCardModal = ({
                              classes,

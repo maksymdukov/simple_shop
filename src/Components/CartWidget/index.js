@@ -1,59 +1,29 @@
 import React from 'react';
 import {
-    ClickAwayListener,
     Divider,
     List,
-    Menu,
-    Paper,
     Popover,
-    Popper,
     Typography,
     withStyles,
     Grid, Button
 } from "@material-ui/core";
-import {plusQuantity, minusQuantity, removeItemFromBasket} from "../../store/actions/basketActions";
 import {connect} from "react-redux";
 import CartWidgetItem from "./CartWidgetItem";
-import ScrollBar from "../UI/ScrollBar";
 import {Link} from "react-router-dom";
+import styles from './styles';
+import {mapStateToProps, mapDispatchToProps} from "./redux";
 
-const styles = (theme) => ({
-    paper: {
-        [theme.breakpoints.up("xs")]: {
-            width: "80vw",
-        },
-        [theme.breakpoints.up("sm")]: {
-            width: 400
-        },
-        [theme.breakpoints.up("md")]: {
-            width: 500
-        }
-    },
-    listContainer: {
-        // maxHeight: 300,
-        // overflow: "auto",
-    },
-    productList: {
-    },
-    price: {
-        paddingRight: 10
-    },
-    priceTag: {
-        color: theme.palette.primary.main
-    },
-    empty: {
-        paddingLeft: 20
-    },
-    actionsContainer: {
-        padding: 15
-    },
-    checkoutBtn: {
-
-    }
-});
-
-const CartWidget = ({classes, anchorEl, handleCloseCart, basket, plusQuantity, minusQuantity, removeItem, totalPrice}) => {
-    let basketItems = basket.map((item,idx) => (
+const CartWidget = ({
+                        classes,
+                        anchorEl,
+                        handleCloseCart,
+                        basket,
+                        plusQuantity,
+                        minusQuantity,
+                        removeItem,
+                        totalPrice
+                    }) => {
+    let basketItems = basket.map((item, idx) => (
         <CartWidgetItem
             key={item.id || item.name}
             name={item.name}
@@ -83,9 +53,9 @@ const CartWidget = ({classes, anchorEl, handleCloseCart, basket, plusQuantity, m
 
         >
             <div className={classes.listContainer}>
-                    <List className={classes.productList}>
-                        {basketItems}
-                    </List>
+                <List className={classes.productList}>
+                    {basketItems}
+                </List>
             </div>
             <Divider/>
             <Grid container className={classes.actionsContainer}>
@@ -108,21 +78,11 @@ const CartWidget = ({classes, anchorEl, handleCloseCart, basket, plusQuantity, m
                     </Typography>
                 </Grid>
             </Grid>
-
-                        <Divider/>
+            <Divider/>
         </Popover>
     );
 };
 
-const mapStateToProps = (state) => ({
-    basket: state.basket.basket,
-    totalPrice: state.basket.totalPrice
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    plusQuantity: (index) => dispatch(plusQuantity(index)),
-    minusQuantity: (index) => dispatch(minusQuantity(index)),
-    removeItem: (index) => dispatch(removeItemFromBasket(index))
-});
-
-export default withStyles(styles)( connect(mapStateToProps, mapDispatchToProps)(CartWidget) );
+export default connect(mapStateToProps, mapDispatchToProps)(
+    withStyles(styles)(CartWidget)
+);

@@ -1,21 +1,7 @@
 import React from 'react';
-import {DialogTitle, Divider, Menu, MenuItem, Popover, withStyles} from "@material-ui/core";
+import {DialogTitle, Divider, MenuItem, Popover, withStyles} from "@material-ui/core";
 import {NavLink, withRouter} from "react-router-dom";
-
-const styles = (theme) => ({
-    navItems: {
-        textDecoration: 'none',
-        color: 'inherit',
-        '&:active, &:hover, &:visited': {
-            textDecoration: 'none',
-            color: 'inherit',
-        },
-        '&$active': {
-            color: theme.palette.primary.main,
-        }
-    },
-    active: {}
-});
+import styles from './styles';
 
 const AuthMenu = (props) => {
     const {classes, isAuthMenuOpened, handleAuthMenuClosed, doLogout, email, history, isManager} = props;
@@ -81,4 +67,4 @@ const AuthMenu = (props) => {
     );
 };
 
-export default withRouter( withStyles(styles)(AuthMenu) );
+export default withStyles(styles)( withRouter( AuthMenu) );

@@ -7,53 +7,25 @@ import LastOrderSummary from "../../../Components/Admins/LastOrders/Card/LastOrd
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import audio from '../../../assets/notification.mp3';
 import Spinner from "../../../Components/UI/Spinner";
-import {Helmet} from "react-helmet/es/Helmet";
-
-const styles = (theme) => ({
-    transitionItem: {
-        '&-enter': {
-            opacity: 0,
-        },
-        '&-enter-active':{
-            opacity: 1,
-            transition: "opacity 500ms ease-in"
-        },
-        '&-exit': {
-            opacity: 1
-        },
-        '&-exit-active': {
-        opacity: 0,
-        transition: "opacity 500ms ease-in"
-        }
-    },
-    transitionItemEnter: {
-        opacity: 0,
-        transition: "opacity 500ms ease-in"
-    },
-    transitionItemEnterActive: {
-        opacity: 1,
-        transition: "opacity 500ms ease-in"
-
-    }
-});
+import styles from './styles';
 
 const LastOrders = ({classes}) => {
     const audRef = useRef(null);
-    const [count, setCount] = useState(0);
+    const [, setCount] = useState(0);
     const [lastOrders, setLastOrders] = useState([]);
     const newOrdersListener = (res) => {
-            console.log("new order");
-            const order = res.val();
-            const orderId = res.key;
-            console.log(orderId);
-            setLastOrders((prevState)=>[{order, orderId}, ...prevState]);
-            setCount((prevState) => {
-                //Play sound after 10 orders has been loaded
-                if (prevState > 9) {
-                    audRef.current.play();
-                }
-                return prevState+1;
-            });
+        console.log("new order");
+        const order = res.val();
+        const orderId = res.key;
+        console.log(orderId);
+        setLastOrders((prevState) => [{order, orderId}, ...prevState]);
+        setCount((prevState) => {
+            //Play sound after 10 orders has been loaded
+            if (prevState > 9) {
+                audRef.current.play();
+            }
+            return prevState + 1;
+        });
     };
     const orderStatusChangedListener = res => {
         console.log("child changed");
@@ -73,16 +45,16 @@ const LastOrders = ({classes}) => {
     const errorHandler = (err) => {
         console.log(err)
     };
-    useEffect(()=>{
+    useEffect(() => {
         console.log("subscribe")
-        firebase.database().ref("/orders").limitToLast(10).on('child_added', newOrdersListener, errorHandler )
-        firebase.database().ref("/orders").limitToLast(10).on('child_changed', orderStatusChangedListener, errorHandler )
+        firebase.database().ref("/orders").limitToLast(10).on('child_added', newOrdersListener, errorHandler)
+        firebase.database().ref("/orders").limitToLast(10).on('child_changed', orderStatusChangedListener, errorHandler)
         return () => {
             console.log("unsubscribe");
             firebase.database().ref("/orders").off('child_added', newOrdersListener);
             firebase.database().ref("/orders").off('child_changed', orderStatusChangedListener);
         }
-    },[]);
+    }, []);
     return (
         <div>
             <audio ref={audRef}>
@@ -91,19 +63,19 @@ const LastOrders = ({classes}) => {
             New orders
             {!lastOrders.length && <Spinner/>}
             <TransitionGroup>
-            {lastOrders.map((orderObj) => (
-                <CSSTransition
-                    key={orderObj.orderId}
-                    timeout={500}
-                    classNames={`${classes.transitionItem}`}>
-                <OrderCard
-                    key={orderObj.orderId}
-                    cardSummary={() => <LastOrderSummary order={orderObj.order} orderId={orderObj.orderId}/>}
-                    cardDetails={() => <OrderCardDetails order={orderObj.order} orderId={orderObj.orderId}/>}
-                    order={orderObj.order}
-                />
-                </CSSTransition>
-            ))}
+                {lastOrders.map((orderObj) => (
+                    <CSSTransition
+                        key={orderObj.orderId}
+                        timeout={500}
+                        classNames={`${classes.transitionItem}`}>
+                        <OrderCard
+                            key={orderObj.orderId}
+                            cardSummary={() => <LastOrderSummary order={orderObj.order} orderId={orderObj.orderId}/>}
+                            cardDetails={() => <OrderCardDetails order={orderObj.order} orderId={orderObj.orderId}/>}
+                            order={orderObj.order}
+                        />
+                    </CSSTransition>
+                ))}
             </TransitionGroup>
         </div>
     );

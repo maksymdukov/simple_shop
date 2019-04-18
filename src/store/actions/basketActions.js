@@ -72,7 +72,7 @@ export const makePurchase = (contactData) => {
             } else {
                 const uid = getState().auth.uid;
                 let orderSnap = await firebase.database().ref('orders/').push(order);
-                let userRes = await firebase.database().ref('users/'+uid+'/orders/'+orderSnap.key).set(true)
+                await firebase.database().ref('users/'+uid+'/orders/'+orderSnap.key).set(true)
                 dispatch(purchaseSuccess());
             }
         }

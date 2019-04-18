@@ -1,5 +1,5 @@
 import React from 'react';
-import {IconButton, ListItem} from "@material-ui/core";
+import {IconButton} from "@material-ui/core";
 import IconPlus from '@material-ui/icons/Add';
 import IconMinus from '@material-ui/icons/Remove';
 import classes from './index.module.css'

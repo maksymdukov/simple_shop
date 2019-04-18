@@ -1,4 +1,4 @@
-import React, {Component, useEffect, Suspense} from 'react';
+import React, {useEffect, Suspense} from 'react';
 import {CssBaseline} from "@material-ui/core";
 import Layout from "./Components/Layout";
 import {Route} from "react-router";

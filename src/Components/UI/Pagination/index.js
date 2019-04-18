@@ -1,28 +1,18 @@
 import React from 'react';
-import {Paper, Table, TableBody, withStyles, TableRow, TableCell, TableFooter,TablePagination} from "@material-ui/core";
+import {Table, TableBody, withStyles, TableRow, TableCell, TableFooter,TablePagination} from "@material-ui/core";
 import PaginationActions from './PaginationActions';
-
-const styles = (theme) => ({
-    table: {
-    },
-    tableWrapper: {
-        width: '100%',
-        overflow: "hidden",
-        marginTop: theme.spacing.unit * 3,
-    },
-});
+import styles from './styles'
 
 class Pagination extends React.Component {
     constructor(props) {
         super(props);
-        const { props:{ordersList, render}} = this;
+        const { props:{ordersList}} = this;
         this.state = {
             rows: ordersList,
             page: 0,
             rowsPerPage: 5,
         };
     }
-
 
     handleChangePage = (event, page) => {
         this.setState({ page });
@@ -36,7 +26,6 @@ class Pagination extends React.Component {
         const { classes, render } = this.props;
         const { rows, rowsPerPage, page } = this.state;
         const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-
         return (
                 <div className={classes.tableWrapper}>
                     <Table className={classes.table}>

@@ -7,7 +7,6 @@ import {createStore, compose, applyMiddleware, combineReducers} from "redux";
 import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
-import red from '@material-ui/core/colors/red';
 import 'typeface-roboto';
 import menuReducer from "./store/reducers/menuReducer";
 import basketReducer from "./store/reducers/basketReducer";

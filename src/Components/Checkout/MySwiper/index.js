@@ -3,24 +3,19 @@ import Swiper from 'react-id-swiper';
 import {connect} from "react-redux";
 import {withStyles} from "@material-ui/core";
 import 'react-id-swiper/src/styles/css/swiper.css';
-import Card from "../CardList/Card";
+import Card from "../Card";
 import {Scrollbar} from "swiper/dist/js/swiper.esm";
-import {minusQuantity, plusQuantity, removeItemFromBasket} from "../../../store/actions/basketActions";
+import styles from './styles'
+import {mapStateToProps, mapDispatchToProps} from "./redux";
 
-const styles = (theme) => ({
-    container: {
-      marginTop: 20
-    },
-    card: {
-        background: "inherit",
-        width: 250,
-        minWidth: 250,
-        margin: "20px 0"
-    }
-
-});
-
-const MySwiper = ({classes, basket, plusQuantity, minusQuantity, removeItem, openModal}) => {
+const MySwiper = ({
+                      classes,
+                      basket,
+                      plusQuantity,
+                      minusQuantity,
+                      removeItem,
+                      openModal
+}) => {
     const [swiper, updateSwiper] = useState(null);
     useEffect(()=>{
         if (swiper) {
@@ -59,13 +54,6 @@ const MySwiper = ({classes, basket, plusQuantity, minusQuantity, removeItem, ope
     );
 };
 
-const mapStateToProps = (state) => ({
-    basket: state.basket.basket
-});
-const mapDispatchToProps = (dispatch) => ({
-    plusQuantity: (index) => dispatch(plusQuantity(index)),
-    minusQuantity: (index) => dispatch(minusQuantity(index)),
-    removeItem: (index) => dispatch(removeItemFromBasket(index))
-});
-
-export default withStyles(styles)( connect(mapStateToProps, mapDispatchToProps)(MySwiper) );
+export default connect(mapStateToProps, mapDispatchToProps)(
+    withStyles(styles)(MySwiper)
+);

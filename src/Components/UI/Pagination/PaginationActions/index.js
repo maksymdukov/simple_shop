@@ -4,14 +4,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-
-const styles = theme => ({
-    root: {
-        flexShrink: 0,
-        color: theme.palette.text.secondary,
-        marginLeft: theme.spacing.unit * 2.5,
-    },
-});
+import styles from './styles';
 
 class PaginationActions extends React.Component {
     handleFirstPageButtonClick = event => {
@@ -34,8 +27,7 @@ class PaginationActions extends React.Component {
     };
 
     render() {
-        const { classes, count, page, rowsPerPage, theme } = this.props;
-
+        const { classes, count, page, rowsPerPage } = this.props;
         return (
             <div className={classes.root}>
                 <IconButton
