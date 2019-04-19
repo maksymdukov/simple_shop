@@ -20,6 +20,9 @@ const MySwiper = ({
     useEffect(()=>{
         if (swiper) {
             swiper.update();
+            // swiper.updateSize();
+            // swiper.updateSlides();
+            // swiper.updateSlidesClasses();
         }
     },[basket]);
     const params = {

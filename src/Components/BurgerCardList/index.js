@@ -5,6 +5,7 @@ import BurgerCardModal from "./BurgerCardModal";
 import styles from './styles';
 import {withStyles} from "@material-ui/core";
 import {mapStateToProps, mapDispatchToProps} from "./redux";
+import Swiper from 'react-id-swiper';
 
 const BurgersList = ({
                          classes,
@@ -17,7 +18,9 @@ const BurgersList = ({
                          minusQuantity,
                          burgerEditorState,
                          initIngredients,
-                         showNotification
+                         showNotification,
+                         isInSwiper,
+                         swiperProps
 }) => {
     const [modalState, setModalState] = useState({opened: false, item: {}});
     const openModal = (menuItem) => {
@@ -34,23 +37,29 @@ const BurgersList = ({
                 return basketItem.name === menuItem.name ? basketIndex : acc;
             }, -1 );
             return (
-                <MenuCard
-                    key={menuItem.name}
-                    itemObj={menuItem}
-                    isInBasket={indexInBasket !== -1}
-                    basketObj={basket[indexInBasket]}
-                    onAreaClick={openModal}
-                    {...{type, indexInBasket, addItemToBasket, removeItemFromBasket, plusQuantity, minusQuantity, showNotification}}
-                />
+                <div className={isInSwiper ? swiperProps.slideClass : ""} key={menuItem.name}>
+                    <MenuCard
+                        itemObj={menuItem}
+                        isInBasket={indexInBasket !== -1}
+                        basketObj={basket[indexInBasket]}
+                        onAreaClick={openModal}
+                        {...{type, indexInBasket, addItemToBasket, removeItemFromBasket, plusQuantity, minusQuantity, showNotification}}
+                    />
+                </div>
             );
         } );
     }
 
     return (
         <Fragment>
-            <div className={classes.list}>
-                {cards}
-            </div>
+            {isInSwiper
+                ?   <Swiper {...swiperProps}>
+                            {cards}
+                    </Swiper>
+                :   <div className={classes.list}>
+                        {cards}
+                    </div>
+            }
             {type === 'burger' && <BurgerCardModal
                 opened={modalState.opened}
                 handleClose={closeModal}

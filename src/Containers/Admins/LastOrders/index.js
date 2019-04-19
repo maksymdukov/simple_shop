@@ -46,7 +46,8 @@ const LastOrders = ({classes}) => {
         console.log(err)
     };
     useEffect(() => {
-        console.log("subscribe")
+        console.log("subscribe");
+        firebase.database().ref("/orderIds").once('value').then(res => console.log( res.val() ));
         firebase.database().ref("/orders").limitToLast(10).on('child_added', newOrdersListener, errorHandler)
         firebase.database().ref("/orders").limitToLast(10).on('child_changed', orderStatusChangedListener, errorHandler)
         return () => {

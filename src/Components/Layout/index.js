@@ -47,6 +47,9 @@ const Layout = ({classes, children}) => {
             <main className={classes.main}>
                 {children}
             </main>
+            <footer className={classes.footer}>
+
+            </footer>
         </Fragment>
     );
 };

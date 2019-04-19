@@ -1,5 +1,9 @@
 {
   "rules": {
+    "orderIds": {
+      ".read" : "auth.token.email == 'aa@aa.ru'  || root.child('/users/'+auth.uid+'/manager').exists()",
+      ".write": "auth.token.email == 'aa@aa.ru'  || root.child('/users/'+auth.uid+'/manager').exists()"
+    },
     "orders": {
       "$order_id": {
         ".read": "root.child('/users/'+auth.uid+'/orders/'+$order_id).exists()"
