@@ -5,6 +5,7 @@ firebase.json
 database.rules.json
 .firebaserc
 /functions
+/.idea
 
 # dependencies
 /node_modules
