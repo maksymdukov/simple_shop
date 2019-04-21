@@ -121,7 +121,7 @@ const Home = ({classes, history}) => {
             <Heading variant="h4" color="primary" component="h2" gutterBottom>
                 Our best offers
             </Heading>
-            <HeadingDivider/>
+            {/*<HeadingDivider/>*/}
             <BurgersList list={BURGERS.slice(0,4)} type='burger' isInSwiper swiperProps={swiperConfig}/>
         </Fragment>
     );

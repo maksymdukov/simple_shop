@@ -5,8 +5,20 @@ import SideDrawer from "../Navigation/SideDrawer";
 import Notificator from "../Notificator";
 import {Typography,withStyles} from "@material-ui/core";
 import styles from './styles';
+import Footer from "./Footer";
 
 const TITLE_PREFIX = "MySite.com - ";
+
+const BGIMAGE_MAP = {
+    'default': "https://mrgrill.com.ua/wp-content/uploads/2017/09/banner.jpg",
+    "Home": "https://mrgrill.com.ua/wp-content/uploads/2017/09/bg_about-1.jpg",
+    "Menu": "https://mrgrill.com.ua/wp-content/uploads/2017/09/banner.jpg",
+    "Burger Builder": "https://mrgrill.com.ua/wp-content/uploads/2017/09/banner.jpg",
+    "Checkout": "https://mrgrill.com.ua/wp-content/uploads/2017/09/banner.jpg",
+    "About": "https://mrgrill.com.ua/wp-content/uploads/2017/09/bg_contacts.jpg",
+    "Contacts": "https://mrgrill.com.ua/wp-content/uploads/2017/09/bg_contacts.jpg",
+    "My orders": "https://mrgrill.com.ua/wp-content/uploads/2017/09/banner.jpg",
+};
 
 const Layout = ({classes, children}) => {
     const headerEl = useRef(null);
@@ -34,13 +46,19 @@ const Layout = ({classes, children}) => {
             window.removeEventListener('scroll', onScrollListener )
         }
     }, []);
-
     return (
         <Fragment>
-            <Helmet titleTemplate={`${TITLE_PREFIX}%s`} onChangeClientState={(newState) => setTitle(newState.title)}/>
-            <header ref={headerEl} className={classes.header}>
+            <Helmet
+                titleTemplate={`${TITLE_PREFIX}%s`}
+                onChangeClientState={(newState) => newState.title ? setTitle(newState.title.split(TITLE_PREFIX)[1]) : setTitle("")}
+            />
+            <header
+                ref={headerEl}
+                className={classes.header}
+                style={{backgroundImage: `url(${BGIMAGE_MAP[title] || BGIMAGE_MAP.default})`}}
+            >
                 <MyToolbar position={appbarPosition} {...{handleDrawerOpen}} />
-                <Typography align="center" variant="h3" component="h1" className={classes.pageTitle}>{title && title.split(TITLE_PREFIX)[1]}</Typography>
+                <Typography align="center" variant="h3" component="h1" className={classes.pageTitle}>{title && title}</Typography>
             </header>
             <SideDrawer {...{drawerOpened, handleDrawerClose}}/>
             <Notificator/>
@@ -48,7 +66,7 @@ const Layout = ({classes, children}) => {
                 {children}
             </main>
             <footer className={classes.footer}>
-
+                <Footer/>
             </footer>
         </Fragment>
     );

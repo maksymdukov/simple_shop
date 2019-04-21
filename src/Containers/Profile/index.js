@@ -34,7 +34,7 @@ const Profile = ({
             <Heading variant="h4" color="primary" component="h2">
                 Edit Profile
             </Heading>
-            <HeadingDivider/>
+            {/*<HeadingDivider/>*/}
             <ProfileForm
                 onSubmit={updProfile}
               {...{profile, email, loading, uploading, uploadError, uploadSuccess}}

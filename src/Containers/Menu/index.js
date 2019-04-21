@@ -1,46 +1,85 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Fragment} from 'react';
 import {Helmet} from "react-helmet/es/Helmet";
-import MenuCardList from "../../Components/BurgerCardList";
 import {CircularProgress} from "@material-ui/core";
-import Heading from "../../Components/UI/Heading";
-import HeadingDivider from "../../Components/UI/HeadingDivider";
 import {connect} from "react-redux";
-import ErrorModal from "../../Components/UI/ErrorModal";
 import {mapStateToProps, mapDispatchToProps} from "./redux";
+import FilteredItem from "../../Components/Menu/FilteredItem";
+import withErrorModal from "../../hoc/withErrorModal";
+import Filters from "../../Components/Menu/Filters";
 
 
-const Menu = ({menu, loading, error, fetchFullMenu}) => {
+const Menu = ({menu, loading, fetchFullMenu}) => {
+    const [filters, setFilters] = useState({filters: {}, activeCounter: 0});
     useEffect(() => {
         fetchFullMenu();
     }, []);
-    const [isErrModalOpened, setIsErrModalOpened] = useState(true);
+    useEffect(()=>{
+        if (menu) {
+            const filtersObj = {'all': true};
+            menu.order.forEach((menuCategory) => {
+                filtersObj[menuCategory] = false;
+            });
+            setFilters((prevState) => ({...prevState, filters: filtersObj}));
+        }
+    }, [menu]);
     const spinner = loading ? <div style={{textAlign: "center"}}><CircularProgress/></div> : null;
-    const errorModal = error
-        ? <ErrorModal
-            isOpened={isErrModalOpened}
-            handleClose={() => setIsErrModalOpened(false)}
-            message={error.message}
-        />
-        : null;
+    const onFilterClickHandler = (filterName) => {
+        const updFilterState = {...filters, filters: {...filters.filters}};
+        if (filterName === 'all') {
+            updFilterState.filters.all = true;
+            menu.order.forEach(filterItem => updFilterState.filters[filterItem] = false);
+            updFilterState.activeCounter = 0;
+        } else {
+            updFilterState.filters.all = false;
+            updFilterState.activeCounter = filters.filters[filterName]
+                ? updFilterState.activeCounter - 1
+                : updFilterState.activeCounter + 1;
+            updFilterState.filters[filterName] = !updFilterState.filters[filterName];
+            if (updFilterState.activeCounter < 1) {
+                updFilterState.filters.all = true;
+                updFilterState.activeCounter = 0;
+            }
+        }
+        setFilters(updFilterState);
+    };
+
+    //Filtering menu
+    const filteredList = [];
+    if ('all' in filters.filters) {
+        menu.order.forEach((filterName) => {
+            if (filters.filters.all) {
+                // "All" filter is On
+                filteredList.push(<FilteredItem
+                    key={filterName}
+                    {...{menu, filterName}}
+                />);
+            } else if (filters.filters[filterName]) {
+                // "All" filter is Off. Checking each category if it's On.
+                filteredList.push(<FilteredItem
+                    key={filterName}
+                    {...{menu, filterName}}
+                />);
+            }
+        });
+    }
     return (
         <div>
             <Helmet title="Menu"/>
-            {errorModal}
-            <Heading variant="h4" color="primary" component="h2">Burgers</Heading>
-            <HeadingDivider/>
             {spinner}
-            {!!menu && <MenuCardList list={menu.burgers} type='burger'/>}
+            {menu &&
+                        <Filters
+                            filters={filters.filters}
+                            order={menu.order}
+                            onFilterClick={onFilterClickHandler}
+                        />
+            }
 
-            <Heading variant="h4" color="primary" component="h2">Beverages</Heading>
-            <HeadingDivider/>
-            {spinner}
-            {!!menu && <MenuCardList list={menu.beverages} type='normal'/>}
+            {filteredList}
 
-            <Heading variant="h4" color="primary" component="h2">Deserts</Heading>
-            <HeadingDivider/>
-            {spinner}
         </div>
     );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+const MenuWithError = withErrorModal(Menu);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuWithError);

@@ -1,4 +1,4 @@
-import background from '../../assets/dub-kantenberi2.jpg';
+// import background from '../../assets/dub-kantenberi2.jpg';
 
 const styles = (theme) => ({
     header: {
@@ -21,10 +21,13 @@ const styles = (theme) => ({
         position: "relative",
     },
     footer: {
-        height: 200,
-        backgroundImage: `url(${background})`,
-        backgroundSize: "cover",
-        position: "relative",
+        // height: 200,
+        // backgroundImage: `url(${background})`,
+        // backgroundSize: "cover",
+        // position: "relative",
+        padding: theme.spacing.unit * 2,
+        backgroundColor: theme.palette.common.darkGrey,
+        color: theme.palette.common.white
     }
 });
 

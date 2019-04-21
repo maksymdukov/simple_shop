@@ -47,10 +47,10 @@ const BurgerEditor = ({
             <Fragment>
                 <Burger {...{ingredients, removeIngredient}}/>
                 <Heading variant="h4" color="primary" component="h2">Main ingredients</Heading>
-                <HeadingDivider/>
+                {/*<HeadingDivider/>*/}
                 <BuildControls {...{addIngredient, ingredientsMenu, ingPrices}}/>
                 <Heading variant="h4" color="primary" component="h2">Additives</Heading>
-                <HeadingDivider/>
+                {/*<HeadingDivider/>*/}
                 <AdditiveControls {...{additivesMenu,additives, addAdditive, removeAdditive, ingPrices}}/>
             </Fragment>
             }

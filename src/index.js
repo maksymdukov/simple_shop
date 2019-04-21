@@ -38,6 +38,7 @@ const theme = createMuiTheme({
         common: {
             white: "#fff",
             grey: "#c3c3c3",
+            brightGrey: "#f3f3f3",
             brightBrown: "#e7d7cb",
             darkGrey: "#373737",
             brown: "rgb(139, 69, 19)"

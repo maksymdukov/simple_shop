@@ -24,7 +24,7 @@ const styles = (theme) => ({
     },
     videoSection: {
         position: "relative",
-        height: "calc(80vh - 70px)",
+        maxHeight: "calc(80vh - 70px)",
         overflow: "hidden"
     },
     video: {
