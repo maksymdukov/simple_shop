@@ -57,11 +57,13 @@ export const fetchIngredients = () => {
                 console.log(snapshot);
                 if (!snapshot.exists()) throw new Error("Database problems");
                 dispatch ( fetchIngredientsSuccess( snapshot.val() ) );
+                return Promise.resolve(true);
             }
             catch (e) {
                 console.log(e);
                 dispatch(fetchIngredientsFail(e));
             }
         }
+        return Promise.resolve(true);
     };
 };

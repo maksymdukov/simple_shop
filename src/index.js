@@ -76,9 +76,11 @@ const theme = createMuiTheme({
     // }
 });
 
+export const basename = "/simple_shop";
+
 const app = (
     <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename={basename}>
             <MuiThemeProvider theme={theme}>
                 <App />
             </MuiThemeProvider>

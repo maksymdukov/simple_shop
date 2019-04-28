@@ -6,6 +6,7 @@ import {Divider, Fab, Paper, withStyles} from "@material-ui/core";
 import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined';
 import styles from './styles';
 import {mapStateToProps, mapDispatchToProps} from "./redux";
+import {basename} from "../../index";
 
 const BurgerBuilder = ({
                            classes,
@@ -23,7 +24,7 @@ const BurgerBuilder = ({
         ingredients: ingredients,
         additives: additives,
         price: burgerCost,
-        image: "/static/media/burger-logo.png",
+        image: `${basename}/static/media/burger-logo.png`,
         id: Date.now()
     };
     const handleAddToBasket = () => {

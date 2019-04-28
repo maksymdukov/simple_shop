@@ -31,8 +31,9 @@ const BurgerEditor = ({
     const additivesMenu = menu ? menu.additives : [];
     const ingPrices =  menu ? menu.prices : {};
     useEffect(() => {
-        fetchIngs();
-        if (newIngredients) initIngredients(newIngredients, newAdditives, newCost);
+        fetchIngs().then( res => {
+            if (newIngredients) initIngredients(newIngredients, newAdditives, newCost);
+        } );
     },[]);
     return (
         <div>

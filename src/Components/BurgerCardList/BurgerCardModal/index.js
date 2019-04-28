@@ -7,6 +7,7 @@ import BurgerEditor from "../../BurgerEditor";
 import IconAddToBasket from '@material-ui/icons/AddShoppingCartOutlined';
 import IconEdit from '@material-ui/icons/Edit';
 import styles from './styles';
+import {basename} from "../../../index";
 
 const BurgerCardModal = ({
                              classes,
@@ -31,7 +32,7 @@ const BurgerCardModal = ({
             ingredients: burgerEditorState.ingredients,
             additives: burgerEditorState.additives,
             price: burgerEditorState.burgerCost,
-            image: "/static/media/burger-logo.png",
+            image: `${basename}/static/media/burger-logo.png`,
             id: Date.now()
         };
         addItemToBasket(newItem);
@@ -46,11 +47,15 @@ const BurgerCardModal = ({
             additives: burgerEditorState.additives,
             price: burgerEditorState.burgerCost,
             quantity: item.quantity,
-            image: "/static/media/burger-logo.png",
+            image: `${basename}/static/media/burger-logo.png`,
             id: Date.now()
         };
         editBasketItem(indexToEdit, newItem);
         handleClose();
+    };
+
+    const onDialogExit = () => {
+        initIngredients([], {}, burgerEditorState.error ? 0 : burgerEditorState.menu.prices.initial);
     };
     return (
         <Dialog
@@ -58,7 +63,7 @@ const BurgerCardModal = ({
             aria-labelledby="customized-dialog-title"
             open={opened}
             classes={{paper: classes.paper}}
-            onExited={() => initIngredients([], {}, burgerEditorState.error ? 0 : burgerEditorState.menu.prices.initial)}
+            onExited={onDialogExit}
         >
             <AppBar position="sticky" color="default">
                 <Toolbar className={classes.toolbar}>
