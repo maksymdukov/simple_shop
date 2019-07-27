@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet/es/Helmet";
 import PropTypes from "prop-types";
 
 // Constant
-import { basename } from "../../index";
+import { BASENAME } from "../../index";
 
 // Components
 import BurgerEditor from "../../Components/BurgerEditor";
@@ -33,7 +33,7 @@ const BurgerBuilder = ({
         ingredients: ingredients,
         additives: additives,
         price: burgerCost,
-        image: `${basename}/static/media/burger-logo.png`,
+        image: `${BASENAME}/static/media/burger-logo.png`,
         id: Date.now()
     };
     const handleAddToBasket = () => {

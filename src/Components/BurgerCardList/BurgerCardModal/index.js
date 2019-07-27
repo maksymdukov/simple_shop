@@ -16,7 +16,7 @@ import IconEdit from "@material-ui/icons/Edit";
 import styles from "./styles";
 
 // Constants
-import { basename } from "../../../index";
+import { BASENAME } from "../../../index";
 
 const BurgerCardModal = ({
     classes,
@@ -37,7 +37,7 @@ const BurgerCardModal = ({
             ingredients: burgerEditorState.ingredients,
             additives: burgerEditorState.additives,
             price: burgerEditorState.burgerCost,
-            image: `${basename}/static/media/burger-logo.png`,
+            image: `${BASENAME}/static/media/burger-logo.png`,
             id: Date.now()
         };
         addItemToBasket(newItem);
@@ -52,7 +52,7 @@ const BurgerCardModal = ({
             additives: burgerEditorState.additives,
             price: burgerEditorState.burgerCost,
             quantity: item.quantity,
-            image: `${basename}/static/media/burger-logo.png`,
+            image: `${BASENAME}/static/media/burger-logo.png`,
             id: Date.now()
         };
         editBasketItem(indexToEdit, newItem);
