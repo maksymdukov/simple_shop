@@ -4,7 +4,7 @@ export const TOP_BURGERS = [
         ingredients: ["salad", "meat", "bacon", "cheese"],
         description: "lorem ipasda asd asd asd",
         image:
-            "https://www.tasteofhome.com/wp-content/uploads/2017/10/exps28800_UG143377D12_18_1b_RMS-696x696.jpg",
+            "https://burgerking.ru/img/category-burgers.jpg",
         price: 50,
         additives: {
             "chilly sauce": 1
@@ -15,7 +15,7 @@ export const TOP_BURGERS = [
         ingredients: ["meat", "meat", "cheese"],
         description: "lorem ipasda asd asd asd",
         image:
-            "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/5/10/0/FNM_060117-Smashburger-Style-Burgers-Recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1494459418304.jpeg",
+            "https://sun-rolls.ru/static/img/0000/0002/3425/23425969.m7ibv5n5g4.jpg?1",
         price: 60,
         additives: {
             "bbq sauce": 1
@@ -26,7 +26,7 @@ export const TOP_BURGERS = [
         ingredients: ["salad", "cheese", "salad", "cheese"],
         description: "lorem ipasda asd asd asd",
         image:
-            "https://www.tasteofhome.com/wp-content/uploads/2017/10/exps28800_UG143377D12_18_1b_RMS-696x696.jpg",
+            "https://burgerking.ru/images/product_images/mobile/FishKing.png",
         price: 70,
         additives: {
             "cheese sauce": 1
@@ -37,7 +37,7 @@ export const TOP_BURGERS = [
         ingredients: ["meat", "bacon"],
         description: "lorem ipasda asd asd asd",
         image:
-            "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/5/10/0/FNM_060117-Smashburger-Style-Burgers-Recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1494459418304.jpeg",
+            "https://static-eu.insales.ru/images/products/1/1655/195823223/burger_goviajiy.jpg",
         price: 80,
         additives: {
             "bbq sauce": 1
@@ -48,7 +48,7 @@ export const TOP_BURGERS = [
         ingredients: ["meat", "meat", "bacon"],
         description: "lorem ipasda asd asd asd",
         image:
-            "https://www.tasteofhome.com/wp-content/uploads/2017/10/exps28800_UG143377D12_18_1b_RMS-696x696.jpg",
+            "http://burgerkingmeny.com/wp-content/uploads/2018/01/58f4087a312337147abb1db2e05cf169.png",
         price: 90,
         additives: {
             "bbq sauce": 2,
@@ -60,7 +60,7 @@ export const TOP_BURGERS = [
         ingredients: ["bacon", "cheese", "bacon", "salad"],
         description: "lorem ipasda asd asd asd",
         image:
-            "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/5/10/0/FNM_060117-Smashburger-Style-Burgers-Recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1494459418304.jpeg",
+            "https://burger4me.ru/wp-content/uploads/2018/09/BigKing-1.png",
         price: 100,
         additives: {
             "chilly sauce": 2

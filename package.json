@@ -2,7 +2,7 @@
   "name": "diploma",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://maksymdukov.github.io/simple_shop/",
+  "homepage": "https://maksymdukov.github.io/simple_shop",
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",

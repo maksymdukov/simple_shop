@@ -55,7 +55,7 @@ const theme = createMuiTheme({
     }
 });
 
-export const BASENAME = "";
+export const BASENAME = "/simple_shop";
 
 const app = (
     <Root>
