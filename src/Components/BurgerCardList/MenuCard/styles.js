@@ -45,10 +45,10 @@ const styles = (theme) => ({
             position: 'absolute',
             background: theme.palette.primary.main,
             color: theme.palette.common.white,
-            padding: '0 30px',
+            padding: '0 40px',
             transform: 'rotate(45deg)',
             top: '44px',
-            right: '-32px'
+            right: '-45px'
         }
     },
     area: {

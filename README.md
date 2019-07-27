@@ -1,4 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Author Comments
+
+Unit tests are provided only for a few parts of the app for a presentational purpose:
+
+src/store/actions/__tests__/authActions.spec.js
+
+src/store/reducers/__tests__/authReducer.spec.js
+
+src/store/reducers/__tests__/basketReducer.spec.js
+
+src/Components/Burger/__tests__/Burger.spec.js
+
 
 ## Available Scripts
 

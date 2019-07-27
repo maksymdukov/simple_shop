@@ -1,4 +1,6 @@
 import React, {useRef} from 'react';
+
+// MUI
 import {
     Card,
     CardActions,
@@ -8,12 +10,18 @@ import {
     Grid,
     withStyles,
 } from "@material-ui/core";
+
+// Icons
 import IconPlus from '@material-ui/icons/Add';
 import IconMinus from '@material-ui/icons/Remove'
+
+// Local components
 import AddToBasket from "../../UI/Buttons/AddToBasket";
 import RemoveFromBasket from "../../UI/Buttons/RemoveFromBasket";
 import BurgerOnHoverContent from "./BurgerOnHoverContent";
 import OnHoverContent from "./OnHoverContent";
+
+// Styles
 import styles from './styles';
 
 const MenuCard = ({

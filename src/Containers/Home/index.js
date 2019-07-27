@@ -20,7 +20,7 @@ import Spinner from "../../Components/UI/Spinner";
 import video from "../../assets/TheBurger_video_cover_03.mp4";
 
 // Mock
-import { BURGERS } from "./menuMock";
+import { TOP_BURGERS } from "./topOffersMock";
 
 // Other
 import { Element, scroller } from "react-scroll";
@@ -150,7 +150,7 @@ const Home = ({ classes, history }) => {
                 Our best offers
             </Heading>
             <BurgersList
-                list={BURGERS.slice(0, 4)}
+                list={TOP_BURGERS.slice(0, 4)}
                 type="burger"
                 isInSwiper
                 swiperProps={swiperConfig}

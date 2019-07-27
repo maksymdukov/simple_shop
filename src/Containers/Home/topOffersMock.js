@@ -1,4 +1,4 @@
-export const BURGERS = [
+export const TOP_BURGERS = [
     {
         name: "Chilly Master Burger",
         ingredients: ["salad", "meat", "bacon", "cheese"],

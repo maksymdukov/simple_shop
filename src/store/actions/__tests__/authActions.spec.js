@@ -1,12 +1,6 @@
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import {
-    signUpStart,
-    testAction,
-    signUp,
-    signIn,
-    authCheckState
-} from "../authActions";
+import { signUpStart, signUp, signIn, authCheckState } from "../authActions";
 import {
     SIGN_UP_START,
     SIGN_UP_SUCCESS,
@@ -74,6 +68,10 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe("Auth action creator", () => {
+    let store;
+    beforeEach(() => {
+        store = mockStore();
+    });
     afterEach(() => {
         localStorage.removeItem("expirationDate");
     });
@@ -88,7 +86,6 @@ describe("Auth action creator", () => {
             { type: SIGN_UP_SUCCESS }
         ];
 
-        const store = mockStore();
         return store.dispatch(signUp()).then(() => {
             // return of async actions
             expect(store.getActions()).toEqual(expectedActions);
@@ -101,7 +98,6 @@ describe("Auth action creator", () => {
             { type: SIGN_UP_FAIL, error: { code: "error" } }
         ];
 
-        const store = mockStore();
         return store.dispatch(signUp("existingEmail")).then(() => {
             // return of async actions
             expect(store.getActions()).toEqual(expectedActions);
@@ -111,7 +107,6 @@ describe("Auth action creator", () => {
     it("should dispatch an action and return true when sign in is successfull", () => {
         const expectedActions = [{ type: SIGN_IN_START }];
 
-        const store = mockStore();
         return store.dispatch(signIn("someEmail")).then(result => {
             // return of async actions
             expect(store.getActions()).toEqual(expectedActions);
@@ -125,7 +120,6 @@ describe("Auth action creator", () => {
             { type: SIGN_IN_FAIL, error: { message: "Wrong email" } }
         ];
 
-        const store = mockStore();
         return store.dispatch(signIn("wrongEmail")).then(() => {
             // return of async actions
             expect(store.getActions()).toEqual(expectedActions);
@@ -146,7 +140,6 @@ describe("Auth action creator", () => {
             { profile: false, type: "PROFILE_LOAD_SUCCESS" }
         ];
 
-        const store = mockStore();
         return store.dispatch(authCheckState()).then(() => {
             // return of async actions
             expect(store.getActions()).toEqual(expectedActions);
