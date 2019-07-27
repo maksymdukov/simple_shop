@@ -2,7 +2,7 @@ const styles = theme => ({
     removeFromBasket: {
         color: "inherit",
         borderRadius: 0,
-        '&:hover': {
+        "&:hover": {
             opacity: 0.9
         }
     }

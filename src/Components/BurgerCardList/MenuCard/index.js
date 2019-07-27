@@ -28,6 +28,7 @@ const MenuCard = ({
                       plusQuantity,
                       minusQuantity,
                       onAreaClick,
+                      isInSwiper,
                       showNotification
                   }) => {
     let cardRef = useRef(null);
@@ -36,7 +37,10 @@ const MenuCard = ({
         console.log(cardRef)
         showNotification(itemObj.name);
         addItemToBasket(itemObj);
-        cardRef.current.focus();
+        if ('ontouchstart' in window || navigator.msMaxTouchPoints) {
+            cardRef.current.focus();
+        }
+        // cardRef.current.focus();
     };
     let actionSection;
     if (isInBasket) {
@@ -70,11 +74,14 @@ const MenuCard = ({
     return (
         <Card className={classes.card}>
             <div className={classes.area} ref={cardRef} tabIndex={0}>
-                <div className={classes.areaFront}>
+                <div className={isInSwiper ? `${classes.areaFront} ${classes.areaFrontSpecial}` : classes.areaFront}>
                     <CardMedia
                         className={classes.media}
-                        image={itemObj.image}
                         title={itemObj.name}
+                        image='div'
+                        style={{
+                            background: `url(${itemObj.image}) center/contain no-repeat, #fff`,
+                        }}
                     />
                     <div className={classes.areaBack}>
                         {type === 'burger' &&

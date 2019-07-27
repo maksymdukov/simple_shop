@@ -1,4 +1,4 @@
-const styles = (theme) => ({
+const styles = theme => ({
     container: {
         padding: "20px 5px 120px 5px"
     },
@@ -25,12 +25,18 @@ const styles = (theme) => ({
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20
     },
-    priceTag: {
-        padding: 5,
-        margin: 0,
-        '& span': {
-            color: theme.card.price.mainColor,
+    priceTagWrapper: {
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        textAlign: "center",
+        "& > p": {
+            padding: 5,
+            margin: 0
         }
+    },
+    priceTag: {
+        color: theme.card.price.mainColor
     }
 });
 

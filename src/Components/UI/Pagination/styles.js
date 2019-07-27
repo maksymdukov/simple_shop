@@ -1,11 +1,10 @@
-const styles = (theme) => ({
-    table: {
-    },
+const styles = theme => ({
+    table: {},
     tableWrapper: {
-        width: '100%',
+        width: "100%",
         overflow: "hidden",
-        marginTop: theme.spacing.unit * 3,
-    },
+        marginTop: theme.spacing.unit * 3
+    }
 });
 
 export default styles;

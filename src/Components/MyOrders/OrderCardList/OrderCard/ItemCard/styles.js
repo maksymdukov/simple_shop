@@ -1,8 +1,8 @@
-const styles = (theme) => ({
+const styles = theme => ({
     container: {
         borderBottom: `1px dashed ${theme.palette.divider}`,
         marginBottom: theme.spacing.unit * 2,
-        '&:last-child': {
+        "&:last-child": {
             borderBottom: "none",
             marginBottom: 0
         }
@@ -14,10 +14,10 @@ const styles = (theme) => ({
         color: theme.card.price.mainColor
     },
     descrWrapper: {
-        padding: `0 ${theme.spacing.unit * 2}px ${theme.spacing.unit * 2}px ${theme.spacing.unit * 2}px`
+        padding: `0 ${theme.spacing.unit * 2}px ${theme.spacing.unit *
+            2}px ${theme.spacing.unit * 2}px`
     },
-    name: {
-    },
+    name: {},
     description: {
         color: theme.palette.common.brown
     }

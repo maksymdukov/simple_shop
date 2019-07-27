@@ -1,19 +1,21 @@
 import {
-    LOGOUT, RESET_ERRORS, SET_IS_MANAGER,
+    LOGOUT,
+    RESET_ERRORS,
+    SET_IS_MANAGER,
     SIGN_IN_FAIL,
     SIGN_IN_START,
     SIGN_IN_SUCCESS,
     SIGN_UP_FAIL,
     SIGN_UP_START,
-    SIGN_UP_SUCCESS,
+    SIGN_UP_SUCCESS
 } from "../actionTypes";
-import firebase from '../../firebase/config';
-import {eraseProfileOnLogout, loadProfile} from "./profileActions";
-import {eraseOrders} from "./userOrdersActions";
+import firebase from "../../firebase/config";
+import { eraseProfileOnLogout, loadProfile } from "./profileActions";
+import { eraseOrders } from "./userOrdersActions";
 
 const TOKEN_EXPIRATION = 3600;
 
-const signUpStart = () => ({
+export const signUpStart = () => ({
     type: SIGN_UP_START
 });
 
@@ -21,7 +23,7 @@ export const resetErrors = () => ({
     type: RESET_ERRORS
 });
 
-export const signUpFail = (error) => ({
+export const signUpFail = error => ({
     type: SIGN_UP_FAIL,
     error
 });
@@ -34,7 +36,7 @@ export const signInStart = () => ({
     type: SIGN_IN_START
 });
 
-export const signInFail = (error) => ({
+export const signInFail = error => ({
     type: SIGN_IN_FAIL,
     error
 });
@@ -56,11 +58,11 @@ export const authLogout = () => {
     localStorage.removeItem("expirationDate");
     return {
         type: LOGOUT
-    }
+    };
 };
 
 export const tryLogout = () => {
-    return async (dispatch) => {
+    return async dispatch => {
         try {
             dispatch(authLogout());
             dispatch(eraseProfileOnLogout());
@@ -69,48 +71,57 @@ export const tryLogout = () => {
         } catch (e) {
             alert(e);
         }
-    }
+    };
 };
 
-export const checkAuthTimeOut = (expirationTime) => {
+export const checkAuthTimeOut = expirationTime => {
     return dispatch => {
         setTimeout(() => {
-            dispatch(tryLogout())
+            dispatch(tryLogout());
         }, expirationTime * 1000);
-    }
+    };
 };
 
-
 export const signUp = (email, password, name) => {
-    return async (dispatch) => {
+    return async dispatch => {
         try {
             dispatch(signUpStart());
-            await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+            await firebase
+                .auth()
+                .setPersistence(firebase.auth.Auth.Persistence.LOCAL);
             let result = await firebase
                 .auth()
                 .createUserWithEmailAndPassword(email, password);
             const uid = result.user.uid;
-            await firebase.database().ref('users/'+uid+'/profile/').set({name, email});
+            await firebase
+                .database()
+                .ref("users/" + uid + "/profile/")
+                .set({ name, email });
             dispatch(signUpSuccess());
-            const expirationDate = new Date(new Date().getTime() + TOKEN_EXPIRATION * 1000);
+            const expirationDate = new Date(
+                new Date().getTime() + TOKEN_EXPIRATION * 1000
+            );
             localStorage.setItem("email", email);
             localStorage.setItem("expirationDate", +expirationDate);
             dispatch(checkAuthTimeOut(TOKEN_EXPIRATION));
+            return;
         } catch (error) {
             dispatch(signUpFail(error));
         }
-    }
+    };
 };
 
 export const signIn = (email, password) => {
-    return async (dispatch) => {
+    return async dispatch => {
         try {
             dispatch(signInStart());
-            await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
             await firebase
                 .auth()
-                .signInWithEmailAndPassword(email, password);
-            const expirationDate = new Date(new Date().getTime() + TOKEN_EXPIRATION * 1000);
+                .setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+            await firebase.auth().signInWithEmailAndPassword(email, password);
+            const expirationDate = new Date(
+                new Date().getTime() + TOKEN_EXPIRATION * 1000
+            );
             localStorage.setItem("email", email);
             localStorage.setItem("expirationDate", +expirationDate);
             dispatch(checkAuthTimeOut(TOKEN_EXPIRATION));
@@ -118,33 +129,47 @@ export const signIn = (email, password) => {
         } catch (error) {
             dispatch(signInFail(error));
         }
-    }
+    };
 };
 
 export const authCheckState = () => {
     return async dispatch => {
         dispatch(signInStart());
-        firebase.auth().onAuthStateChanged(async (user) => {
-            console.log(user);
-            if (user && !user.isAnonymous) {
-                const expirationDate = localStorage.getItem('expirationDate');
-                if (expirationDate) {
-                    if (new Date(+expirationDate) > new Date()) {
-                        const token = await user.getIdToken();
-                        dispatch(signInSuccess(user.email, false, user.uid, token));
-                        dispatch(loadProfile(user.uid));
+        return firebase.auth().onAuthStateChanged(
+            async user => {
+                if (user && !user.isAnonymous) {
+                    const expirationDate = localStorage.getItem(
+                        "expirationDate"
+                    );
+                    if (expirationDate) {
+                        if (new Date(+expirationDate) > new Date()) {
+                            const token = await user.getIdToken();
+                            dispatch(
+                                signInSuccess(
+                                    user.email,
+                                    false,
+                                    user.uid,
+                                    token
+                                )
+                            );
+                            dispatch(loadProfile(user.uid));
+                        } else {
+                            dispatch(tryLogout());
+                        }
                     } else {
-                        dispatch(tryLogout());
+                        const token = await user.getIdToken();
+                        dispatch(
+                            signInSuccess(user.email, false, user.uid, token)
+                        );
+                        dispatch(loadProfile(user.uid));
                     }
                 } else {
-                    dispatch(signInSuccess(user.email, false, user.uid));
-                    dispatch(loadProfile(user.uid));
+                    dispatch(signInFail(null));
                 }
-            } else {
-                dispatch(signInFail(null));
+            },
+            err => {
+                dispatch(signInFail(err));
             }
-        }, (err)=>{
-            dispatch(signInFail(err))
-        });
-    }
+        );
+    };
 };

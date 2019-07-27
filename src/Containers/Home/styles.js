@@ -1,6 +1,4 @@
-import bestSeller from '../../assets/Best-Seller-PNG-File.png';
-
-const styles = (theme) => ({
+const styles = theme => ({
     intro: {
         height: "calc(100vh - 200px)",
         display: "flex",
@@ -8,7 +6,7 @@ const styles = (theme) => ({
         justifyContent: "center",
         alignItems: "center"
     },
-    hungry:{
+    hungry: {
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.common.white,
         padding: theme.spacing.unit * 3,
@@ -28,7 +26,7 @@ const styles = (theme) => ({
         overflow: "hidden"
     },
     video: {
-        width: "100%",
+        width: "100%"
     },
     videoHeader: {
         zIndex: "2",
@@ -39,28 +37,14 @@ const styles = (theme) => ({
     },
     menuBtn: {
         backgroundColor: theme.card.price.mainColor,
-        '&:hover': {
+        "&:hover": {
             backgroundColor: theme.card.price.mainColor,
-            filter: 'brightness(150%)'
+            filter: "brightness(150%)"
         }
     },
     popularSlide: {
         marginLeft: 10,
-        position: "relative",
-        '&::before': {
-            content: "''",
-            display: "block",
-            position: "absolute",
-            top: -5,
-            left: -5,
-            backgroundImage: `url(${bestSeller})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: 'no-repeat',
-            width: 21,
-            height: 50,
-            zIndex: 20
-        }
+        position: "relative"
     }
 });
 

@@ -1,11 +1,15 @@
-import React from 'react';
-import {Scrollbars} from "react-custom-scrollbars";
+import React from "react";
 
-const ScrollBar = ({children}) => {
+// Components
+import { Scrollbars } from "react-custom-scrollbars";
+
+const ScrollBar = ({ children }) => {
     return (
-        <Scrollbars renderThumbVertical={({ style, ...props }) =>
-            <div {...props} style={{ ...style, backgroundColor: 'grey' }}/>
-        }>
+        <Scrollbars
+            renderThumbVertical={({ style, ...props }) => (
+                <div {...props} style={{ ...style, backgroundColor: "grey" }} />
+            )}
+        >
             {children}
         </Scrollbars>
     );

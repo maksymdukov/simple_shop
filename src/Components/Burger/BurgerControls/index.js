@@ -1,8 +1,13 @@
-import React from 'react';
-import BuildControlItem from "./BuildControlItem";
-import classes from './index.module.css';
+import React from "react";
+import PropTypes from "prop-types";
 
-const BuildControls = ({addIngredient, ingredientsMenu, ingPrices}) => {
+// Local components
+import BuildControlItem from "./BuildControlItem";
+
+// Styles
+import classes from "./index.module.css";
+
+const BuildControls = ({ addIngredient, ingredientsMenu, ingPrices }) => {
     return (
         <ul className={classes.BuildControls}>
             {ingredientsMenu.map(control => (
@@ -10,10 +15,17 @@ const BuildControls = ({addIngredient, ingredientsMenu, ingPrices}) => {
                     key={control}
                     name={control}
                     price={ingPrices[control]}
-                    handlePlusIng={ () => addIngredient(control) }/>
+                    handlePlusIng={() => addIngredient(control)}
+                />
             ))}
         </ul>
     );
+};
+
+BuildControls.propTypes = {
+    addIngredient: PropTypes.func.isRequired,
+    ingredientsMenu: PropTypes.array.isRequired,
+    ingPrices: PropTypes.object.isRequired
 };
 
 export default BuildControls;

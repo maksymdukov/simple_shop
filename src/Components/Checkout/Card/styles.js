@@ -1,44 +1,32 @@
-const styles = (theme) => ({
+const styles = theme => ({
     card: {
-        // border: "1px solid grey",
         width: "100%",
         height: "100%",
-        position: "relative",
-        // transformOrigin:"center center",
-        // transform: "rotateX(-20deg)",
-        // transition: "transform 0.3s linear",
-        // transformStyle: "preserve-3d",
-        '&:hover': {
-            // transform: "rotateX(0deg)"
-        }
+        position: "relative"
     },
     container: {
-        // perspective: 1000,
         width: "100%",
-        height: "100%",
+        height: "100%"
     },
     image: {
         boxShadow: theme.shadows[10],
         height: 200,
         width: "100%",
-        backgroundSize: "100%",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
         display: "flex",
         alignItems: "center",
-        '& img': {
+        "& img": {
             width: "100%"
         }
     },
     title: {
         marginTop: 20,
-        textAlign: 'center'
+        textAlign: "center"
     },
     price: {
-        '& p': {
+        "& p": {
             color: theme.card.price.mainColor
         },
-        textAlign: 'center'
+        textAlign: "center"
     },
     controls: {
         textAlign: "center"
@@ -49,7 +37,7 @@ const styles = (theme) => ({
         left: "50%",
         transform: "translateX(-50%)",
         display: "flex",
-        justifyContent: 'center',
+        justifyContent: "center",
         alignItems: "center",
         zIndex: 15
     },
@@ -88,12 +76,12 @@ const styles = (theme) => ({
         position: "relative",
         width: "100%",
         height: "100%",
-        '&:hover $areaBack': {
+        "&:hover $areaBack": {
             zIndex: 9,
             opacity: 0.9
         },
-        '&:hover': {
-            color: theme.card.backSide.textColor,
+        "&:hover": {
+            color: theme.card.backSide.textColor
         }
     }
 });

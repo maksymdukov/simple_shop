@@ -1,29 +1,36 @@
-import React from 'react';
-import {withStyles, Button, TextField, MenuItem, CircularProgress, Typography} from "@material-ui/core";
+import React from "react";
+import PropTypes from "prop-types";
 
-const styles = (theme) => ({
+// MUI
+import {
+    withStyles,
+    Button,
+    TextField,
+    MenuItem,
+    CircularProgress,
+    Typography
+} from "@material-ui/core";
+
+const styles = theme => ({
     submitContainer: {
         marginTop: `${theme.spacing.unit * 3}px`,
         textAlign: "center"
     },
-    submit: {
-    }
-
+    submit: {}
 });
 
 const FormView = ({
-                      classes,
-                      values: { name, email, phone, city, address, password, confirmPassword },
-                      errors,
-                      touched,
-                      handleSubmit,
-                      handleChange,
-                      isValid,
-                      setFieldTouched,
-                      uploading,
-                      uploadError
-                  }) => {
-
+    classes,
+    values: { name, email, phone, city, address, password, confirmPassword },
+    errors,
+    touched,
+    handleSubmit,
+    handleChange,
+    isValid,
+    setFieldTouched,
+    uploading,
+    uploadError
+}) => {
     const change = (name, e) => {
         e.persist();
         handleChange(e);
@@ -109,8 +116,12 @@ const FormView = ({
             <TextField
                 id="confirmPassword"
                 name="confirmPassword"
-                helperText={touched.confirmPassword ? errors.confirmPassword : ""}
-                error={touched.confirmPassword && Boolean(errors.confirmPassword)}
+                helperText={
+                    touched.confirmPassword ? errors.confirmPassword : ""
+                }
+                error={
+                    touched.confirmPassword && Boolean(errors.confirmPassword)
+                }
                 label="Confirm new password"
                 margin="normal"
                 fullWidth
@@ -119,15 +130,15 @@ const FormView = ({
                 onChange={change.bind(null, "confirmPassword")}
             />
             <div className={classes.submitContainer}>
-                {uploadError
-                    ? <Typography color="primary" variant="h5" align="center">
-                        {uploadError.message || uploadError.code }
+                {uploadError ? (
+                    <Typography color="primary" variant="h5" align="center">
+                        {uploadError.message || uploadError.code}
                     </Typography>
-                    :null
-                }
-                {uploading
-                    ? <CircularProgress color="primary"/>
-                    : <Button
+                ) : null}
+                {uploading ? (
+                    <CircularProgress color="primary" />
+                ) : (
+                    <Button
                         className={classes.submit}
                         type="submit"
                         variant="contained"
@@ -136,10 +147,23 @@ const FormView = ({
                     >
                         {uploadError ? "Try again" : "Update"}
                     </Button>
-                }
+                )}
             </div>
         </form>
     );
+};
+
+FormView.propTypes = {
+    classes: PropTypes.object.isRequired,
+    values: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired,
+    touched: PropTypes.object.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    isValid: PropTypes.bool.isRequired,
+    setFieldTouched: PropTypes.func.isRequired,
+    uploading: PropTypes.bool.isRequired,
+    uploadError: PropTypes.object
 };
 
 export default withStyles(styles)(FormView);

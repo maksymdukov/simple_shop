@@ -1,30 +1,34 @@
-import React from 'react';
-import {withStyles, Button, TextField, CircularProgress} from "@material-ui/core";
+import React from "react";
+import PropTypes from "prop-types";
 
-const styles = (theme) => ({
+// MUI
+import {
+    withStyles,
+    Button,
+    TextField,
+    CircularProgress
+} from "@material-ui/core";
+
+const styles = theme => ({
     submitContainer: {
         marginTop: `${theme.spacing.unit * 3}px`,
         display: "flex",
         justifyContent: "space-between"
-    },
-
+    }
 });
 
 const SignUpForm = ({
-                        classes,
-                        toSignInMode,
-                        values: { name, email, password, confirmPassword },
-                        errors,
-                        touched,
-                        handleSubmit,
-                        handleChange,
-                        isValid,
-                        setFieldTouched,
-                        isErrorPosting,
-                        isPosting,
-                        signUpLoading
-                    }) => {
-
+    classes,
+    toSignInMode,
+    values: { name, email, password, confirmPassword },
+    errors,
+    touched,
+    handleSubmit,
+    handleChange,
+    isValid,
+    setFieldTouched,
+    signUpLoading
+}) => {
     const change = (name, e) => {
         e.persist();
         handleChange(e);
@@ -70,8 +74,12 @@ const SignUpForm = ({
             <TextField
                 id="confirmPassword"
                 name="confirmPassword"
-                helperText={touched.confirmPassword ? errors.confirmPassword : ""}
-                error={touched.confirmPassword && Boolean(errors.confirmPassword)}
+                helperText={
+                    touched.confirmPassword ? errors.confirmPassword : ""
+                }
+                error={
+                    touched.confirmPassword && Boolean(errors.confirmPassword)
+                }
                 label="Confirm Password"
                 margin="normal"
                 fullWidth
@@ -80,9 +88,10 @@ const SignUpForm = ({
                 onChange={change.bind(null, "confirmPassword")}
             />
             <div className={classes.submitContainer}>
-                {signUpLoading
-                    ? <CircularProgress color="primary"/>
-                    : <Button
+                {signUpLoading ? (
+                    <CircularProgress color="primary" />
+                ) : (
+                    <Button
                         className={classes.submit}
                         type="submit"
                         variant="contained"
@@ -91,7 +100,7 @@ const SignUpForm = ({
                     >
                         Register
                     </Button>
-                }
+                )}
                 <Button
                     variant="outlined"
                     color="primary"
@@ -102,6 +111,19 @@ const SignUpForm = ({
             </div>
         </form>
     );
+};
+
+SignUpForm.propTypes = {
+    classes: PropTypes.object.isRequired,
+    toSignInMode: PropTypes.func.isRequired,
+    values: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired,
+    touched: PropTypes.object.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    isValid: PropTypes.bool.isRequired,
+    setFieldTouched: PropTypes.func.isRequired,
+    signUpLoading: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(SignUpForm);

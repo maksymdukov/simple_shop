@@ -1,15 +1,17 @@
-import React, {Component} from 'react';
-import classes from './index.module.css';
-import burgerLogo from '../../../assets/burger-logo.png';
+import React from "react";
 
-class Logo extends Component {
-    render() {
-        return (
-            <div className={classes.Logo}>
-                <img src={burgerLogo} alt="Logo"/>
-            </div>
-        );
-    }
-}
+// Styles
+import classes from "./index.module.css";
+
+// Assets
+import burgerLogo from "../../../assets/burger-logo.png";
+
+const Logo = () => {
+    return (
+        <div className={classes.Logo}>
+            <img src={burgerLogo} alt="Logo" />
+        </div>
+    );
+};
 
 export default Logo;

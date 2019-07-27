@@ -1,7 +1,7 @@
-const styles = (theme) => ({
+const styles = theme => ({
     paper: {
         [theme.breakpoints.up("xs")]: {
-            width: "80vw",
+            width: "80vw"
         },
         [theme.breakpoints.up("sm")]: {
             width: 400
@@ -10,12 +10,8 @@ const styles = (theme) => ({
             width: 500
         }
     },
-    listContainer: {
-        // maxHeight: 300,
-        // overflow: "auto",
-    },
-    productList: {
-    },
+    listContainer: {},
+    productList: {},
     price: {
         paddingRight: 10
     },
@@ -26,11 +22,12 @@ const styles = (theme) => ({
         paddingLeft: 20
     },
     actionsContainer: {
-        padding: 15
+        padding: 15,
+        "& > div": {
+            minWidth: 150
+        }
     },
-    checkoutBtn: {
-
-    }
+    checkoutBtn: {}
 });
 
 export default styles;

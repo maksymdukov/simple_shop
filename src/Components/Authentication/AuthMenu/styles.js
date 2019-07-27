@@ -1,13 +1,13 @@
-const styles = (theme) => ({
+const styles = theme => ({
     navItems: {
-        textDecoration: 'none',
-        color: 'inherit',
-        '&:active, &:hover, &:visited': {
-            textDecoration: 'none',
-            color: 'inherit',
+        textDecoration: "none",
+        color: "inherit",
+        "&:active, &:hover, &:visited": {
+            textDecoration: "none",
+            color: "inherit"
         },
-        '&$active': {
-            color: theme.palette.primary.main,
+        "&$active": {
+            color: theme.palette.primary.main
         }
     },
     active: {}

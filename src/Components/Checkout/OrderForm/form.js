@@ -1,7 +1,16 @@
-import React from 'react';
-import {withStyles, Button, TextField, MenuItem, CircularProgress} from "@material-ui/core";
+import React from "react";
+import PropTypes from "prop-types";
 
-const styles = (theme) => ({
+// MUI
+import {
+    withStyles,
+    Button,
+    TextField,
+    MenuItem,
+    CircularProgress
+} from "@material-ui/core";
+
+const styles = theme => ({
     submitContainer: {
         marginTop: `${theme.spacing.unit * 3}px`,
         textAlign: "center"
@@ -9,22 +18,20 @@ const styles = (theme) => ({
     submit: {
         fontSize: "1.5rem"
     }
-
 });
 
 const FormView = ({
-                      classes,
-                      values: { name, email, phone, city, address },
-                      errors,
-                      touched,
-                      handleSubmit,
-                      handleChange,
-                      isValid,
-                      setFieldTouched,
-                      isErrorPosting,
-                      isPosting
-                  }) => {
-
+    classes,
+    values: { name, email, phone, city, address },
+    errors,
+    touched,
+    handleSubmit,
+    handleChange,
+    isValid,
+    setFieldTouched,
+    isErrorPosting,
+    isPosting
+}) => {
     const change = (name, e) => {
         e.persist();
         handleChange(e);
@@ -96,9 +103,10 @@ const FormView = ({
                 margin="normal"
             />
             <div className={classes.submitContainer}>
-                {isPosting
-                    ? <CircularProgress color="primary"/>
-                    : <Button
+                {isPosting ? (
+                    <CircularProgress color="primary" />
+                ) : (
+                    <Button
                         className={classes.submit}
                         type="submit"
                         variant="contained"
@@ -107,10 +115,23 @@ const FormView = ({
                     >
                         {isErrorPosting ? "Try again" : "Order"}
                     </Button>
-                }
+                )}
             </div>
         </form>
     );
+};
+
+FormView.propTypes = {
+    classes: PropTypes.object.isRequired,
+    values: PropTypes.object.isRequired,
+    errors: PropTypes.object,
+    touched: PropTypes.object.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    isValid: PropTypes.bool.isRequired,
+    setFieldTouched: PropTypes.func.isRequired,
+    isErrorPosting: PropTypes.bool,
+    isPosting: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(FormView);

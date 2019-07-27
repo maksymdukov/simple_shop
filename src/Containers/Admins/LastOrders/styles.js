@@ -1,16 +1,16 @@
-const styles = (theme) => ({
+const styles = theme => ({
     transitionItem: {
-        '&-enter': {
-            opacity: 0,
+        "&-enter": {
+            opacity: 0
         },
-        '&-enter-active':{
+        "&-enter-active": {
             opacity: 1,
             transition: "opacity 500ms ease-in"
         },
-        '&-exit': {
+        "&-exit": {
             opacity: 1
         },
-        '&-exit-active': {
+        "&-exit-active": {
             opacity: 0,
             transition: "opacity 500ms ease-in"
         }
@@ -22,7 +22,6 @@ const styles = (theme) => ({
     transitionItemEnterActive: {
         opacity: 1,
         transition: "opacity 500ms ease-in"
-
     }
 });
 

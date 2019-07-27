@@ -1,7 +1,6 @@
-import {resetErrors, tryLogout} from "../../../store/actions/authActions";
+import { resetErrors, tryLogout } from "../../../store/actions/authActions";
 
-export const mapStateToProps = (state) => ({
-    basket: state.basket.basket,
+export const mapStateToProps = state => ({
     totalQuantity: state.basket.totalQuantity,
     isAuthenticated: !state.auth.isAnonymous,
     isManager: state.auth.isManager,
@@ -9,7 +8,7 @@ export const mapStateToProps = (state) => ({
     isSigningIn: state.auth.signInLoading
 });
 
-export const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = dispatch => ({
     doLogout: () => dispatch(tryLogout()),
     doResetErrors: () => dispatch(resetErrors())
 });

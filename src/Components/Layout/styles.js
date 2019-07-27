@@ -1,9 +1,8 @@
-// import background from '../../assets/dub-kantenberi2.jpg';
-
-const styles = (theme) => ({
+const styles = theme => ({
     header: {
         height: 200,
-        backgroundImage: "url(https://mrgrill.com.ua/wp-content/uploads/2017/09/banner.jpg)",
+        backgroundImage:
+            "url(https://mrgrill.com.ua/wp-content/uploads/2017/09/banner.jpg)",
         backgroundSize: "cover",
         position: "relative",
         boxShadow: theme.shadows[3]
@@ -13,18 +12,17 @@ const styles = (theme) => ({
         bottom: 20,
         width: "100%",
         fontWeight: 100,
-        // fontStyle: "italic",
         color: theme.palette.common.grey
     },
     main: {
-        marginBottom: theme.spacing.unit * 5,
+        paddingBottom: theme.spacing.unit * 5,
         position: "relative",
+        minHeight: "calc(100vh - 437px)",
+        [theme.breakpoints.up(600)]: {
+            minHeight: "calc(100vh - 367px)"
+        }
     },
     footer: {
-        // height: 200,
-        // backgroundImage: `url(${background})`,
-        // backgroundSize: "cover",
-        // position: "relative",
         padding: theme.spacing.unit * 2,
         backgroundColor: theme.palette.common.darkGrey,
         color: theme.palette.common.white

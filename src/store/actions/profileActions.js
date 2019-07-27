@@ -3,22 +3,27 @@ import {
     PROFILE_ERASE_LOCALLY,
     PROFILE_LOAD_FAIL,
     PROFILE_LOAD_START,
-    PROFILE_LOAD_SUCCESS, PROFILE_RESET_STATUS, PROFILE_UPLOAD_FAIL,
+    PROFILE_LOAD_SUCCESS,
+    PROFILE_RESET_STATUS,
+    PROFILE_UPLOAD_FAIL,
     PROFILE_UPLOAD_START,
-    PROFILE_UPLOAD_SUCCESS, REAUTH_HIDE, REAUTH_SHOW, SET_PROFILE
+    PROFILE_UPLOAD_SUCCESS,
+    REAUTH_HIDE,
+    REAUTH_SHOW,
+    SET_PROFILE
 } from "../actionTypes";
-import {setIsManager} from "./authActions";
+import { setIsManager } from "./authActions";
 
 export const profileLoadStart = () => ({
     type: PROFILE_LOAD_START
 });
 
-export const profileLoadSuccess = (profile) => ({
+export const profileLoadSuccess = profile => ({
     type: PROFILE_LOAD_SUCCESS,
     profile
 });
 
-export const profileLoadFail = (error) => ({
+export const profileLoadFail = error => ({
     type: PROFILE_LOAD_FAIL,
     error
 });
@@ -27,34 +32,34 @@ export const profileUploadStart = () => ({
     type: PROFILE_UPLOAD_START
 });
 
-export const profileUploadSuccess = (profile) => ({
+export const profileUploadSuccess = profile => ({
     type: PROFILE_UPLOAD_SUCCESS,
     profile
 });
 
-export const profileUploadFail = (uploadError) => ({
+export const profileUploadFail = uploadError => ({
     type: PROFILE_UPLOAD_FAIL,
     uploadError
 });
 
-export const updateProfile = (profile) => async (dispatch, getState) => {
+export const updateProfile = profile => async (dispatch, getState) => {
     try {
-        console.log("In update profile")
+        console.log("In update profile");
         console.log(profile);
         dispatch(profileUploadStart());
         const uid = getState().auth.uid;
         if (profile.password.length) {
             dispatch(updatePassword(profile, uid));
         } else {
-            if (profile.password.length) {
-                delete profile.password;
-                delete profile.confirmPassword;
-            }
-            await firebase.database().ref('users/'+uid+'/profile/').set(profile);
+            delete profile.password;
+            delete profile.confirmPassword;
+            await firebase
+                .database()
+                .ref("users/" + uid + "/profile/")
+                .set(profile);
             dispatch(profileUploadSuccess(profile));
         }
-    }
-    catch (e) {
+    } catch (e) {
         dispatch(profileUploadFail(e));
     }
 };
@@ -67,26 +72,24 @@ export const hideReAuth = () => ({
     type: REAUTH_HIDE
 });
 
-export const setProfile = (profile) => ({
+export const setProfile = profile => ({
     type: SET_PROFILE,
     profile
 });
 
-export const updatePassword = (profile, uid) => async (dispatch) => {
+export const updatePassword = (profile, uid) => async dispatch => {
     try {
         await firebase.auth().currentUser.updatePassword(profile.password);
-        // throw {code:"auth/requires-recent-login"};
         if (profile.password.length) {
             delete profile.password;
             delete profile.confirmPassword;
         }
-        await firebase.database().ref('users/'+uid+'/profile/').set(profile);
+        await firebase
+            .database()
+            .ref("users/" + uid + "/profile/")
+            .set(profile);
         dispatch(profileUploadSuccess(profile));
-        console.log("In updatePassword good");
-        // dispatch(showReAuth());
-    }
-    catch (e) {
-        console.log("In updatePassword bad");
+    } catch (e) {
         if (e.code === "auth/requires-recent-login") {
             dispatch(setProfile(profile));
             dispatch(showReAuth());
@@ -96,18 +99,22 @@ export const updatePassword = (profile, uid) => async (dispatch) => {
     }
 };
 
-export const loadProfile = (uid) => async (dispatch) => {
+export const loadProfile = uid => async dispatch => {
     try {
         dispatch(profileLoadStart());
-        const snapshot = await firebase.database().ref('users/'+uid+'/profile/').once('value');
+        const snapshot = await firebase
+            .database()
+            .ref("users/" + uid + "/profile/")
+            .once("value");
         const profile = snapshot.val();
-        const snapshotIsMangr = await firebase.database().ref('users/'+uid+'/manager').once('value');
+        const snapshotIsMangr = await firebase
+            .database()
+            .ref("users/" + uid + "/manager")
+            .once("value");
         const isManager = snapshotIsMangr.val();
         if (isManager) dispatch(setIsManager());
-        console.log(profile);
         dispatch(profileLoadSuccess(profile));
-    }
-    catch (e) {
+    } catch (e) {
         alert("Can't load profile");
         dispatch(profileLoadFail(e));
     }

@@ -23,7 +23,10 @@ const styles = (theme) => ({
         paddingBottom: 70
     },
     paper: {
-        overflow: "auto"
+        overflow: "auto",
+        [theme.breakpoints.down("xs")]: {
+        margin: 20,
+        },
     }
 });
 

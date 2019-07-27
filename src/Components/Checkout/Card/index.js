@@ -1,50 +1,67 @@
-import React from 'react';
-import {IconButton, Typography, withStyles} from "@material-ui/core";
-import IconRemove from '@material-ui/icons/Clear';
-import IconMinus from '@material-ui/icons/Remove'
-import IconPlus from '@material-ui/icons/Add';
-import IconEdit from '@material-ui/icons/Edit';
+import React from "react";
+import PropTypes from "prop-types";
+
+// MUI
+import { IconButton, Typography, withStyles } from "@material-ui/core";
+
+// Icons
+import IconRemove from "@material-ui/icons/Clear";
+import IconMinus from "@material-ui/icons/Remove";
+import IconPlus from "@material-ui/icons/Add";
+import IconEdit from "@material-ui/icons/Edit";
+
+// Local Components
 import BurgerOnHoverContent from "../../BurgerCardList/MenuCard/BurgerOnHoverContent";
 import OnHoverContent from "../../BurgerCardList/MenuCard/OnHoverContent";
-import styles from './styles';
+
+//Styles
+import styles from "./styles";
 
 const Card = ({
-                  classes,
-                  cardClass,
-                  basketItem,
-                  plusQuantity,
-                  minusQuantity,
-                  removeItem,
-                  handleEditBtnClick
+    classes,
+    basketItem,
+    plusQuantity,
+    minusQuantity,
+    removeItem,
+    handleEditBtnClick
 }) => {
     return (
         <div className={classes.container}>
             <div className={classes.card}>
                 <div className={classes.quantity}>
-                    <IconButton className={classes.quantityControls} onClick={minusQuantity}>
-                        <IconMinus fontSize="small"/>
+                    <IconButton
+                        className={classes.quantityControls}
+                        onClick={minusQuantity}
+                    >
+                        <IconMinus fontSize="small" />
                     </IconButton>
                     <div className={classes.circle}>{basketItem.quantity}</div>
-                    <IconButton className={classes.quantityControls} onClick={plusQuantity}>
-                        <IconPlus fontSize="small"/>
+                    <IconButton
+                        className={classes.quantityControls}
+                        onClick={plusQuantity}
+                    >
+                        <IconPlus fontSize="small" />
                     </IconButton>
                 </div>
-                <div className={classes.image}
-                     style={basketItem.image && {
-                         backgroundImage: `url(${basketItem.image})`
-                     }}>
+                <div
+                    className={classes.image}
+                    style={
+                        basketItem.image && {
+                            background: `url(${basketItem.image}) center/contain no-repeat, #fff`
+                        }
+                    }
+                >
                     <div className={classes.area}>
-                            <div className={classes.areaBack}>
-                                {basketItem.ingredients
-                                    ? <BurgerOnHoverContent
-                                        itemObj={basketItem}
-                                        customizeOff
-                                    />
-                                    : <OnHoverContent
-                                        itemObj={basketItem}
-                                    />
-                                }
-                            </div>
+                        <div className={classes.areaBack}>
+                            {basketItem.ingredients ? (
+                                <BurgerOnHoverContent
+                                    itemObj={basketItem}
+                                    customizeOff
+                                />
+                            ) : (
+                                <OnHoverContent itemObj={basketItem} />
+                            )}
+                        </div>
                     </div>
                 </div>
                 <div className={classes.title}>
@@ -59,17 +76,26 @@ const Card = ({
                 </div>
                 <div className={classes.controls}>
                     <IconButton onClick={removeItem}>
-                        <IconRemove color="error" fontSize="small"/>
+                        <IconRemove color="error" fontSize="small" />
                     </IconButton>
-                    {basketItem.ingredients &&
+                    {basketItem.ingredients && (
                         <IconButton onClick={handleEditBtnClick}>
-                            <IconEdit fontSize="small"/>
+                            <IconEdit fontSize="small" />
                         </IconButton>
-                    }
+                    )}
                 </div>
             </div>
         </div>
     );
+};
+
+Card.propTypes = {
+    classes: PropTypes.object.isRequired,
+    basketItem: PropTypes.object.isRequired,
+    plusQuantity: PropTypes.func.isRequired,
+    minusQuantity: PropTypes.func.isRequired,
+    removeItem: PropTypes.func.isRequired,
+    handleEditBtnClick: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Card);

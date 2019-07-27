@@ -1,4 +1,4 @@
-const styles = (theme) => ({
+const styles = theme => ({
     container: {
         marginTop: 20
     },
@@ -8,7 +8,6 @@ const styles = (theme) => ({
         minWidth: 250,
         margin: "20px 0"
     }
-
 });
 
 export default styles;

@@ -5,7 +5,7 @@ const styles = (theme) => ({
     },
     media: {
         height: 200,
-        backgroundSize: "100%"
+
     },
     addToBasket: {
         backgroundColor: "green",
@@ -35,7 +35,21 @@ const styles = (theme) => ({
     },
     areaFront: {
         transition: "opacity .2s linear",
-        position: "relative"
+        position: "relative",
+    },
+    areaFrontSpecial: {
+        '&::after': {
+            content: "'BEST OFFER'",
+            display: 'block',
+            fontSize: '20px',
+            position: 'absolute',
+            background: theme.palette.primary.main,
+            color: theme.palette.common.white,
+            padding: '0 30px',
+            transform: 'rotate(45deg)',
+            top: '44px',
+            right: '-32px'
+        }
     },
     area: {
         '&:hover $areaBack, &:focus $areaBack': {

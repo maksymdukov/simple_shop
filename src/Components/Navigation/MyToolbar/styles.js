@@ -10,21 +10,21 @@ const styles = theme => ({
         padding: 4,
         justifyContent: "space-between",
         alignItems: "center",
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up("md")]: {
             justifyContent: "initial"
         }
     },
     toolbarFixed: {},
     navItems: {
         display: "none",
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up("md")]: {
             display: "block",
             flex: 1,
             textAlign: "center"
         }
     },
     drawerToggler: {
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up("md")]: {
             display: "none"
         }
     },
@@ -47,18 +47,20 @@ const styles = theme => ({
         backgroundColor: "transparent",
         margin: 10,
         flex: 1,
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up("md")]: {
             flex: 0
+        },
+        [theme.breakpoints.down("400")]: {
+            flex: 0,
+            height: 28
         }
     },
     login: {
         transition: "color 0.2s linear",
-        // display: "none",
-        '&:hover': {
-            // backgroundColor: "white"
+        "&:hover": {
             color: theme.palette.primary.main
         },
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up("sm")]: {
             display: "block"
         }
     },

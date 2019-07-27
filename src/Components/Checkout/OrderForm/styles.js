@@ -1,12 +1,12 @@
-const styles = (theme) => ({
+const styles = theme => ({
     paper: {
-        [theme.breakpoints.up('xs')]: {
+        [theme.breakpoints.up("xs")]: {
             width: "95%"
         },
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up("sm")]: {
             width: "80%"
         },
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up("md")]: {
             width: 600
         },
         width: "80%",
@@ -16,9 +16,9 @@ const styles = (theme) => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 5}px ${theme
-            .spacing.unit * 2}px`
-    },
+        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit *
+            5}px ${theme.spacing.unit * 2}px`
+    }
 });
 
 export default styles;

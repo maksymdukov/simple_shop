@@ -1,34 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import {BrowserRouter} from "react-router-dom";
-import {createStore, compose, applyMiddleware, combineReducers} from "redux";
-import {Provider} from "react-redux";
-import thunk from 'redux-thunk';
-import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
-import 'typeface-roboto';
-import menuReducer from "./store/reducers/menuReducer";
-import basketReducer from "./store/reducers/basketReducer";
-import burgerEditorReducer from "./store/reducers/burgerEditorReducer";
-import notificatorReducer from "./store/reducers/notificatorReducer";
-import authReducer from "./store/reducers/authReducer";
-import userOrdersReducer from "./store/reducers/userOrdersReducer";
-import profileReducer from "./store/reducers/profileReducer";
+import React from "react";
+import ReactDOM from "react-dom";
 
-const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+// Styles
+import "./index.css";
 
-const rootReducer = combineReducers({
-    menu: menuReducer,
-    basket: basketReducer,
-    burgerEditor: burgerEditorReducer,
-    notificator: notificatorReducer,
-    auth: authReducer,
-    userOrders: userOrdersReducer,
-    profile: profileReducer
-});
+// Components
+import App from "./App";
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+// Redux
+import Root from "./Root";
+
+// Router
+import { BrowserRouter } from "react-router-dom";
+
+// MUI
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
 
 const theme = createMuiTheme({
     palette: {
@@ -42,7 +28,7 @@ const theme = createMuiTheme({
             brightBrown: "#e7d7cb",
             darkGrey: "#373737",
             brown: "rgb(139, 69, 19)"
-        },
+        }
     },
     additionalColors: {
         success: "#33a828",
@@ -65,28 +51,20 @@ const theme = createMuiTheme({
         }
     },
     typography: {
-        useNextVariants: true,
-    },
-    // overrides: {
-    //     MuiTypography: {
-    //         h4: {
-    //
-    //         }
-    //     }
-    // }
+        useNextVariants: true
+    }
 });
 
 export const basename = "/simple_shop";
 
 const app = (
-    <Provider store={store}>
+    <Root>
         <BrowserRouter basename={basename}>
             <MuiThemeProvider theme={theme}>
                 <App />
             </MuiThemeProvider>
         </BrowserRouter>
-    </Provider>
+    </Root>
 );
 
-ReactDOM.render(app, document.getElementById('root'));
-
+ReactDOM.render(app, document.getElementById("root"));

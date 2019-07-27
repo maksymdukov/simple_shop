@@ -1,10 +1,17 @@
-import React from 'react';
-import {IconButton, withStyles} from "@material-ui/core";
-import FirstPageIcon from '@material-ui/icons/FirstPage';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import LastPageIcon from '@material-ui/icons/LastPage';
-import styles from './styles';
+import React from "react";
+import PropTypes from 'prop-types';
+
+// MUI
+import { IconButton, withStyles } from "@material-ui/core";
+
+// Icons
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import LastPageIcon from "@material-ui/icons/LastPage";
+
+// Styles
+import styles from "./styles";
 
 class PaginationActions extends React.Component {
     handleFirstPageButtonClick = event => {
@@ -22,7 +29,10 @@ class PaginationActions extends React.Component {
     handleLastPageButtonClick = event => {
         this.props.onChangePage(
             event,
-            Math.max(0, Math.ceil(this.props.count / this.props.rowsPerPage) - 1),
+            Math.max(
+                0,
+                Math.ceil(this.props.count / this.props.rowsPerPage) - 1
+            )
         );
     };
 
@@ -62,5 +72,13 @@ class PaginationActions extends React.Component {
         );
     }
 }
+
+PaginationActions.propTypes = {
+    classes: PropTypes.object.isRequired,
+    page: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired,
+    rowsPerPage: PropTypes.number.isRequired
+}
+
 
 export default withStyles(styles)(PaginationActions);

@@ -1,6 +1,6 @@
-import {HIDE_MESSAGE, SHOW_MESSAGE} from "../actionTypes";
+import { HIDE_MESSAGE, SHOW_MESSAGE } from "../actionTypes";
 
-export const showNotification = (itemName) => ({
+export const showNotification = itemName => ({
     type: SHOW_MESSAGE,
     itemName
 });

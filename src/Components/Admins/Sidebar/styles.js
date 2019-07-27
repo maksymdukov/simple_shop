@@ -1,42 +1,44 @@
-const styles = (theme) => ({
+const styles = theme => ({
     sidebar: {
-        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 7}px ${theme.spacing.unit * 2}px ${theme.spacing.unit * 2}px`,
+        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit *
+            7}px ${theme.spacing.unit * 2}px ${theme.spacing.unit * 2}px`,
         position: "relative",
         top: 0,
         bottom: 0,
         width: 200,
         minHeight: "100%",
-        transition: theme.transitions.create(['margin'], {
+        transition: theme.transitions.create(["margin"], {
             easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
+            duration: theme.transitions.duration.enteringScreen
         }),
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "column"
     },
     sidebarClosed: {
         marginLeft: "-160px"
-        // transform: "translateX(-160px)"
     },
     list: {
+        position: "sticky",
+        top: 100,
         listStyle: "none",
         paddingLeft: 0
     },
-    route:{
+    route: {
         borderBottom: `1px solid transparent`,
         textDecoration: "none",
         display: "inline-block",
         color: "inherit",
         transition: "color .2s linear",
-        '&:link, &:active': {
+        "&:link, &:active": {
             textDecoration: "none",
             color: "inherit"
         },
-        '&:hover': {
+        "&:hover": {
             textDecoration: "none",
             color: theme.palette.primary.main
         }
     },
-    activeRoute :{
+    activeRoute: {
         color: "red",
         borderBottom: `1px solid ${theme.palette.primary.main}`
     },
@@ -50,22 +52,22 @@ const styles = (theme) => ({
         flexDirection: "column",
         justifyContent: "flex-start"
     },
-    arrowWrapper:{
+    arrowWrapper: {
         position: "sticky",
         top: 150
     },
     arrow: {
         position: "sticky",
         top: 0,
-        transition: theme.transitions.create(['transform'], {
+        transform: "rotate(180deg)",
+        transition: theme.transitions.create(["transform"], {
             easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.standard,
+            duration: theme.transitions.duration.standard
         })
     },
     rotate: {
-        transform: "rotate(180deg)"
+        transform: "rotate(0deg)"
     }
-
 });
 
 export default styles;

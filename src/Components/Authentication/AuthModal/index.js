@@ -1,4 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+
+// MUI
 import {
     withStyles,
     Dialog,
@@ -7,57 +10,89 @@ import {
     IconButton,
     Slide
 } from "@material-ui/core";
-import IconClose from '@material-ui/icons/CloseRounded'
+import styles from "./styles";
+
+// Icons
+import IconClose from "@material-ui/icons/CloseRounded";
+
+// Local Components
 import SignUp from "../SignUp";
 import SignIn from "../SignIn";
-import {connect} from "react-redux";
-import styles from './styles';
-import {mapStateToProps, mapDispatchToProps} from './redux';
 
-const Transition = (props) => <Slide direction="down" {...props}/>;
+// Redux
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./redux";
+
+const Transition = props => <Slide direction="down" {...props} />;
 
 const AuthModal = ({
-                       classes,
-                       isOpened,
-                       handleClose,
-                       doSignUp,
-                       signUpSuccess,
-                       errorMessage,
-                       signUpLoading,
-                       signInLoading,
-                       signInError,
-                       doSignIn
+    classes,
+    isOpened,
+    handleClose,
+    doSignUp,
+    signUpSuccess,
+    errorMessage,
+    signUpLoading,
+    signInLoading,
+    signInError,
+    doSignIn
 }) => {
     const [isSignUp, setIsSignUp] = useState(false);
     const toSignUpMode = () => setIsSignUp(true);
     const toSignInMode = () => setIsSignUp(false);
     return (
-        <Dialog onClose={handleClose}
-                aria-labelledby="customized-dialog-title"
-                open={isOpened}
-                TransitionComponent={Transition}
-                classes={{paper:classes.paper}}
+        <Dialog
+            onClose={handleClose}
+            aria-labelledby="customized-dialog-title"
+            open={isOpened}
+            TransitionComponent={Transition}
+            classes={{ paper: classes.paper }}
         >
-            <IconButton
-                className={classes.closeBtn}
-                onClick={handleClose}
-            >
-                <IconClose/>
+            <IconButton className={classes.closeBtn} onClick={handleClose}>
+                <IconClose />
             </IconButton>
-            <DialogTitle>
-                {isSignUp
-                    ? "Sign Up"
-                    : "Sign In"
-                }
-            </DialogTitle>
+            <DialogTitle>{isSignUp ? "Sign Up" : "Sign In"}</DialogTitle>
             <DialogContent>
-                {isSignUp
-                    ? <SignUp {...{toSignInMode, signUpSuccess, signUpLoading, errorMessage, doSignUp}}/>
-                    : <SignIn {...{toSignUpMode, doSignIn, handleClose, signInLoading, signInError}}/>
-                }
+                {isSignUp ? (
+                    <SignUp
+                        {...{
+                            toSignInMode,
+                            signUpSuccess,
+                            signUpLoading,
+                            errorMessage,
+                            doSignUp
+                        }}
+                    />
+                ) : (
+                    <SignIn
+                        {...{
+                            toSignUpMode,
+                            doSignIn,
+                            handleClose,
+                            signInLoading,
+                            signInError
+                        }}
+                    />
+                )}
             </DialogContent>
         </Dialog>
     );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)( withStyles(styles)(AuthModal) );
+AuthModal.propTypes = {
+    classes: PropTypes.object.isRequired,
+    isOpened: PropTypes.bool.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    doSignUp: PropTypes.func.isRequired,
+    signUpSuccess: PropTypes.bool,
+    errorMessage: PropTypes.object,
+    signUpLoading: PropTypes.bool.isRequired,
+    signInLoading: PropTypes.bool.isRequired,
+    signInError: PropTypes.any,
+    doSignIn: PropTypes.func.isRequired
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withStyles(styles)(AuthModal));

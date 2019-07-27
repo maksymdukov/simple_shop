@@ -1,11 +1,10 @@
-const styles = (theme) => ({
+const styles = theme => ({
     price: {
         color: theme.palette.primary.main
     },
-    container: {
-    },
+    container: {},
     isChecked: {
-        textAlign: 'center'
+        textAlign: "center"
     }
 });
 

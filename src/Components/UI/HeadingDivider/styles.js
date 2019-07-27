@@ -1,7 +1,7 @@
-const styles = (theme) => ({
+const styles = theme => ({
     root: {
         backgroundColor: theme.palette.primary.main,
-        margin: "10px 0",
+        margin: "10px 0"
     }
 });
 

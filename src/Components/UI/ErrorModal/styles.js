@@ -1,9 +1,9 @@
-const styles = (theme) => ({
+const styles = theme => ({
     message: {
-        textAlign: "center",
+        textAlign: "center"
     },
     title: {
-        textAlign: "center",
+        textAlign: "center"
     },
     container: {
         padding: theme.spacing.unit * 5

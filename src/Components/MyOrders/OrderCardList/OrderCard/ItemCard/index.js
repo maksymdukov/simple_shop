@@ -1,42 +1,48 @@
-import React from 'react';
-import {Grid, Typography, withStyles} from "@material-ui/core";
-import styles from './styles';
+import React from "react";
+import PropTypes from "prop-types";
 
-const ItemCard = ({classes, basketItem}) => {
-    const {
-        image,
-        name,
-        ingredients,
-        additives,
-        quantity,
-        price
-    } = basketItem;
+// MUI
+import { Grid, Typography, withStyles } from "@material-ui/core";
+
+// Styles
+import styles from "./styles";
+
+const ItemCard = ({ classes, basketItem }) => {
+    const { image, name, ingredients, additives, quantity, price } = basketItem;
     return (
         <Grid className={classes.container} container>
             <Grid item xs={3}>
-                {image && <img className={classes.image} src={image} alt={name}/>}
+                {image && (
+                    <img className={classes.image} src={image} alt={name} />
+                )}
             </Grid>
             <Grid item xs={8} className={classes.descrWrapper}>
-                <Typography variant="h5" gutterBottom className={classes.name}>{name}</Typography>
+                <Typography variant="h5" gutterBottom className={classes.name}>
+                    {name}
+                </Typography>
                 <Grid container className={classes.description}>
-                    {ingredients &&
+                    {ingredients && (
                         <Grid item xs={6}>
                             Ingredients:
                             <ul>
-                                {ingredients.map((ing, idx) => <li key={idx}>{ing}</li>)}
-                            </ul>
-                        </Grid>
-                    }
-                    {additives &&
-                        <Grid item  xs={6}>
-                            Sauces:
-                            <ul>
-                                {Object.entries(additives).map((add, idx) => (
-                                    <li key={idx}>{add[0]} x{add[1]}</li>
+                                {ingredients.map((ing, idx) => (
+                                    <li key={idx}>{ing}</li>
                                 ))}
                             </ul>
                         </Grid>
-                    }
+                    )}
+                    {additives && (
+                        <Grid item xs={6}>
+                            Sauces:
+                            <ul>
+                                {Object.entries(additives).map((add, idx) => (
+                                    <li key={idx}>
+                                        {add[0]} x{add[1]}
+                                    </li>
+                                ))}
+                            </ul>
+                        </Grid>
+                    )}
                 </Grid>
             </Grid>
             <Grid item xs={1}>
@@ -45,6 +51,11 @@ const ItemCard = ({classes, basketItem}) => {
             </Grid>
         </Grid>
     );
+};
+
+ItemCard.propTypes = {
+    classes: PropTypes.object.isRequired,
+    basketItem: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ItemCard);

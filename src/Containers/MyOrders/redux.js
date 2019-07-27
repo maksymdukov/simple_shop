@@ -1,6 +1,9 @@
-import {fetchContent, fetchOrderList} from "../../store/actions/userOrdersActions";
+import {
+    fetchContent,
+    fetchOrderList
+} from "../../store/actions/userOrdersActions";
 
-export const mapStateToProps = (state) => ({
+export const mapStateToProps = state => ({
     ordersList: state.userOrders.ordersList,
     ordersContent: state.userOrders.ordersContent,
     listLoading: state.userOrders.listLoading,
@@ -10,7 +13,7 @@ export const mapStateToProps = (state) => ({
     error: state.userOrders.listError || state.userOrders.contentError
 });
 
-export const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = dispatch => ({
     fetchList: () => dispatch(fetchOrderList()),
     fetchContent: (start, end) => dispatch(fetchContent(start, end))
 });

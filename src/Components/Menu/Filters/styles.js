@@ -1,32 +1,39 @@
-const styles = (theme) => ({
+const styles = theme => ({
     filters: {
-        display: "flex",
+        display: "block",
         justifyContent: "flex-end",
-        flexWrap: "wrap",
         margin: theme.spacing.unit * 2,
-        // boxShadow: theme.shadows[5]
+        [theme.breakpoints.up("400")]: {
+            display: "flex",
+            justifyContent: "flex-end"
+        }
     },
     filtersWrapper: {
+        flexDirection: "column",
         boxShadow: theme.shadows[5],
-        display: "flex"
+        display: "flex",
+        [theme.breakpoints.up("400")]: {
+            flexDirection: "row"
+        }
     },
     filter: {
+        width: "100%",
         backgroundColor: theme.palette.common.white,
-        // marginRight: theme.spacing.unit * 2,
         padding: theme.spacing.unit * 2,
         textTransform: "uppercase",
-        // borderTop: `1px solid ${theme.palette.common.brightGrey}`,
         borderRight: `1px solid ${theme.palette.common.brightGrey}`,
-        // borderBottom: `1px solid ${theme.palette.common.brightGrey}`,
-        // boxShadow: theme.shadows[5],
-        letterSpacing: '0.1em',
+        letterSpacing: "0.1em",
         cursor: "pointer",
-        transition: "filter .15s linear, background-color .15s linear, color .15s linear",
-        '&:hover': {
-            filter: 'brightness(75%)'
+        transition:
+            "filter .15s linear, background-color .15s linear, color .15s linear",
+        "&:hover": {
+            filter: "brightness(75%)"
         },
-        '&:last-child': {
+        "&:last-child": {
             borderRight: `none`
+        },
+        [theme.breakpoints.up(400)]: {
+            width: "auto"
         }
     },
     filterActive: {

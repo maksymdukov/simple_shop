@@ -1,30 +1,40 @@
-import React, {useEffect, useState} from 'react';
-import Swiper from 'react-id-swiper';
-import {connect} from "react-redux";
-import {withStyles} from "@material-ui/core";
-import 'react-id-swiper/src/styles/css/swiper.css';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+
+// Components
+import Swiper from "react-id-swiper";
+
+// Modules
+import { Scrollbar } from "swiper/dist/js/swiper.esm";
+
+// Redux
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./redux";
+
+// MUI
+import { withStyles } from "@material-ui/core";
+
+// Styles
+import "react-id-swiper/lib/styles/css/swiper.css";
+import styles from "./styles";
+
+// Local components
 import Card from "../Card";
-import {Scrollbar} from "swiper/dist/js/swiper.esm";
-import styles from './styles'
-import {mapStateToProps, mapDispatchToProps} from "./redux";
 
 const MySwiper = ({
-                      classes,
-                      basket,
-                      plusQuantity,
-                      minusQuantity,
-                      removeItem,
-                      openModal
+    classes,
+    basket,
+    plusQuantity,
+    minusQuantity,
+    removeItem,
+    openModal
 }) => {
     const [swiper, updateSwiper] = useState(null);
-    useEffect(()=>{
+    useEffect(() => {
         if (swiper) {
             swiper.update();
-            // swiper.updateSize();
-            // swiper.updateSlides();
-            // swiper.updateSlidesClasses();
         }
-    },[basket]);
+    }, [basket]);
     const params = {
         getSwiper: updateSwiper,
         modules: [Scrollbar],
@@ -34,29 +44,40 @@ const MySwiper = ({
         spaceBetween: 50,
         freeMode: true,
         scrollbar: {
-            el: '.swiper-scrollbar',
-            hide: false,
+            el: ".swiper-scrollbar",
+            hide: false
         }
     };
     return (
         <Swiper {...params}>
-            {
-                basket.map( (basketItem, ind) => (
-                    <div key={basketItem.id || basketItem.name} className={classes.card}>
-                        <Card
-                            {...{basketItem}}
-                            plusQuantity={()=>plusQuantity(ind)}
-                            minusQuantity={()=>minusQuantity(ind)}
-                            removeItem={()=>removeItem(ind)}
-                            handleEditBtnClick={ () => openModal(ind, basketItem) }
-                        />
-                    </div>
-                    ))
-            }
+            {basket.map((basketItem, ind) => (
+                <div
+                    key={basketItem.id || basketItem.name}
+                    className={classes.card}
+                >
+                    <Card
+                        {...{ basketItem }}
+                        plusQuantity={() => plusQuantity(ind)}
+                        minusQuantity={() => minusQuantity(ind)}
+                        removeItem={() => removeItem(ind)}
+                        handleEditBtnClick={() => openModal(ind, basketItem)}
+                    />
+                </div>
+            ))}
         </Swiper>
     );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-    withStyles(styles)(MySwiper)
-);
+MySwiper.propTypes = {
+    classes: PropTypes.object.isRequired,
+    basket: PropTypes.array.isRequired,
+    plusQuantity: PropTypes.func.isRequired,
+    minusQuantity: PropTypes.func.isRequired,
+    removeItem: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withStyles(styles)(MySwiper));

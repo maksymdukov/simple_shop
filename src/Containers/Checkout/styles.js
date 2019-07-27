@@ -1,4 +1,4 @@
-const styles = (theme) => ({
+const styles = theme => ({
     orders: {
         margin: "20px 5px"
     },
@@ -10,7 +10,7 @@ const styles = (theme) => ({
     redirect: {
         color: theme.additionalColors.dangerColor,
         margin: `${theme.spacing.unit * 2}px`
-    },
+    }
 });
 
 export default styles;

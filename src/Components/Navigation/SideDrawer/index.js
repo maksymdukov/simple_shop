@@ -1,9 +1,14 @@
-import React from 'react';
-import {Divider, Drawer} from "@material-ui/core";
+import React from "react";
+import PropTypes from "prop-types";
+
+// MUI
+import { Divider, Drawer } from "@material-ui/core";
+
+// Local components
 import NavItems from "../NavItems";
 import NavItem from "../NavItems/NavItem";
 
-const SideDrawer = ({drawerOpened, handleDrawerClose}) => {
+const SideDrawer = ({ drawerOpened, handleDrawerClose }) => {
     return (
         <Drawer
             open={drawerOpened}
@@ -11,13 +16,18 @@ const SideDrawer = ({drawerOpened, handleDrawerClose}) => {
             onClose={handleDrawerClose}
             onClick={handleDrawerClose}
         >
-                <NavItems/>
-            <Divider/>
+            <NavItems />
+            <Divider />
             <section>
                 <NavItem to="/checkout">Checkout</NavItem>
             </section>
         </Drawer>
     );
+};
+
+SideDrawer.propTypes = {
+    drawerOpened: PropTypes.bool.isRequired,
+    handleDrawerClose: PropTypes.func.isRequired
 };
 
 export default SideDrawer;

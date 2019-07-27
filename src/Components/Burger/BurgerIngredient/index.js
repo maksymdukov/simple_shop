@@ -1,46 +1,53 @@
-import React, {Fragment} from 'react';
-import classes from './index.module.css';
-import {IconButton} from "@material-ui/core";
-import IconRemove from "@material-ui/icons/RemoveCircleOutline"
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
-const BurgerIngredient = ({type, removeIngredient, notEditable}) => {
+// Styles
+import classes from "./index.module.css";
+
+// MUI
+import { IconButton } from "@material-ui/core";
+
+// Icons
+import IconRemove from "@material-ui/icons/RemoveCircleOutline";
+
+const BurgerIngredient = ({ type, removeIngredient, notEditable }) => {
     let ingredientClass = null,
         ingredient = null,
         bread = null;
     switch (type) {
-        case 'bread-bottom':
-            bread = <div className={classes.BreadBottom}></div>;
+        case "bread-bottom":
+            bread = <div className={classes.BreadBottom} />;
             break;
-        case 'bread-top':
+        case "bread-top":
             bread = (
                 <div className={classes.BreadTop}>
-                    <div className={classes.Seeds1}></div>
-                    <div className={classes.Seeds2}></div>
+                    <div className={classes.Seeds1} />
+                    <div className={classes.Seeds2} />
                 </div>
             );
             break;
-        case 'meat':
+        case "meat":
             ingredientClass = classes.Meat;
             break;
-        case 'cheese':
+        case "cheese":
             ingredientClass = classes.Cheese;
             break;
-        case 'salad':
+        case "salad":
             ingredientClass = classes.Salad;
             break;
-        case 'bacon':
+        case "bacon":
             ingredientClass = classes.Bacon;
             break;
-        case 'chicken':
+        case "chicken":
             ingredientClass = classes.Chicken;
             break;
-        case 'tomato':
+        case "tomato":
             ingredientClass = classes.Tomato;
             break;
-        case 'cucumber':
+        case "cucumber":
             ingredientClass = classes.Cucumber;
             break;
-        case 'onion':
+        case "onion":
             ingredientClass = classes.Onion;
             break;
         default:
@@ -52,13 +59,13 @@ const BurgerIngredient = ({type, removeIngredient, notEditable}) => {
                 <div className={classes.IngredientName}>
                     <div>{type}</div>
                 </div>
-                {!notEditable &&
+                {!notEditable && (
                     <div className={classes.RemoveButton}>
                         <IconButton onClick={removeIngredient}>
-                            <IconRemove fontSize="small"/>
+                            <IconRemove fontSize="small" />
                         </IconButton>
                     </div>
-                }
+                )}
             </div>
         );
     }
@@ -68,6 +75,12 @@ const BurgerIngredient = ({type, removeIngredient, notEditable}) => {
             {ingredient}
         </Fragment>
     );
+};
+
+BurgerIngredient.propTypes = {
+    type: PropTypes.string.isRequired,
+    removeIngredient: PropTypes.func,
+    notEditable: PropTypes.bool
 };
 
 export default BurgerIngredient;

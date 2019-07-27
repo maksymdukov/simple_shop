@@ -1,14 +1,16 @@
 import {
-    LOGOUT, RESET_ERRORS, SET_IS_MANAGER,
+    LOGOUT,
+    RESET_ERRORS,
+    SET_IS_MANAGER,
     SIGN_IN_FAIL,
     SIGN_IN_START,
     SIGN_IN_SUCCESS,
     SIGN_UP_FAIL,
     SIGN_UP_START,
-    SIGN_UP_SUCCESS,
+    SIGN_UP_SUCCESS
 } from "../actionTypes";
 
-const initState = {
+export const initState = {
     name: null,
     address: null,
     phone: null,
@@ -24,21 +26,24 @@ const initState = {
     token: null
 };
 
-const authReducer = (state = initState, {type, error,  email, isAnonymous, uid, token}) => {
+const authReducer = (
+    state = initState,
+    { type, error, email, isAnonymous, uid, token }
+) => {
     switch (type) {
         case SIGN_UP_START:
             return {
-              ...state,
-              signUpLoading: true,
-              signUpSuccess: null,
-              signUpError: null
+                ...state,
+                signUpLoading: true,
+                signUpSuccess: null,
+                signUpError: null
             };
         case SIGN_UP_SUCCESS:
             return {
                 ...state,
                 signUpLoading: false,
                 signUpSuccess: true,
-                signUpError: null,
+                signUpError: null
             };
         case SIGN_UP_FAIL:
             return {
@@ -51,7 +56,7 @@ const authReducer = (state = initState, {type, error,  email, isAnonymous, uid, 
                 ...state,
                 signUpSuccess: null,
                 signUpError: null,
-                signInError: null,
+                signInError: null
             };
         case SIGN_IN_START:
             return {
@@ -69,7 +74,7 @@ const authReducer = (state = initState, {type, error,  email, isAnonymous, uid, 
                 uid,
                 email,
                 isAnonymous,
-                token,
+                token
             };
         case SIGN_IN_FAIL:
             return {

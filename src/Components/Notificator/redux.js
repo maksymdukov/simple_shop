@@ -1,11 +1,12 @@
-import {hideNotification, showNotification} from "../../store/actions/notificatorActions";
+import {
+    hideNotification,
+} from "../../store/actions/notificatorActions";
 
-export const mapStateToProps = (state) => ({
+export const mapStateToProps = state => ({
     isOpened: state.notificator.isOpened,
     itemName: state.notificator.itemName
 });
 
-export const mapDispatchToProps = (dispatch) => ({
-    showNotification: () => dispatch(showNotification()),
-    hideNotification: () => dispatch(hideNotification()),
+export const mapDispatchToProps = dispatch => ({
+    hideNotification: () => dispatch(hideNotification())
 });

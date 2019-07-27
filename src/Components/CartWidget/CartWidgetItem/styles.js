@@ -2,13 +2,13 @@ const styles = theme => ({
     root: {
         display: "flex",
         borderBottom: `1px solid ${theme.palette.divider}`,
-        '&:last-child': {
+        "&:last-child": {
             borderBottom: "none"
         }
     },
     quantity: {
         display: "flex",
-        justifyContent: 'center',
+        justifyContent: "center",
         alignItems: "center"
     },
     itemPrice: {

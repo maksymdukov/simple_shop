@@ -1,28 +1,50 @@
-import React from 'react';
-import {withStyles} from "@material-ui/core";
-import NavItem from "./NavItem";
-import styles from './styles';
+import React from "react";
+import PropTypes from "prop-types";
 
-const NavItems = ({classes, position}) => {
+// MUI
+import { withStyles } from "@material-ui/core";
+
+// Local components
+import NavItem from "./NavItem";
+
+// Styles
+import styles from "./styles";
+
+const NavItems = ({ classes, position }) => {
     return (
-        <ul className={classes.navItems} >
+        <ul className={classes.navItems}>
             <li>
-                <NavItem {...{position}} to="/">Home</NavItem>
+                <NavItem {...{ position }} to="/">
+                    Home
+                </NavItem>
             </li>
             <li>
-                <NavItem {...{position}} to="/menu">Menu</NavItem>
+                <NavItem {...{ position }} to="/menu">
+                    Menu
+                </NavItem>
             </li>
             <li>
-                <NavItem {...{position}} to="/builder">Burger Builder</NavItem>
+                <NavItem {...{ position }} to="/builder">
+                    Burger Builder
+                </NavItem>
             </li>
             <li>
-                <NavItem {...{position}} to="/about">About</NavItem>
+                <NavItem {...{ position }} to="/about">
+                    About
+                </NavItem>
             </li>
             <li>
-                <NavItem {...{position}} to="/contacts">Contacts</NavItem>
+                <NavItem {...{ position }} to="/contacts">
+                    Contacts
+                </NavItem>
             </li>
         </ul>
     );
+};
+
+NavItems.propTypes = {
+    classes: PropTypes.object.isRequired, 
+    position: PropTypes.string
 };
 
 export default withStyles(styles)(NavItems);

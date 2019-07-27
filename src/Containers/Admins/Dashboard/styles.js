@@ -1,6 +1,8 @@
-const styles = (theme) => ({
+const styles = theme => ({
     root: {
         display: "flex",
+        marginBottom: "-40px",
+        minHeight: "calc(100vh - 367px)"
     },
     content: {
         padding: 10,

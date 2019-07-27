@@ -1,27 +1,40 @@
-import React from 'react';
-import {Button, Snackbar} from "@material-ui/core";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
-import {mapStateToProps, mapDispatchToProps} from "./redux";
+import React from "react";
+import PropTypes from "prop-types";
 
-const Notificator = ({isOpened, showNotification, hideNotification, itemName}) => {
+// MUI
+import { Button, Snackbar } from "@material-ui/core";
+
+// Redux
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./redux";
+
+// Router
+import { Link } from "react-router-dom";
+
+const Notificator = ({
+    isOpened,
+    hideNotification,
+    itemName
+}) => {
     return (
         <Snackbar
             anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left"
             }}
             open={isOpened}
             autoHideDuration={3000}
             onClose={hideNotification}
             ContentProps={{
-                'aria-describedby': 'message-id',
+                "aria-describedby": "message-id"
             }}
             message={
-                <div id="message-id">"{itemName}" added to the basket
-                    <Button component={ (props)=> <Link {...props} to="/checkout"/> }
-                            variant="text"
-                            color="primary"
+                <div id="message-id">
+                    "{itemName}" added to the basket
+                    <Button
+                        component={props => <Link {...props} to="/checkout" />}
+                        variant="text"
+                        color="primary"
                     >
                         Checkout
                     </Button>
@@ -31,4 +44,14 @@ const Notificator = ({isOpened, showNotification, hideNotification, itemName}) =
     );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Notificator);
+Notificator.propTypes = {
+    isOpened: PropTypes.bool.isRequired,
+    hideNotification: PropTypes.func.isRequired,
+    itemName: PropTypes.string
+
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Notificator);
