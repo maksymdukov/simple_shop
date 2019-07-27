@@ -33,11 +33,6 @@ const NavItems = ({ classes, position }) => {
                     About
                 </NavItem>
             </li>
-            <li>
-                <NavItem {...{ position }} to="/contacts">
-                    Contacts
-                </NavItem>
-            </li>
         </ul>
     );
 };
